@@ -27,10 +27,11 @@
             <br><br>
             <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2"><i class="fa fa-key" aria-hidden="true"></i> &nbsp; Login </button>
             <br><br>
+            {{form.non_fields_errors}}
             <div class="text-center">
                 <a href="{% url 'register' %}">Don't have an account?</a>
                 <br><br>
-                <a href="{% url 'my-login' %}">Forgotten password?</a>
+                <a href="{% url 'reset_password' %}">Forgotten password?</a>
             </div>
         </form>
     </div>
