@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+        <link rel="stylesheet" href="{% static 'store/styles.css' %}">
 
 
         <!-- JavaScript -->
@@ -118,7 +118,15 @@
         <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
             
             <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
 
+                <li class="nav-item">
+                
+                    <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'dashboard' %}"> Dashboard </a>
+                
+                </li>
+
+                {% else %}
 
                 <li class="nav-item">
             
@@ -126,13 +134,21 @@
 
                 </li>
 
+                {% endif %}
+                {% if user.is_authenticated %}
 
                 <li class="nav-item">
 
-                    <a class="btn btn-alert navbar-btn text-white" type="button"  href="/"> Login </a>
+                    <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'user-logout' %}"> Logout </a>
 
                 </li>
-
+                {% else %}
+                <li class="nav-item">
+                
+                    <a class="btn btn-alert navbar-btn text-white" type="button" href="{% url 'my-login' %}"> Login </a>
+                
+                </li>
+                {% endif %}
 
                 &nbsp; &nbsp; &nbsp;
 
