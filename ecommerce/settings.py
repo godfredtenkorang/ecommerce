@@ -149,3 +149,7 @@ EMAIL_USE_TLS = 'True'
 
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+# Allow Paypal Popups
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'
