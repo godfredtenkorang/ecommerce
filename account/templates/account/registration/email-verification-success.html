@@ -1,24 +1,26 @@
-{% include "store/base.html" %}
+{% extends "store/base.html" %}
 {% load static %}
 
 {% block content %}
 <style>
     body {
-        background-color: gray;
+        background-color: #c0af9d;
     }
 </style>
 
 <body>
-    <br><br>
-    <div class="container bg-white shadow-md p-5 form-layout">
-        <div class="text-center">
-            <i class="fa fa-check fa-3x text-success" aria-hidden="true"></i>
-            <br><br>
-            <h5><strong>Your account is now active</strong></h5>
-            <hr>
-            <p>Please proceed to login.</p>
+    <br><br><br><br><br>
+    <section class="p-4">
+        <div class="container bg-white shadow-md p-5 container-layout">
+            <div class="text-center">
+                <i class="fa fa-check fa-3x text-success" aria-hidden="true"></i>
+                <br><br>
+                <h5><strong>Your account is now active</strong></h5>
+                <hr>
+                <p>Please proceed to login.</p>
+            </div>
         </div>
-    </div>
+    </section>
 </body>
 
 {% endblock %}

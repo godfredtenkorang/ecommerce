@@ -8,12 +8,13 @@ from django.conf import settings
 # Create your views here.
 
 def checkout(request):
+    cart = Cart(request)
     # Users with addounts -- Pro-fill the form
     if request.user.is_authenticated:
         try:
             # Authenticated users With shipping information
             shipping_address = ShippingAddress.objects.get(user=request.user.id)
-            context = {'shipping': shipping_address}
+            context = {'shipping': shipping_address, 'cart': cart}
             return render(request, 'payment/checkout.html', context=context)
             
             
@@ -32,6 +33,7 @@ def complete_order(request):
         email = request.POST.get('email')
         address1 = request.POST.get('address1')
         address2 = request.POST.get('address2')
+        country = request.POST.get('country')
         city = request.POST.get('city')
         state = request.POST.get('state')
         zipcode = request.POST.get('zipcode')

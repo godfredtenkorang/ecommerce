@@ -1,4 +1,4 @@
-{% include "store/base.html" %}
+{% extends "store/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
 
@@ -6,39 +6,44 @@
 
 <style>
     body {
-        background-color: gray;
+        background-color: #c0af9d;
     }
 </style>
 
 <body>
-    <br><br>
-    <div class="container bg-white shadow-md p-5 form-layout">
-        <h3><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Manage shipping</h3>
-        <hr>
-        <p>Please fill in your shipping address.</p>
-        <br>
-        <form method="POST" autocomplete="off">
-            {% csrf_token %}
-            {{ form.full_name|as_crispy_field }}
-            <br><br>
+    <section class="p-4">
+        <br><br><br><br><br>
+        <div class="container bg-white shadow-md p-5 container-layout">
+            <h3><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Manage shipping</h3>
+            <hr>
+            <p>Please fill in your shipping address.</p>
+            <br>
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                {{ form.full_name|as_crispy_field }}
+                <br><br>
 
-            {{ form.email|as_crispy_field }}
-            <br><br>
-            {{ form.address1|as_crispy_field }}
-            <br><br>
-            {{ form.address2|as_crispy_field }}
-            <br><br>
-            {{ form.city|as_crispy_field }}
-            <br><br>
-            {{ form.state|as_crispy_field }}
-            <br><br>
-            {{ form.zipcode|as_crispy_field }}
-            <br><br>
-            <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2">Update shipping address </button>
-            <br><br>
-            {{form.non_fields_errors}}
-        </form>
-    </div>
+                {{ form.email|as_crispy_field }}
+                <br><br>
+                {{ form.address1|as_crispy_field }}
+                <br><br>
+                {{ form.address2|as_crispy_field }}
+                <br><br>
+                {{ form.country|as_crispy_field }}
+                <br><br>
+                {{ form.city|as_crispy_field }}
+                <br><br>
+                {{ form.state|as_crispy_field }}
+                <br><br>
+                {{ form.zipcode|as_crispy_field }}
+                <br><br>
+                <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2">Update shipping address
+                </button>
+                <br><br>
+                {{form.non_fields_errors}}
+            </form>
+        </div>
+    </section>
 </body>
 <br><br>
 {% endblock %}

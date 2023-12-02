@@ -5,10 +5,9 @@
 
 {% block content %}
 
-
 <!-- Introduction section -->
 
-<section class="py-4 text-center container">
+<!-- <section class="py-4 text-center container">
 
     <div class="row py-lg-5">
 
@@ -38,8 +37,11 @@
     </div>
 
 
-</section>
+</section> -->
 <!-- All products section -->
+<br><br>
+<section class="pt-5">
+
 
 <div class="album py-5 bg-light">
 
@@ -57,9 +59,16 @@
 
 
             {% for product in all_products %}
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
+            <div class="card">
+                <img class="card-img-top" src="{{ product.image.url }}" height="200px" width="100%" alt="Card image cap">
+                <div class="card-body">
+                    <a class="text-info text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.title | capfirst }}</a>
+                    <p class="card-text">${{ product.price }}</p>
+                </div>
+            </div>
+            <!-- <div class="col">
+                <div class="card">
+                    <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}" height="100px" width="100%">
                     <div class="card-body">
                         <p class="card-text">
                             <a class="text-info text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.title | capfirst }}</a>
@@ -69,12 +78,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             {% endfor %}
 
         </div>
     </div>
 </div>
 
-
+</section>
 {% endblock %}

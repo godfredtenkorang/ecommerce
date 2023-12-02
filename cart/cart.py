@@ -69,4 +69,3 @@ class Cart():
         return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
     
     
-    

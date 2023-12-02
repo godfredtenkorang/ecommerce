@@ -1,25 +1,26 @@
-{% include "store/base.html" %}
+{% extends "store/base.html" %}
 {% load static %}
 
 {% block content %}
 <style>
     body {
-        background-color: gray;
+        background-color: #c0af9d;
     }
 </style>
 
 <body>
-    <br><br>
-    <div class="container bg-white shadow-md p-5 form-layout">
-        <div class="text-center">
-            <i class="fa fa-times fa-3x text-danger" aria-hidden="true"></i>
-            <br><br>
-            <h5><strong>Email verification failed!</strong></h5>
-            <hr>
-            <p>Please contact admin support.</p>
+    <br><br><br><br><br>
+    <section class="p-4">
+        <div class="container bg-white shadow-md p-5 form-layout">
+            <div class="text-center">
+                <i class="fa fa-times fa-3x text-danger" aria-hidden="true"></i>
+                <br><br>
+                <h5><strong>Email verification failed!</strong></h5>
+                <hr>
+                <p>Please contact admin support.</p>
+            </div>
         </div>
-    </div>
+    </section>
 </body>
-
 {% endblock %}
 <h1></h1>

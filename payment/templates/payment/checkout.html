@@ -1,30 +1,187 @@
 
-{% include "store/base.html" %}
+{% extends "store/base.html" %}
 
 
 {% load static %}
-
+{% load mathfilters %}
 
 {% block content %}
 
 <style>
     
-    body 
-    {
-        
-        background-color: gray;
-    
-    }
+  
 
 
 </style>
+<br><br><br><br>
+<div class="container">
+    <div class="py-5 text-center">
 
+        <h2> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Complete your order </h2>
+        
+        <p> Please enter in the relevant information below. </p>
+    </div>
 
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+                <span class="badge badge-secondary badge-pill">3</span>
+            </h4>
+            {% for item in cart %}
+            {% with product=item.product %}
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">{{ product.title }}</h6>
+                        <small class="text-muted">{{ product.description }}</small>
+                    </div>
+                    <span class="text-muted">$ {{ product.price|mul:item.qty }}</span>
+                </li>
+                
+                
+                
+               
+            </ul>
+            {% endwith %}
+            {% endfor %}
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (USD)</span>
+                    <strong>{{ cart.get_total }}</strong>
+                </li>
+            </ul>
+            <!-- <form class="card p-2">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Promo code">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary">Redeem</button>
+                    </div>
+                </div>
+            </form> -->
+            <br>
+            <!-- Paypal -->
+            <div id="paypal-button-container"></div>
+            <script
+                src="https://www.paypal.com/sdk/js?client-id=ARDfdQx8ScqWgeAj0_qguDCv2w6plVkCoCKh3pYTKBlgPaBuMr-e_QM4QpviQ5qyR3uUymb8Sf5ncrIW&currency=USD&intent=capture&enable-funding=venmo"
+                data-sdk-integration-source="integrationbuilder"></script>
+        </div>
+
+        <!-- Billing Address -->
+        
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Billing address</h4>
+            <form id="form" onsubmit="event.preventDefault();">
+            
+                <div>
+                    <hr>
+            
+                    <br>
+            
+                    <div class="form-field">
+            
+                        <input class="form-control validate" id="name" type="text" placeholder="Full name*" autocomplete="off"
+                            value="{{ shipping.full_name }}" required>
+            
+                    </div>
+            
+            
+                    <br>
+            
+            
+                    <div class="form-field">
+            
+                        <input class="form-control validate" id="email" type="email" placeholder="Email address*" autocomplete="off"
+                            value="{{ shipping.email }}" required>
+            
+                    </div>
+            
+            
+                    <br>
+            
+            
+                    <div class="form-field">
+            
+                        <input class="form-control validate" id="address1" type="text" placeholder="Address 1*" autocomplete="off"
+                            value="{{ shipping.address1 }}" required>
+            
+                    </div>
+            
+            
+                    <br>
+            
+            
+                    <div class="form-field">
+            
+                        <input class="form-control validate" id="address2" type="text" placeholder="Address 2*" autocomplete="off"
+                            value="{{ shipping.address2 }}" required>
+            
+                    </div>
+            
+            
+                    <br>
+                    <select class="form-control validate" id="country" autocomplete="off" value="{{ shipping.country }}">
+                        <option>Country</option>
+                        <option>{{ shipping.country }}</option>
+                    </select>
+                    <!-- <div class="form-field">
+                    
+                        <input class="form-control validate" id="country" type="text" placeholder="Country*" autocomplete="off"
+                            value="{{ shipping.country }}" required>
+                    
+                    </div> -->
+            <br>
+                    <div class="form-field">
+            
+                        <input class="form-control validate" id="city" type="text" placeholder="City*" autocomplete="off"
+                            value="{{ shipping.city }}" required>
+            
+                    </div>
+            
+            
+                    <br>
+            
+            
+                    <div class="form-field">
+            
+                        <input class="form-control" id="state" type="text" placeholder="State (Optional)" autocomplete="off"
+                            value="{{ shipping.state }}">
+            
+                    </div>
+            
+            
+                    <br>
+            
+            
+                    <div class="form-field">
+            
+                        <input class="form-control" id="zipcode" type="text" placeholder="Zip code (Optional)" autocomplete="off"
+                            value="{{ shipping.zipcode }}">
+            
+                    </div>
+            
+                </div>
+            
+                <br>
+            
+            
+            
+                <!-- <button id="complete-order" type="submit" class="btn btn-primary navbar-btn text-white"> &nbsp; Complete order </button> -->
+            
+        
+            
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 
     <body>
 
         <br>
 
         <div class="container bg-white shadow-md p-5" style="width:500px; border-radius:20px;">
+            
 
             <form id="form" onsubmit="event.preventDefault();">
 
@@ -219,12 +376,6 @@
                     }
 
                 },
-
-
-
-
-
-
 
 
                 // set up the transaction

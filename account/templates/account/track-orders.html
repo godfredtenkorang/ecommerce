@@ -1,4 +1,4 @@
-{% include "store/base.html" %}
+{% extends "store/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
 
@@ -6,34 +6,39 @@
 
 <style>
     body {
-        background-color: gray;
+        background-color: #c0af9d;
     }
 </style>
-<br>
-<div class="container bg-white shadow-md p-5 form-layout">
-    <div>
+<br><br><br><br><br>
+<body>
+    <section class="p-4">
+        <div class="container bg-white shadow-md p-5 container-layout">
+            <div>
 
-        <h3><i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; My orders</h3>
-        <hr>
-    </div>
-</div>
-<br>
-<div class="container bg-white shadow-md p-5 form-layout">
-    {% for order in orders %}
+                <h3><i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; My orders</h3>
+                <hr>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="p-4">
+        <div class="container bg-white shadow-md p-5 container-layout">
+            {% for order in orders %}
 
-    <strong><i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; Order ID # {{ order.id }}</strong>
+            <strong><i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; Order ID # {{ order.id }}</strong>
 
-    <br><br>
-    {{ order.product }}
-    <br><br>
-    Quantity x {{ order.quantity }}
+            <br><br>
+            {{ order.product }}
+            <br><br>
+            Quantity x {{ order.quantity }}
 
-    <br><br>
-    $ {{ order.price }}
-    <br><br>
-    <hr>
+            <br><br>
+            $ {{ order.price }}
+            <br><br>
+            <hr>
 
-    {% endfor %}
-</div>
-
+            {% endfor %}
+        </div>
+    </section>
+</body>
 {% endblock %}

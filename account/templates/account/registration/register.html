@@ -1,17 +1,19 @@
-{% include "store/base.html" %}
+{% extends "store/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
 
 <style>
-    body{
-        background-color: gray;
+    body {
+        background-color: #c0af9d;
     }
 </style>
-    <body>
-        <br><br>
-        <div class="container bg-white shadow-md p-5 form-layout">
+
+<body>
+    <br><br><br><br><br>
+    <section class="p-4">
+        <div class="container bg-white shadow-md p-5 container-layout">
             <h3>Create your account</h3>
             <hr>
             <h5>Purchase your favourite items today!</h5>
@@ -29,13 +31,15 @@
                 <br><br>
                 <br>
                 <br>
-                <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2"> &nbsp; Create account </button>
+                <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2"> &nbsp; Create account
+                </button>
                 <br><br>
                 <div class="text-center">
                     <a href="{% url 'my-login' %}">Already have an account?</a>
                 </div>
             </form>
         </div>
-    </body>
-    <br><br>
+    </section>
+</body>
+<br><br>
 {% endblock %}

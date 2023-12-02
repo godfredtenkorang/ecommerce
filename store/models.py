@@ -22,6 +22,7 @@ class Product(models.Model):
     slug = models.SlugField(max_length=50)
     price = models.DecimalField(max_digits=4, decimal_places=2)
     image = models.ImageField(upload_to="images/")
+    date_added = models.DateTimeField(auto_now=True)
     
     class Meta:
         verbose_name_plural = "products"

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'account',
     'payment',
     'crispy_forms',
+    'cities_light',
 ]
 
 MIDDLEWARE = [

@@ -8,6 +8,7 @@ class ShippingAddress(models.Model):
     email = models .EmailField(max_length=255)
     address1 = models.CharField(max_length=300)
     address2 = models.CharField(max_length=300)
+    country = models.ForeignKey('cities_light.Country', on_delete=models.SET_NULL, null=True, blank=True)
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255, null=True, blank=True)
     zipcode = models.CharField(max_length=255, null=True, blank=True)

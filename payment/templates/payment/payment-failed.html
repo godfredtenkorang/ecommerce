@@ -1,15 +1,14 @@
-{% include "store/base.html" %}
+{% extends "store/base.html" %}
 {% load static %}
 
 {% block content %}
 <style>
-    body {
+    .main {
         background-color: gray;
     }
 </style>
-
-<body>
-    <br><br>
+<section class="main">
+    <br><br><br><br><br>
     <div class="container bg-white shadow-md p-5 form-layout">
         <div class="text-center">
             <i class="text-danger fa fa-credit-card-alt fa-3x" aria-hidden="true"></i>
@@ -19,6 +18,6 @@
             <p>Your order was not processed successfully.</p>
         </div>
     </div>
-</body>
+</section>
 
 {% endblock %}

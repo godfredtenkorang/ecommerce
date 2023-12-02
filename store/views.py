@@ -1,10 +1,17 @@
 from django.shortcuts import render
 from . models import Category, Product
 from django.shortcuts import get_object_or_404
+from django.db.models import Q # New
 
 # Create your views here.
 def store(request):
-    all_products = Product.objects.all()
+    search_item = request.GET.get('search')
+    
+    if search_item:
+        all_products = Product.objects.filter(Q(title__icontains=search_item))
+        
+    else:
+        all_products = Product.objects.all().order_by('date_added')
     context = {
         'all_products': all_products
     }
@@ -27,3 +34,7 @@ def product_info(request, product_slug):
     product = get_object_or_404(Product, slug=product_slug)
     context = {'product': product}
     return render(request, 'store/product-info.html', context)
+
+def contact(request):
+    
+    return render(request, 'store/contact.html')
