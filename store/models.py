@@ -32,3 +32,14 @@ class Product(models.Model):
     
     def get_absolute_url(self):
         return reverse('product-info', args=[self.slug])
+    
+class Contact(models.Model):
+    full_name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=250)
+    message = models.TextField()
+    
+    class Meta:
+        verbose_name_plural = "contacts"
+        
+    def __str__(self):
+        return self.full_name

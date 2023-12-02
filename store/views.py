@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import Category, Product
+from . models import Category, Product, Contact
 from django.shortcuts import get_object_or_404
 from django.db.models import Q # New
 
@@ -36,5 +36,12 @@ def product_info(request, product_slug):
     return render(request, 'store/product-info.html', context)
 
 def contact(request):
-    
-    return render(request, 'store/contact.html')
+    if request.method == 'POST':
+        full_name = request.POST['full_name']
+        email = request.POST['email']
+        message = request.POST['message']
+        contact = Contact(full_name=full_name, email=email, message=message)
+        contact.save()
+        return render(request, 'store/contact.html')
+        
+    return render(request, 'store/contact.html', {'title': 'Contact'})
