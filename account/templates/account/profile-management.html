@@ -10,10 +10,51 @@
     }
 </style>
 
-<br><br><br><br><br>
+<br><br>
 <body>
-    <section class="p-4">
-        <div class="container bg-white shadow-md p-5 container-layout">
+    <section class="pt-4" data-aos="fade-up">
+        <div class="card pt-3 pb-3"
+            style="border-radius: 20px; margin: 0 auto; float:none; margin-bottom:10px; max-width: 22rem;">
+            <div class="card-body text-center">
+                <h3 class="card-title">Profile management</h3>
+                <hr>
+            </div>
+        </div>
+    </section>
+    <section class="pt-4" data-aos="fade-down">
+        <div class="card pt-3 pb-3"
+            style="border-radius: 20px; margin: 0 auto; float:none; margin-bottom:10px; max-width: 22rem;">
+            <div class="card-body">
+                <h3 class="card-title text-center">Update your account</h3>
+                <hr>
+                <form method="POST" autocomplete="off">
+                    {% csrf_token %}
+                    {{ user_form.username|as_crispy_field }}
+                    <br>
+                    {{ user_form.email|as_crispy_field }}
+                    <br>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary navbar-btn text-white"> &nbsp; Update user account
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="pt-4" data-aos="fade-left">
+        <div class="card pt-3 pb-3"
+            style="border-radius: 20px; margin: 0 auto; float:none; margin-bottom:10px; max-width: 22rem;">
+            <div class="card-body text-center">
+                <h3 class="card-title">Delete your account</h3>
+                <hr>
+                <p class="card-text">Proceed if you wish to delete your account.</p>
+                <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'delete-account' %}"> Delete
+                    your account </a>
+            </div>
+        </div>
+    </section>
+    <!-- <section class="p-4 ">
+        <div class="container bg-white shadow-md p-5 container-layout ">
             <h3>Profile management</h3>
             <hr>
         </div>
@@ -40,7 +81,7 @@
             <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'delete-account' %}"> Delete
                 your account </a>
         </div>
-    </section>
+    </section> -->
 </body>
 <br><br>
 {% endblock %}

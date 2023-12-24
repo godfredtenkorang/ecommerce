@@ -5,8 +5,7 @@
 
 {% block content %}
 
-<br><br><br><br>
-<main class="pt-5">
+<main class="pt-5" data-aos="fade-down">
     
     <div class="container">
       
@@ -20,16 +19,24 @@
 
       <div class="row mb-4 border product-item">
         
-        <div class="col-md-3 col-lg-2 order-md-first bg-light">
+        <!-- <div class="col-md-3 col-lg-2 order-md-first bg-light">
         
-            <img class="img-fluid mx-auto d-block" width="200px" alt="Responsive image" src="{{ product.image.url }}"> <!-- Product image -->
+            <img class="img-fluid mx-auto d-block" width="200px" alt="Responsive image" src="{{ product.image.url }}">
         
+        </div> -->
+        <div class="col-md-3 col-lg-2">
+        
+        
+          <!-- Product image -->
+          <div class="card p-2" style="height: 200px;">
+            <img  alt="Responsive image" src="{{ product.image.url }}">
+          </div>
         </div>
 
         
         <div class="col-md-9 col-lg-10 ps-md-3 ps-lg-10">
           
-          <a href="{{product.get_absolute_url}}" class="text-info text-decoration-none text-reset"> <!-- Product get absolute url -->
+          <a href="{{product.get_absolute_url}}" class="text-info text-reset"> <!-- Product get absolute url -->
           
             <h1 class="h5 pt-2">{{ product.title }} <!-- Product title --> </h1>
           

@@ -40,7 +40,7 @@ def complete_order(request):
         
         # All-in-one shipping address
         
-        shipping_address = (address1 + "\n" + address2 + "\n" + city + "\n" + state + "\n" + zipcode)
+        shipping_address = (address1 + "\n" + address2 + "\n" + "\n" + city + "\n" + state + "\n" + zipcode)
 
         # Shopping cart informantion
         

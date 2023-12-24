@@ -3,16 +3,29 @@ from django.contrib.auth.models import User
 
 from store.models import Product
 
+CHOICES = (
+    ("ALGERIA", "Algeria"),
+    ("ANGOLA", "Angola"),
+    ("ARGENTINA", "Angentina"),
+    ("AUSTRALIA", "Australia"),
+    ("BELGIUM", "Belgium"),
+    ("BRAZIL", "Brazil"),
+    ("BURKINA FASO", "Burkina Faso"),
+    ("CANADA", "Canada"),
+    ("DENMARK", "Denmark"),
+    ("GHANA", "Ghana"),
+    
+)
+
 class ShippingAddress(models.Model):
     full_name = models.CharField(max_length=300)
     email = models .EmailField(max_length=255)
     address1 = models.CharField(max_length=300)
     address2 = models.CharField(max_length=300)
-    country = models.ForeignKey('cities_light.Country', on_delete=models.SET_NULL, null=True, blank=True)
+    country = models.CharField(max_length=20, choices=CHOICES, default="GHANA")
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255, null=True, blank=True)
     zipcode = models.CharField(max_length=255, null=True, blank=True)
-    
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     
     

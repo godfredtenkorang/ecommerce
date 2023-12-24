@@ -9,9 +9,43 @@
         background-color: #c0af9d;
     }
 </style>
-
+<br><br>
 <body>
-    <section class="p-4">
+    <section class="pt-4" data-aos="fade-down">
+        <div class="card pt-3 pb-3"
+            style="border-radius: 20px; margin: 0 auto; float:none; margin-bottom:10px; max-width: 22rem;">
+            <div class="card-body">
+                <h3 class="card-title text-center"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Manage shipping</h3>
+                <hr>
+                <p class="card-text text-center">Please fill in your shipping address.</p>
+                <form method="POST" autocomplete="off">
+                    {% csrf_token %}
+                    {{ form.full_name|as_crispy_field }}
+                    <br><br>
+                
+                    {{ form.email|as_crispy_field }}
+                    <br><br>
+                    {{ form.address1|as_crispy_field }}
+                    <br><br>
+                    {{ form.address2|as_crispy_field }}
+                    <br><br>
+                    {{ form.country|as_crispy_field }}
+                    <br><br>
+                    {{ form.city|as_crispy_field }}
+                    <br><br>
+                    {{ form.state|as_crispy_field }}
+                    <br><br>
+                    {{ form.zipcode|as_crispy_field }}
+                    <br><br>
+                    <button type="submit" class="btn btn-primary navbar-btn text-white w-100 p-2">Update shipping address
+                    </button>
+                    <br><br>
+                    {{form.non_fields_errors}}
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- <section class="p-4">
         <br><br><br><br><br>
         <div class="container bg-white shadow-md p-5 container-layout">
             <h3><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Manage shipping</h3>
@@ -43,7 +77,7 @@
                 {{form.non_fields_errors}}
             </form>
         </div>
-    </section>
+    </section> -->
 </body>
 <br><br>
 {% endblock %}

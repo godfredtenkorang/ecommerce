@@ -1,26 +1,29 @@
-
 {% extends "./base.html" %}
 
 {% load static %}
 
 {% block content %}
-<br><br><br><br><br>
 
-<div class="container">
+
+<div class="container" data-aos="fade-down">
 
     <main class="pt-5">
 
         <div class="row g-3">
 
-            <div class="col-md-5 col-lg-5 order-md-first bg-light">
-            
-                <img class="img-fluid mx-auto d-block" alt="Responsive image" src="{{ product.image.url }}"> <!-- Product image -->
-            
+            <div class="col-md-5 col-lg-5 pb-4">
+
+                
+                <!-- Product image -->
+                <div class="card" style="height: 270px;">
+                    <img height="300px"  alt="Responsive image" src="{{ product.image.url }}">
+                    
+                </div>
             </div>
 
-            <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
+            <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5 pb-3">
 
-                <h1 class="mb-0 h4"> {{ product.title }} </h1>
+                <h1 class="headings mb-0 h3"> {{ product.title }} </h1>
 
                 <strong> {{ product.brand }} </strong>
 
@@ -47,24 +50,24 @@
                     </div>
 
                     <div class="col">
-              
+
                         <div class="row p-3">
-              
+
                             <div class="col-6">
-              
-                               
+
+
                                 <label for="select">Qty</label>
-                                
-                                &nbsp; 
-                               
+
+                                &nbsp;
+
                                 <select id="select">
-              
+
                                     <option value="1">1</option>
-              
+
                                     <option value="2">2</option>
-              
+
                                     <option value="3">3</option>
-              
+
                                     <option value="5">5</option>
                                     <option value="6">6</option>
                                     <option value="7">7</option>
@@ -77,22 +80,23 @@
                                     <option value="14">14</option>
                                     <option value="15">15</option>
                                     <option value="16">16</option>
-              
+
                                 </select>
 
                             </div>
 
                             <div class="col-6 text-end">
-                                
-                                <button type="button" id="add-button" value="{{ product.id }}" class="btn btn-primary btn-sm">
-                        
-                                Add to cart 
-                            
-                                </button> 
-                            
+
+                                <button type="button" id="add-button" value="{{ product.id }}"
+                                    class="btn btn-primary btn-sm">
+
+                                    Add to cart
+
+                                </button>
+
 
                             </div>
-                        
+
                         </div>
 
                     </div>
@@ -109,9 +113,71 @@
 
 </div>
 
+<section class="pt-5" data-aos="fade-up">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 mx-auto pb-4 p-3">
+                <form method="POST" action="{% url 'review' product.id %}">
+                    {% csrf_token %}
+
+                    <h3>Write your review</h3>
+                    <hr>
+                    <div>
+                        <div class="rate">
+                            <input type="radio" id="star5" name="rate" value="5" />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="rate" value="4" />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="rate" value="3" />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="rate" value="2" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="rate" value="1" />
+                            <label for="star1" title="text">1 star</label>
+                        </div>
+                        <br>
+                        <br>
+                        <textarea placeholder="Write your review here..." class="form-control" name="comment" id="" rows="4"></textarea>
+                    </div>
+                    <br>
+                    {% if user.is_authenticated %}
+                    <button class="btn btn-primary btn-block" type="submit">Send review</button>
+                    {% else %}
+                    <p>You must be logged in to post a review. <span><a href="{% url 'my-login' %}">Login now</a></span>
+                    </p>
+                    {% endif %}
+                </form>
+            </div>
+            
+            <div class="col-lg-6 col-md-6 col-sm-12 p-3">
+                <h3>Reviews ({{ review_counts }})</h3>
+                <hr />
+                <div class="review">
+                    {% for review in reviews %}
+                    <h4 class="subheading" itemprop="itemReviewed">{{ review.comment }}</h4>
+                    <p class="author" itemprop="author"><small>by:</small> {{ review.user }}</p>
+                    <i class="fa fa-star {% if review.rate > 4 %} checked {% endif %}" style="float: left;"></i>
+                    <i class="fa fa-star {% if review.rate > 3 %} checked {% endif %}" style="float: left;"></i>
+                    <i class="fa fa-star {% if review.rate > 2 %} checked {% endif %}" style="float: left;"></i>
+                    <i class="fa fa-star {% if review.rate > 1 %} checked {% endif %}" style="float: left;"></i>
+                    <i class="fa fa-star {% if review.rate > 0 %} checked {% endif %}" style="float: left;"></i>
+                    <br>
+                    <br>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pt-4">
+    <div class="container">
+        
+</section>
+
 <script>
 
-    $(document).on('click', '#add-button', function(e) {
+    $(document).on('click', '#add-button', function (e) {
         e.preventDefault();
 
         $.ajax({
@@ -123,11 +189,11 @@
                 csrfmiddlewaretoken: "{{csrf_token}}",
                 action: 'post'
             },
-            success: function(json){
+            success: function (json) {
                 //console.log(json)
                 document.getElementById("cart-qty").textContent = json.qty
             },
-            error: function(xhr, errmsg, err){
+            error: function (xhr, errmsg, err) {
 
             }
 

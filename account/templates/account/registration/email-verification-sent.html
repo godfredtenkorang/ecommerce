@@ -9,8 +9,27 @@
 </style>
 
 <body>
-    <br><br><br><br><br>
-    <section class="p-4">
+    <br><br>
+    <!-- {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <h5 id="message-timer" class="alert alert-info text-center">
+        <i class="fa fa-check-circle i" aria-hidden="true"></i> &nbsp;{{message}}
+    </h5>
+    {% endif %}
+    {% endfor %} -->
+    <section class="pt-4" data-aos="fade-up">
+        <div class="card pt-3 pb-3"
+            style="border-radius: 20px; margin: 0 auto; float:none; margin-bottom:10px; max-width: 22rem;">
+            <div class="card-body text-center">
+                <i class="fa fa-envelope fa-3x" aria-hidden="true"></i>
+                <br><br>
+                <h5 class="card-title"><strong>A verification link was sent to your email</strong></h5>
+                <hr>
+                <p class="card-text">Please check your email.</p>
+            </div>
+        </div>
+    </section>
+    <!-- <section class="p-4">
         <div class="container bg-white shadow-md p-5 container-layout">
             <div class="text-center">
                 <i class="fa fa-envelope fa-3x" aria-hidden="true"></i>
@@ -20,7 +39,7 @@
                 <p>Please check your email</p>
             </div>
         </div>
-    </section>
+    </section> -->
 </body>
 
 {% endblock %}

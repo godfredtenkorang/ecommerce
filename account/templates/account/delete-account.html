@@ -11,8 +11,28 @@
 </style>
 
 <body>
-    <br><br><br><br><br>
-    <section class="p-4">
+    <br><br>
+    <section class="pt-4" data-aos="fade-up">
+        <div class="card pt-3 pb-3"
+            style="border-radius: 20px; margin: 0 auto; float:none; margin-bottom:10px; max-width: 22rem;">
+            <div class="card-body text-center">
+                <h4 class="card-title" style="font-weight: 700;">Account deletion</h4>
+                <hr>
+                <p class="card-text">Are you sure you want to delete you account?</p>
+                <form method="POST" autocomplete="off">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger navbar-btn text-white"> &nbsp; Delete account
+                    </button>
+                    <br>
+                    <br>
+                    <a class="btn btn-primary navbar-btn text-white" type="button" href="{% url 'profile-management' %}"> Go
+                        back
+                    </a>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- <section class="p-4 d-flex justify-content-center">
         <div class="container bg-white shadow-md p-5 container-layout">
             <h3>Account deletion</h3>
             <hr>
@@ -28,7 +48,7 @@
                 </a>
             </form>
         </div>
-    </section>
+    </section> -->
 </body>
 <br><br>
 {% endblock %}

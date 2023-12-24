@@ -4,15 +4,31 @@
 
 
 {% block content %}
-<br><br><br><br><br>
+<br><br>
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<h5 id="message-timer" class="alert alert-success text-center">
+    <i class=" i" aria-hidden="true"></i> &nbsp; {{message}}
+</h5>
+{% endif %}
+{% endfor %}
+<!-- <div class="row">
+    <div class="col-md-12">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div> -->
 <body style="background-color: #c0af9d;">
 
-    <section class="section">
+    <section class="section" data-aos="fade-in">
 
         <div class="section-header">
             <div class="container contact-container">
                 <h2>Contact Us</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                <p>Hope to here from you!!!</p>
             </div>
         </div>
 
@@ -22,34 +38,34 @@
                 <div class="contact-info">
                     <div class="contact-info-item">
                         <div class="contact-info-icon">
-                            <i class="fa fa-home"></i>
+                            <i class="fa fa-home i"></i>
                         </div>
 
                         <div class="contact-info-content">
                             <h4>Address</h4>
-                            <p>4671 Sugar Camp Road,<br /> Owatonna, Minnesota, <br />55060</p>
+                            <p>5905 Atlanta Highway,<br /> Suite 101 PMB, <br />Alpharetta, GA, 30004, USA</p>
                         </div>
                     </div>
 
                     <div class="contact-info-item">
                         <div class="contact-info-icon">
-                            <i class="fa fa-phone"></i>
+                            <i class="fa fa-phone i"></i>
                         </div>
 
                         <div class="contact-info-content">
                             <h4>Phone</h4>
-                            <p>571-457-2321</p>
+                            <p>+1 404-397-7976</p>
                         </div>
                     </div>
 
                     <div class="contact-info-item">
                         <div class="contact-info-icon">
-                            <i class="fa fa-envelope"></i>
+                            <i class="fa fa-envelope i"></i>
                         </div>
 
                         <div class="contact-info-content">
                             <h4>Email</h4>
-                            <p>ntamerrwael@mfano.ga</p>
+                            <p>endlessessencials@gmail.com</p>
                         </div>
                     </div>
                 </div>
@@ -59,18 +75,18 @@
                         {% csrf_token %}
                         <h2>Send Message</h2>
                         <div class="input-box">
-                            <input type="text" required="true" id="full_name" name="full_name">
-                            <span>Full Name</span>
+                            <input placeholder="Full Name" type="text" required="true" id="full_name" name="full_name">
+                            <!-- <span>Full Name</span> -->
                         </div>
 
                         <div class="input-box">
-                            <input type="email" required="true" id="email" name="email">
-                            <span>Email</span>
+                            <input placeholder="Email" type="email" required="true" id="email" name="email">
+                            <!-- <span>Email</span> -->
                         </div>
 
                         <div class="input-box">
-                            <textarea required="true" id="message" name="message"></textarea>
-                            <span>Type your Message...</span>
+                            <textarea placeholder="Type your Message..." required="true" id="message" name="message"></textarea>
+                            <!-- <span>Type your Message...</span> -->
                         </div>
 
                         <div class="input-box">

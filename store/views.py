@@ -1,7 +1,11 @@
-from django.shortcuts import render
-from . models import Category, Product, Contact
+from django.shortcuts import render, redirect
+from . models import Category, Product, Contact, Review
 from django.shortcuts import get_object_or_404
 from django.db.models import Q # New
+# from django.views.generic import DetailView
+from .forms import ReviewForm
+from django.contrib import messages
+# from django.urls import reverse
 
 # Create your views here.
 def store(request):
@@ -30,9 +34,44 @@ def list_category(request, category_slug=None):
     return render(request, 'store/list-category.html', {'category':category, 'products':products})
 
 
+# class ProductDetailView(DetailView):
+#     model = Product
+#     template_name = "store/product-info.html"
+#     slug_field = "slug"
+#     count_hit = True
+    
+#     form = forms.ReviewForm
+    
+#     def product(self, request, *args, **kwargs):
+#         form = forms.ReviewForm(request.POST)
+#         if form.is_valid():
+#             myproduct = self.get_object()
+#             form.instance.user = request.user
+#             form.instance.product = myproduct
+#             form.save()
+            
+#             return redirect(reverse("product-info", kwargs={
+#                 'slug': myproduct.slug
+#             }))
+            
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['form'] = self.form
+#         return context
+            
+        
+     
+    
 def product_info(request, product_slug):
     product = get_object_or_404(Product, slug=product_slug)
-    context = {'product': product}
+    product_review = Product.objects.get(slug=product_slug)
+    reviews = Review.objects.filter(product=product_review)
+    review_counts = Review.objects.all().filter(product=product_review).count()
+    context = {
+        'product': product,
+        'reviews': reviews,
+        'review_counts': review_counts
+    }
     return render(request, 'store/product-info.html', context)
 
 def contact(request):
@@ -42,6 +81,45 @@ def contact(request):
         message = request.POST['message']
         contact = Contact(full_name=full_name, email=email, message=message)
         contact.save()
+        messages.success(request, "Your form has been submitted")
         return render(request, 'store/contact.html')
         
     return render(request, 'store/contact.html', {'title': 'Contact'})
+
+
+def review_rate(request, product_id):
+    if request.method == "POST":
+        url = request.META.get('HTTP_REFERER')
+        try:
+            reviews = Review.objects.get(user__id=request.user.id, product__id=product_id)
+            form = ReviewForm(request.POST, instance=reviews)
+            form.save()
+            messages.success(request, "Thank you! Your review has been updated")
+            return redirect(url)
+        except Review.DoesNotExist:
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                data = Review()
+                data.comment = form.cleaned_data['comment']
+                data.rate = form.cleaned_data['rate']
+                data.product_id = product_id
+                data.user_id = request.user.id
+                data.save()
+                messages.success(
+                    request, "Thank you! Your review has been submitted")
+                return redirect(url)
+        # prod_slug = request.GET.get('prod_slug')
+        # myproduct = Product.objects.get(slug=prod_slug)
+        # comment = request.POST('comment')
+        # rate = request.POST('rate')
+        # user = request.user
+        # review = Review(user=user, product=myproduct, comment=comment, rate=rate)
+        # review.save()
+        # return redirect('product-info', slug=prod_slug)
+        
+
+def our_policy(request):
+    context = {
+        'title': 'Our Policy'
+    }
+    return render(request, 'store/policy.html', context)

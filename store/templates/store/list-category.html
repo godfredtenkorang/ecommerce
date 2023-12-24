@@ -8,7 +8,7 @@
 <br><br><br><br>
 <main>
   
-  <div class="album py-5 bg-light">
+  <div class="album py-5 bg-light" data-aos="fade-up">
     <div class="container">
 
       <div class="pb-3 h5"> {{ category.name | capfirst }} </div>
@@ -19,20 +19,19 @@
       <br>
 
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+      <div class="row g-3" data-aos="fade-down">
 
         <!-- for product in products -->
         {% for product in products %}
-        <div class="col">
-          <div class="card shadow-sm">
-          <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
-
+        <div class="col-lg-3 col-md-4 col-sm-12">
+          <div class="card p-2" style="height: 300px;">
+            <img class="card-img-top" src="{{ product.image.url }}" height="200px" width="100%" alt="Card image cap">
             <div class="card-body">
-              <p class="card-text">
-                <a class="text-info text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.title }}</a>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <h5> $ {{ product.price }} </h5>
+              <a class="text-info text-decoration-none" href="{% url 'product-info' product.slug %}">{{product.title | capfirst}}</a>
+              <div class="d-flex">
+                <p class="card-text">${{ product.price }}</p>
+                <p><button style="border: none; background:none;" class="add-to-wishlist" data-product-item="product.id">
+                    &nbsp;<i class="fa fa-heart" style="fill: aqua;"></i></button></p>
               </div>
             </div>
           </div>

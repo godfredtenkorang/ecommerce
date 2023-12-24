@@ -1,0 +1,108 @@
+{% extends "./base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+<br><br>
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<h5 id="message-timer" class="alert alert-success text-center">
+    <i class=" i" aria-hidden="true"></i> &nbsp; {{message}}
+</h5>
+{% endif %}
+{% endfor %}
+
+<body style="background-color: #c0af9d;">
+
+ <section>
+    <div class="container">
+        <h1 data-aos="fade-up" style="font-family: Roboto; font-size:60px; font-weight:600;">OUR POLICY</h1>
+        <div class="row">
+            <div class="col">
+                <div>
+                    <br><br>
+                    <h2 data-aos="fade-left" style="font-weight: 600; font-family: Merriweather">Returns & exchanges policy:</h2>
+                    <br>
+                    <div style="font-size: 25px; font-family: Arial;">
+                        <p  data-aos="fade-right">Thanks for shopping at Endless Essensials. We appreciate the fact that you like to buy the stuff we build. We also
+                            want to make sure you have a rewarding experience while you're exploring, evaluating, and purchasing our products.
+                        </p>
+                        <br>
+                        <p  data-aos="fade-down">As with any shopping experience, there are terms and conditions that apply to transactions at Endless Essensials.
+                            We'll be as brief as our attorneys will allow. The main thing to remember is that by placing an order or making a
+                            purchase at Endless Essensials, you agress to the terms set forth below along with Endless Essensials's Privacy
+                            Policy.</p>
+                        <br>
+                        <p  data-aos="fade-up">If there's something wrong with the product you bought, or if you are not happy with it, you have a week to issue a
+                            refund and return your item.</p>
+                        <br>
+                        <p  data-aos="fade-left">If you would like to return a product, the only way would be if you follow the next guidelines:</p>
+                        <ul  data-aos="fade-right">
+                            <p>1. The package needs to come back with the original receipt of the purchase.</p>
+                            <p>2. The product has to be damage free, if we find any damage on the product we will cancel your refund
+                                immediately.</p>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <h2  data-aos="fade-up" style="font-weight: 600; font-family: Merriweather">Refunds</h2>
+                    <br>
+                    <div style="font-size: 25px; font-family: Arial;">
+                        <p  data-aos="fade-left">We at Endless Essensials commit ourselves to serving our customers with the best products. Every single product that
+                            you choose is thoroughly inspected, checked for defects and packaged with utmost care. We do this to ensure that you
+                            fall in love with our products.</p>
+                        <br>
+                        <p  data-aos="fade-right">Sadly, there are times when we may not have the product(s) that you choose in stock, or may face some issues with our
+                            inventory and quality check. In such cases, We may have to cancel your order. You will be intimated about it in
+                            advance so that you don't have to worry unnecessarity about your order. If you have purchased via Online payment
+                            (not Cash on Delivery), then you will be refunded once our team confirms your request.</p>
+                        <br>
+                        <p  data-aos="fade-down">We carry out thorough quality check before processing the ordered item. We take utmost care while packing the
+                            product. At the same time we ensure that the packing is such that the items won't get damaged during transit. Please
+                            not that Endless Essensials is not liable for damages that are caused to the items during transit or transportation.
+                        </p>
+                        <br>
+                        <p  data-aos="fade-up">We will revise your returned product as soon as we receive it and if it follows the guidelines addressed above, we
+                            will proceed to issue a refund of your purchase. Your refund may take a couple of days to process but you will be
+                            notified when you receive your money.</p>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <h2 data-aos="fade-down" style="font-weight: 600; font-family: Merriweather">Shipping</h2>
+                    <br>
+                    <div  data-aos="fade-right" style="font-size: 25px; font-family: Arial;">
+                        <p>Endless Essensials is not responsible for return shipping costs. Every shipping has to be paid by the customer, even if the item had free shipping in the first place, the customer has to pay for the shipping in return.</p>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <h2  data-aos="fade-up" style="font-weight: 600; font-family: Merriweather">Your Consent</h2>
+                    <br>
+                    <div  data-aos="fade-left" style="font-size: 25px; font-family: Arial;">
+                        <p>By using our platform, registering our account, or making a purchase, you hereby consent to our Return & Refund Policy and agree to its terms.</p>
+                    </div>
+                </div>
+                <div>
+                    <h2  data-aos="fade-up" style="font-weight: 600; font-family: Merriweather">Contact Us</h2>
+                    <div style="font-size: 25px; font-family: Arial;">
+                        <p  data-aos="fade-left">If, for any reason, you are not completely satisfied with any good or service that we provide, don't hesitate to
+                            contact us and we will discuss any of the issues you are going through with our product.</p>
+                        <ul  data-aos="fade-right">
+                            <p>Via Email: endlessessensials@gmail.com</p>
+                            <p>Via Phone: +1 404-397-7976</p>
+                            <p>WhatsApp:  +1 404-397-7976</p>
+                            <p>Address: 5905 Atlanta Highway,
+                                Suite 101 PMB,
+                                Alpharetta, GA, 30004, USA</p>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </section>
+</body>
+{% endblock %}

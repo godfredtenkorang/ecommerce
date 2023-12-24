@@ -1,7 +1,102 @@
 .container-layout {
     border-radius: 30px;
-    width: 500px;
+    width: 350px;
+    text-align: center;
+    vertical-align: middle;
 }
+ 
+    .bg-steel {
+        background-color: transparent !important;
+        transition: 0.75s ease;
+    }
+
+    .bg-steel.scrolled {
+        background: #F5CCA0 !important;
+        box-shadow: 0 3px 10px #F5CCA0;
+    }
+
+    .form{
+
+    position: relative;
+}
+
+.form .fa-search{
+
+    position: absolute;
+    top:20px;
+    left: 20px;
+    color: #9ca3af;
+
+}
+
+.form span{
+
+        position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db;
+
+}
+
+.left-pan{
+    padding-left: 7px;
+}
+
+.left-pan i{
+   
+   padding-left: 10px;
+}
+
+.form-input{
+
+    height: 55px;
+    text-indent: 33px;
+    border-radius: 10px;
+}
+
+.form-input:focus{
+
+    box-shadow: none;
+    border:none;
+} 
+
+ /*------------Navbar dropdown start------------*/
+ .dropbtn {
+    color: white;
+    border: none;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 10px 13px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #eee;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+ /*------------Navbar dropdown end------------*/
 
 .btn {
     background-color: #994D1C;
@@ -12,11 +107,6 @@
     background-color: #6B240C;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 li {
   list-style: none;
@@ -33,11 +123,11 @@ a:hover {
   color: #E48F45;
 }
 
-a:hover i {
+a:hover .i {
   color: #E48F45;
 }
 
-i {
+.i {
   color: #994D1C;
   transition: 0.4s;
 }
@@ -404,13 +494,6 @@ header nav .cart__header__desktop span {
 /* Contact start */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-
-
-
-
-
-
-
 .contact-container {
   max-width: 1080px;
   margin-left: auto;
@@ -555,7 +638,7 @@ header nav .cart__header__desktop span {
     padding-bottom: 50px;
   }
   
-  .row {
+  .contact-row {
     flex-direction: column;
   }
   
@@ -570,3 +653,120 @@ header nav .cart__header__desktop span {
 }
 
 /* Contact end */
+
+
+.rate {
+    float: left;
+    height: 46px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #994D1C;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #994D1C;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #994D1C;
+}
+
+
+.rating {
+	font-size:1.2rem;
+  line-height: 1.2rem;
+  display: inline-block;
+}
+
+.rating .star {
+  position: relative;
+  float: left;
+  width: 1.4rem;
+  height: 1.2rem;
+	font-family:FontAwesome;
+	font-weight:normal;
+	font-style:normal;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.4);
+  border: 0;
+  background: transparent;
+}
+
+.rating .star:before {
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  transform: translate(-50%, -50%);
+  content:"\f006";
+	color:#777;
+}
+
+.rating--read-only .star--full:before {
+  content:"\f005";
+	color:#e3cf7a;
+}
+
+.rating--read-only .star--half:after {
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  transform: translate(-50%, -50%);
+  content:"\f089";
+  color:#e3cf7a;
+}
+
+/* Floating this right, means that the stars
+ * fill from the left, because of the successor 
+ * rule defined below. @see https://css-tricks.com/star-ratings/
+ */
+.rating--interactive .star {
+  float: right;
+}
+
+.rating--interactive .star:hover {
+	cursor:pointer;
+}
+
+.rating--interactive .star:hover:before,
+.rating--interactive .star:hover ~ .star:before {
+	content:"\f005";
+	color:#e3cf7a
+}
+
+
+
+/* ---- headings and titles font */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap'); */
+
+.headings {
+  font-family: Roboto;
+  font-style: italic;
+
+}
+
+/* ---- headings and titles font end */

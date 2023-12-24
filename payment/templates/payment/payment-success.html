@@ -3,22 +3,26 @@
 
 {% block content %}
 <style>
-    body {
+    .main {
         background-color: gray;
     }
 </style>
 
 <body>
     <br><br><br><br><br>
-    <div class="container bg-white shadow-md p-5 form-layout">
-        <div class="text-center">
-            <i class="text-green fa fa-credit-card-alt fa-3x" aria-hidden="true"></i>
-            <br><br>
-            <h5><strong>Payment success!</strong></h5>
-            <hr>
-            <p>Your order was processed successfully.</p>
+    <section class="pt-4  pb-3 main" data-aos="fade-up">
+        <div class="card pt-3 pb-3"
+            style="border-radius: 20px; margin: 0 auto; float:none; margin-bottom:10px; max-width: 22rem;">
+            <div class="card-body text-center">
+                <i class="text-green fa fa-credit-card-alt fa-3x" aria-hidden="true"></i>
+                <br>
+                <br>
+                <h5 class="card-title" style="font-weight: 700;"><strong>Payment success!</strong></h5>
+                <hr>
+                <p class="card-text">Your order was processed successfully.</p>
+            </div>
         </div>
-    </div>
+    </section>
 </body>
 
 {% endblock %}

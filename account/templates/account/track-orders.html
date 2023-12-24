@@ -9,9 +9,18 @@
         background-color: #c0af9d;
     }
 </style>
-<br><br><br><br><br>
+<br><br>
 <body>
-    <section class="p-4">
+    <section class="pt-4" data-aos="fade-up">
+        <div class="card pt-3 pb-3"
+            style="border-radius: 20px; margin: 0 auto; float:none; margin-bottom:10px; max-width: 22rem;">
+            <div class="card-body text-center">
+                <h3 class="card-title"><i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; My orders</h3>
+                <hr>
+            </div>
+        </div>
+    </section>
+    <!-- <section class="p-4">
         <div class="container bg-white shadow-md p-5 container-layout">
             <div>
 
@@ -19,9 +28,31 @@
                 <hr>
             </div>
         </div>
-    </section>
+    </section> -->
     <br>
-    <section class="p-4">
+    <section class="pt-4">
+        <div class="card pt-3 pb-3"
+            style="border-radius: 20px; margin: 0 auto; float:none; margin-bottom:10px; max-width: 22rem;">
+            <div class="card-body text-center">
+                {% for order in orders %}
+                
+                <strong><i class="fa fa-list-alt" aria-hidden="true"></i> &nbsp; Order ID # {{ order.id }}</strong>
+                
+                <br><br>
+                {{ order.product }}
+                <br><br>
+                Quantity x {{ order.quantity }}
+                
+                <br><br>
+                $ {{ order.price }}
+                <br><br>
+                <hr>
+                
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- <section class="p-4">
         <div class="container bg-white shadow-md p-5 container-layout">
             {% for order in orders %}
 
@@ -39,6 +70,6 @@
 
             {% endfor %}
         </div>
-    </section>
+    </section> -->
 </body>
 {% endblock %}
