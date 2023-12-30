@@ -34,13 +34,14 @@ def complete_order(request):
         address1 = request.POST.get('address1')
         address2 = request.POST.get('address2')
         country = request.POST.get('country')
+        phone_number = request.POST.get('phone_number')
         city = request.POST.get('city')
         state = request.POST.get('state')
         zipcode = request.POST.get('zipcode')
         
         # All-in-one shipping address
         
-        shipping_address = (address1 + "\n" + address2 + "\n" + "\n" + city + "\n" + state + "\n" + zipcode)
+        shipping_address = (address1 + "\n" + address2 + "\n" + phone_number + "\n" + country + "\n" + city + "\n" + state + "\n" + zipcode)
 
         # Shopping cart informantion
         
@@ -48,7 +49,7 @@ def complete_order(request):
         
         # Get the total price of items
         
-        total_cost = cart.get_total()
+        total_cost = cart.get_all_total()
         
         '''
             Order variations
@@ -114,3 +115,5 @@ def payment_failed(request):
             del request.session[key]
 
     return render(request, 'payment/payment-failed.html')
+
+

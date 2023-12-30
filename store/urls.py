@@ -18,4 +18,15 @@ urlpatterns = [
     
     # Policy
     path('policy/', views.our_policy, name='our-policy'),
+    
+    # FAQ
+    path('faq/', views.faq, name='faq'),
+    
+    # Wishlist
+    
+    # path('wishlist/<slug:product_slug>/', views.wishlist, name='wishlist'),
+    # path('wishlist/add/<slug:product_slug>/', views.add_to_wishlist, name='add-to-wishlist'),
+    # # Added to wishlist
+    # path('wishlist/remove/<int:wishlist_item_slug>/',
+    #      views.remove_from_wishlist, name='remove-from-wishlist'),
 ]

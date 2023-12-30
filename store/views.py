@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from . models import Category, Product, Contact, Review
+from . models import Category, Product, Contact, Review, WishList
 from django.shortcuts import get_object_or_404
 from django.db.models import Q # New
 # from django.views.generic import DetailView
 from .forms import ReviewForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # from django.urls import reverse
 
 # Create your views here.
@@ -123,3 +124,36 @@ def our_policy(request):
         'title': 'Our Policy'
     }
     return render(request, 'store/policy.html', context)
+
+def faq(request):
+    context = {
+        'title': 'FAQ'
+    }
+    return render(request, 'store/faq.html', context)
+
+# def wishlist(request, product_slug):
+#     product = Product.objects.get(slug=product_slug)
+#     wishlists = WishList.objects.all().filter(product=product)
+    
+
+#     context = {
+#         'wishlists': wishlists
+#     }
+    
+#     return render(request, 'store/wishlist.html', context)
+
+# def add_to_wishlist(request, product_slug):
+    
+#     if request.user.is_authenticated:
+#         product = Product.objects.get(slug=product_slug)
+#         wishlist_item, created = WishList.objects.get_or_create(user=request.user, product=product)
+        
+#         return redirect('product-info', product_slug=product_slug)
+        
+#     else:
+#         return redirect('my-login')
+    
+# def remove_from_wishlist(request, wishlist_item_slug):
+#     WishList.objects.filter(id=wishlist_item_slug).delete()
+    
+#     return redirect('store')

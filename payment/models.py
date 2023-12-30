@@ -23,6 +23,7 @@ class ShippingAddress(models.Model):
     address1 = models.CharField(max_length=300)
     address2 = models.CharField(max_length=300)
     country = models.CharField(max_length=20, choices=CHOICES, default="GHANA")
+    phone_number = models.CharField(max_length=20, default=0)
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255, null=True, blank=True)
     zipcode = models.CharField(max_length=255, null=True, blank=True)

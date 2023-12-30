@@ -29,9 +29,9 @@
                         <h6 class="my-0">{{ product.title }}</h6>
                         <small class="text-muted">{{ product.description }}</small>
                     </div>
-                    <span class="text-muted">$ {{ product.price|mul:item.qty }}</span>
+                    <span class="text-muted">${{ product.price|mul:item.qty }}</span>
                 </li>
-
+                
 
 
 
@@ -40,8 +40,20 @@
             {% endfor %}
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (USD)</span>
-                    <strong>{{ cart.get_total }}</strong>
+                    <span>Subtotal</span>
+                    <span class="text-muted">${{ cart.get_total }}</span>
+                </li>
+            </ul>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Shipping</span>
+                    <span class="text-muted">International Shipping: $30.00</span>
+                </li>
+            </ul>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total</span>
+                    <strong>${{ cart.get_all_total }}</strong>
                 </li>
             </ul>
             <!-- <form class="card p-2">
@@ -112,6 +124,13 @@
                     </div>
 
 
+                    <br>
+                    <div class="form-field">
+                    
+                        <input class="form-control validate" id="phone_number" type="text" placeholder="Phone*" autocomplete="off"
+                            value="{{ shipping.phone_number }}" required>
+                    
+                    </div>
                     <br>
                     <!-- <select class="form-control validate" id="country" autocomplete="off" value="{{ shipping.country }}">
                         <option>Country</option>
@@ -293,8 +312,7 @@
 
     // Total price
 
-    var total_price = '{{cart.get_total}}';
-
+    var total_price = '{{cart.get_all_total}}';
 
     // Paypal script
     const paypalButtonsComponent = paypal.Buttons({
@@ -406,6 +424,8 @@
                         email: $('#email').val(),
                         address1: $('#address1').val(),
                         address2: $('#address2').val(),
+                        phone_number: $('#phone_number').val(),
+                        country: $('#country').val(),
                         city: $('#city').val(),
                         state: $('#state').val(),
                         zipcode: $('#zipcode').val(),

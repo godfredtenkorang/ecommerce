@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Category, Product, Contact, Review
+from . models import Category, Product, Contact, Review, WishList
 
 
 @admin.register(Category)
@@ -17,5 +17,7 @@ class ProductAdmin(admin.ModelAdmin):
 #     readonly_fields = ['created_at', ]
 
 admin.site.register(Review)
+
+admin.site.register(WishList)
 
 admin.site.register(Contact)

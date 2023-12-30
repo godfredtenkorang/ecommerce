@@ -45,6 +45,7 @@ class Cart():
     def __len__(self):
         return sum(item['qty'] for item in self.cart.values())
     
+   
     
     def __iter__(self):
         all_product_ids = self.cart.keys()
@@ -61,11 +62,16 @@ class Cart():
         for item in cart.values():
             item['price'] = Decimal(item['price'])
             
+            
             item['total'] = item['price'] * item['qty']
             
             yield item
             
     def get_total(self):
         return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
+    
+    
+    def get_all_total(self):
+        return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values()) + 30
     
     

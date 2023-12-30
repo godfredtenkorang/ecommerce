@@ -1,0 +1,98 @@
+{% extends "./base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+<br><br>
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<h5 id="message-timer" class="alert alert-success text-center">
+    <i class=" i" aria-hidden="true"></i> &nbsp; {{message}}
+</h5>
+{% endif %}
+{% endfor %}
+
+<body style="background-color: #c0af9d;">
+<section style="overflow:hidden;">
+    <div>
+        <h1 data-aos="fade-up" style="font-weight: 800; font-family: Merriweather; color:#fff;" class="text-center">FAQ</h1>
+    </div>
+    <br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 p-3">
+                <div>
+                    <h3 data-aos="fade-up" style="font-weight: 800; font-family: Merriweather; color:#fff; text-transform:uppercase;">What payment methods do you accept?</h3>
+                    <br>
+                    <div data-aos="fade-left" style="font-size: 25px; font-family: Arial;">
+                        <p>We accept paypal, credit and debit cards. These must be issued with the Visa, Mastercard, Discover, or American Express Logos.</p>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <h3 data-aos="fade-up" style="font-weight: 800; font-family: Merriweather; color:#fff; text-transform:uppercase;">Do you accept paypal?</h3>
+                    <br>
+                    <div data-aos="fade-left" style="font-size: 25px; font-family: Arial;">
+                        <p>Yes, we do accept Paypal.</p>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <h3 data-aos="fade-up" style="font-weight: 800; font-family: Merriweather; color:#fff; text-transform:uppercase;">How do I update/cancel my order?</h3>
+                    <br>
+                    <div data-aos="fade-left" style="font-size: 25px; font-family: Arial;">
+                        <p>Please call us at +1 404-397-7976 in United State, or email us at endlessessencials@gmail.com. Have your order number ready. If the order has already been provided to our fulfillment center, we are unable to cancel the order.</p>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <h3 data-aos="fade-up" style="font-weight: 800; font-family: Merriweather; color:#fff; text-transform:uppercase;">
+                        How long will it take to get my order?</h3>
+                    <br>
+                    <div data-aos="fade-left" style="font-size: 25px; font-family: Arial;">
+                        <p>All orders have a 1-3 business day lead time upon receipt of order. Shipping method applies after order has moved from our fulfillment center, then shipped by the carrier.</p>
+                        <p>Orders placed during a holiday or promotion will have an approximate lead time of 304 business days upon receipt of order. Shipping method applies after order has moved from our fulfillment center then shipped by the carrier.</p>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="col-md-6 p-3">
+                <div>
+                    <h3 data-aos="fade-up" style="font-weight: 800; font-family: Merriweather; color:#fff; text-transform:uppercase;">What countries do you ship to?</h3>
+                    <br>
+                    <div data-aos="fade-left" style="font-size: 25px; font-family: Arial;">
+                        <p>We only ship to Ghana and United State for now since we are now trying to address others about our products and our platform.</p>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <h3 data-aos="fade-up" style="font-weight: 800; font-family: Merriweather; color:#fff; text-transform:uppercase;">Do you accept debit/credit cards?</h3>
+                    <br>
+                    <div data-aos="fade-left" style="font-size: 25px; font-family: Arial;">
+                        <p>Yes, we accept debit/credit cards. They must be issued with the Visa, Mastercard, Discover, or American Express logos.</p>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <h3 data-aos="fade-up" style="font-weight: 800; font-family: Merriweather; color:#fff; text-transform:uppercase;">I have a rush order can it be delivered saturday?</h3>
+                    <br>
+                    <div data-aos="fade-left" style="font-size: 25px; font-family: Arial;">
+                        <p>Shipping times are based on Monday - Friday deliveries.</p>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <h3 data-aos="fade-up" style="font-weight: 800; font-family: Merriweather; color:#fff; text-transform:uppercase;">Can I pick up my order instead of having it delivered?</h3>
+                    <br>
+                    <div data-aos="fade-left" style="font-size: 25px; font-family: Arial;">
+                        <p>We only offer shipping options at this time. We do not have a store front for pick up orders. If you need to pick up products, please any of our Pop-Ups.</p>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+{% endblock %}

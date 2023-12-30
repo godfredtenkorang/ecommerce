@@ -1,0 +1,48 @@
+{% extends "./base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="pt-5" data-aos="fade-up">
+
+
+    <div class="album py-5">
+
+        <div class="container">
+
+            <div class="pb-3">
+                <span style="color: #994D1C;"><a href="{% url 'store' %}">Home </a>/ Wishlist</span>
+            </div>
+
+
+            <hr>
+
+            <br>
+
+
+            <div class="row">
+                {% for wishlist in wishlists %}
+                <div class="col-lg-3 col-md-4 col-sm-12 pb-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ wishlist.product.image.url }}" height="200px" width="100%"
+                            alt="Card image cap">
+                        <div class="card-body text-center headings">
+                            <h3>
+                                <a class="text-info text-decoration-none"
+                                    href="{% url 'product-info' wishlist.product.slug %}">{{wishlist.product.title | capfirst }}</a>
+                            </h3>
+                            <div>
+                                <p class="card-text">${{ wishlist.product.price }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
