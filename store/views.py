@@ -22,6 +22,12 @@ def store(request):
     }
     return render(request, 'store/store.html', context)
 
+def about(request):
+    context = {
+        'title': 'About Us'
+    }
+    return render(request, 'store/about.html', context)
+
 
 def categories(request):
     
