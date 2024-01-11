@@ -9,7 +9,8 @@ def cart_summary(request):
     cart = Cart(request)
     
     context = {
-        'cart': cart
+        'cart': cart,
+        'title': 'Cart'
     }
     
     return render(request, 'cart/cart-summary.html', context)

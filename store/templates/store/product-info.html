@@ -4,6 +4,11 @@
 
 {% block content %}
 
+<style>
+    .checked {
+    color: #994D1C;
+}
+</style>
 
 <div class="container" data-aos="fade-down">
 
@@ -13,11 +18,11 @@
 
             <div class="col-md-5 col-lg-5 pb-4">
 
-                
+
                 <!-- Product image -->
                 <div class="card" style="height: 270px;">
-                    <img height="300px"  alt="Responsive image" src="{{ product.image.url }}">
-                    
+                    <img height="300px" alt="Responsive image" src="{{ product.image.url }}">
+
                 </div>
             </div>
 
@@ -77,14 +82,13 @@
                                     <option value="13">13</option>
                                     <option value="14">14</option>
                                     <option value="15">15</option>
-                                    <option value="16">16</option>
 
                                 </select>
 
                             </div>
 
                             <div class="col-6 text-end">
-                                
+
                                 <button type="button" id="add-button" value="{{ product.id }}"
                                     class="btn btn-primary btn-sm">
 
@@ -135,7 +139,8 @@
                         </div>
                         <br>
                         <br>
-                        <textarea placeholder="Write your review here..." class="form-control" name="comment" id="" rows="4"></textarea>
+                        <textarea placeholder="Write your review here..." class="form-control" name="comment" id=""
+                            rows="4"></textarea>
                     </div>
                     <br>
                     {% if user.is_authenticated %}
@@ -146,7 +151,7 @@
                     {% endif %}
                 </form>
             </div>
-            
+
             <div class="col-lg-6 col-md-6 col-sm-12 p-3">
                 <h3>Reviews ({{ review_counts }})</h3>
                 <hr />
@@ -154,15 +159,20 @@
                     {% for review in reviews %}
                     <h4 class="subheading" itemprop="itemReviewed">{{ review.comment }}</h4>
                     <p class="author" itemprop="author"><small>by:</small> {{ review.user }}</p>
-                    <i class="fa fa-star {% if review.rate > 4 %} checked {% endif %}" style="float: left;"></i>
-                    <i class="fa fa-star {% if review.rate > 3 %} checked {% endif %}" style="float: left;"></i>
-                    <i class="fa fa-star {% if review.rate > 2 %} checked {% endif %}" style="float: left;"></i>
-                    <i class="fa fa-star {% if review.rate > 1 %} checked {% endif %}" style="float: left;"></i>
-                    <i class="fa fa-star {% if review.rate > 0 %} checked {% endif %}" style="float: left;"></i>
+                    <!-- <p>rating {{review.rate}} of 5</p> -->
+                    <div class="rate">
+
+                    
+                    <i class="fa fa-star {% if review.rate > 4 %} checked {% endif %}" style="float: right;"></i>
+                    <i class="fa fa-star {% if review.rate > 3 %} checked {% endif %}" style="float: right;"></i>
+                    <i class="fa fa-star {% if review.rate > 2 %} checked {% endif %}" style="float: right;"></i>
+                    <i class="fa fa-star {% if review.rate > 1 %} checked {% endif %}" style="float: right;"></i>
+                    <i class="fa fa-star {% if review.rate > 0 %} checked {% endif %}" style="float: right;"></i>
+                    </div>
                     <br>
                     <br>
                     {% endfor %}
-                    
+
                 </div>
             </div>
         </div>
@@ -170,7 +180,7 @@
 </section>
 <section class="pt-4">
     <div class="container">
-        
+
 </section>
 
 <script>

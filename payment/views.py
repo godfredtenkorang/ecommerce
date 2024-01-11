@@ -14,7 +14,8 @@ def checkout(request):
         try:
             # Authenticated users With shipping information
             shipping_address = ShippingAddress.objects.get(user=request.user.id)
-            context = {'shipping': shipping_address, 'cart': cart}
+            context = {'shipping': shipping_address,
+                       'cart': cart, 'title': 'Cart'}
             return render(request, 'payment/checkout.html', context=context)
             
             
@@ -24,8 +25,10 @@ def checkout(request):
         
     else:
         # Guest users
-        
-        return render(request, 'payment/checkout.html')
+        context = {
+            'title': 'Checkout'
+        }
+        return render(request, 'payment/checkout.html', context)
     
 def complete_order(request):
     if request.POST.get('action') == 'post':
@@ -93,7 +96,7 @@ def complete_order(request):
             
             send_mail('Order received', 'Hi! ' + '\n\n' + 'Thank you for picking your order' + '\n\n' +
                       'Please see your order below:' + '\n\n' + str(all_products) + '\n\n' + 'Total paid: $' + 
-                      str(cart.get_total()), settings.EMAIL_HOST_USER, [email], fail_silently=False,)
+                      str(cart.get_all_total()), settings.EMAIL_HOST_USER, [email], fail_silently=False,)
                 
         order_success = True
         response = JsonResponse({'success':order_success})
@@ -103,7 +106,7 @@ def complete_order(request):
 
 def payment_success(request):
     
-    return render(request, 'payment/payment-success.html')
+    return render(request, 'payment/payment-success.html', {'title':"Payment successful"})
 
 
 def payment_failed(request):
@@ -114,6 +117,6 @@ def payment_failed(request):
         if key == 'session_key':
             del request.session[key]
 
-    return render(request, 'payment/payment-failed.html')
+    return render(request, 'payment/payment-failed.html', {'title': "Payment failed"})
 
 

@@ -71,13 +71,17 @@ def list_category(request, category_slug=None):
     
 def product_info(request, product_slug):
     product = get_object_or_404(Product, slug=product_slug)
-    product_review = Product.objects.get(slug=product_slug)
-    reviews = Review.objects.filter(product=product_review)
-    review_counts = Review.objects.all().filter(product=product_review).count()
+    try:
+        # product_review = Product.objects.get(slug=product_slug)
+        reviews = Review.objects.filter(product=product)
+        review_counts = Review.objects.all().filter(product=product).count()
+    except:
+        return redirect('product-info')
     context = {
         'product': product,
         'reviews': reviews,
-        'review_counts': review_counts
+        'review_counts': review_counts,
+        'title': 'product info'
     }
     return render(request, 'store/product-info.html', context)
 
