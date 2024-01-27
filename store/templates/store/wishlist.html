@@ -22,18 +22,18 @@
 
 
             <div class="row">
-                {% for wishlist in wishlists %}
+                {% for w in wishlist %}
                 <div class="col-lg-3 col-md-4 col-sm-12 pb-3">
                     <div class="card">
-                        <img class="card-img-top" src="{{ wishlist.product.image.url }}" height="200px" width="100%"
+                        <img class="card-img-top" src="{{ w.product.image.url }}" height="200px" width="100%"
                             alt="Card image cap">
                         <div class="card-body text-center headings">
                             <h3>
                                 <a class="text-info text-decoration-none"
-                                    href="{% url 'product-info' wishlist.product.slug %}">{{wishlist.product.title | capfirst }}</a>
+                                    href="{% url 'product-info' w.product.slug %}">{{w.product.title | capfirst }}</a>
                             </h3>
                             <div>
-                                <p class="card-text">${{ wishlist.product.price }}</p>
+                                <p class="card-text">${{ w.product.price }}</p>
                             </div>
                         </div>
                     </div>

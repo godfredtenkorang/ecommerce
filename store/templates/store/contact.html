@@ -4,14 +4,7 @@
 
 
 {% block content %}
-<br><br>
-{% for message in messages %}
-{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-<h5 id="message-timer" class="alert alert-success text-center">
-    <i class=" i" aria-hidden="true"></i> &nbsp; {{message}}
-</h5>
-{% endif %}
-{% endfor %}
+
 <!-- <div class="row">
     <div class="col-md-12">
         {% if messages %}
@@ -81,6 +74,11 @@
 
                         <div class="input-box">
                             <input placeholder="Email" type="email" required="true" id="email" name="email">
+                            <!-- <span>Email</span> -->
+                        </div>
+
+                        <div class="input-box">
+                            <input placeholder="Phone" type="number" required="true" id="phone" name="phone">
                             <!-- <span>Email</span> -->
                         </div>
 

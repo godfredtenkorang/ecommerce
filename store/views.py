@@ -89,8 +89,9 @@ def contact(request):
     if request.method == 'POST':
         full_name = request.POST['full_name']
         email = request.POST['email']
+        phone = request.POST['phone']
         message = request.POST['message']
-        contact = Contact(full_name=full_name, email=email, message=message)
+        contact = Contact(full_name=full_name, email=email, phone=phone, message=message)
         contact.save()
         messages.success(request, "Your form has been submitted")
         return render(request, 'store/contact.html')
@@ -141,29 +142,24 @@ def faq(request):
     }
     return render(request, 'store/faq.html', context)
 
-# def wishlist(request, product_slug):
-#     product = Product.objects.get(slug=product_slug)
-#     wishlists = WishList.objects.all().filter(product=product)
-    
 
-#     context = {
-#         'wishlists': wishlists
-#     }
-    
-#     return render(request, 'store/wishlist.html', context)
+def error_404(request, exception):
+    return render(request, 'store/404.html')
 
-# def add_to_wishlist(request, product_slug):
-    
-#     if request.user.is_authenticated:
-#         product = Product.objects.get(slug=product_slug)
-#         wishlist_item, created = WishList.objects.get_or_create(user=request.user, product=product)
-        
-#         return redirect('product-info', product_slug=product_slug)
-        
-#     else:
-#         return redirect('my-login')
-    
-# def remove_from_wishlist(request, wishlist_item_slug):
-#     WishList.objects.filter(id=wishlist_item_slug).delete()
-    
-#     return redirect('store')
+
+def add_to_wishlist(request, product_id):
+    wishlist, create = WishList.objects.get_or_create(user=request.user, id=product_id)
+    product = Product.objects.get(id=product_id)
+    wishlist.product.add(product)
+    return redirect('product-info', product_id=product_id)
+
+
+def remove_from_wishlist(request, product_slug):
+    wishlist = WishList.objects.get(user=request.user)
+    product = Product.objects.get(slug=product_slug)
+    wishlist.products.remove(product)
+    return redirect('wishlist')
+
+def wishlist(request):
+    wishlist = WishList.objects.get_or_create(user=request.user)
+    return render(request, 'store/wishlist.html', {'wishlist':wishlist})

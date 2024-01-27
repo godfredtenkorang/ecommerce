@@ -20,4 +20,11 @@ class ReviewAdmin(admin.ModelAdmin):
 
 admin.site.register(WishList)
 
-admin.site.register(Contact)
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['id', 'full_name', 'email', 'phone',
+                    'message']
+    # readonly_fields = ['full_name', ]
+
+# admin.site.register(Contact)
