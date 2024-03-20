@@ -31,7 +31,7 @@
                     </div>
                     <span class="text-muted">${{ product.price|mul:item.qty }}</span>
                 </li>
-                
+
 
 
 
@@ -50,12 +50,22 @@
                     <span class="text-muted">International Shipping: $30.00</span>
                 </li>
             </ul>
+
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total</span>
                     <strong>${{ cart.get_all_total }}</strong>
                 </li>
             </ul>
+            <form id="form">
+                <label>Shipping</label>
+
+                <select class="form-control validate" id="country" autocomplete="off" value="">
+                    <option>International ($30)</option>
+                    <option>Domestic ($6)</option>
+                </select>
+                <br><br>
+            </form>
             <!-- <form class="card p-2">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Promo code">
@@ -126,10 +136,10 @@
 
                     <br>
                     <div class="form-field">
-                    
-                        <input class="form-control validate" id="phone_number" type="text" placeholder="Phone*" autocomplete="off"
-                            value="{{ shipping.phone_number }}" required>
-                    
+
+                        <input class="form-control validate" id="phone_number" type="text" placeholder="Phone*"
+                            autocomplete="off" value="{{ shipping.phone_number }}" required>
+
                     </div>
                     <br>
                     <!-- <select class="form-control validate" id="country" autocomplete="off" value="{{ shipping.country }}">
@@ -429,6 +439,7 @@
                         city: $('#city').val(),
                         state: $('#state').val(),
                         zipcode: $('#zipcode').val(),
+                        delivery: $('#delivery').val(),
                         csrfmiddlewaretoken: "{{csrf_token}}",
                         action: 'post'
                     },

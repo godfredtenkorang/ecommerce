@@ -41,10 +41,11 @@ def complete_order(request):
         city = request.POST.get('city')
         state = request.POST.get('state')
         zipcode = request.POST.get('zipcode')
+        delivery = request.POST('delivery')
         
         # All-in-one shipping address
         
-        shipping_address = (address1 + "\n" + address2 + "\n" + phone_number + "\n" + country + "\n" + city + "\n" + state + "\n" + zipcode)
+        shipping_address = (address1 + "\n" + address2 + "\n" + phone_number + "\n" + country + "\n" + city + "\n" + state + "\n" + zipcode + "\n" + delivery)
 
         # Shopping cart informantion
         
@@ -67,7 +68,7 @@ def complete_order(request):
         if request.user.is_authenticated:
             
             order = Order.objects.create(full_name=name, email=email, shipping_address=shipping_address,
-            amount_paid=total_cost, user=request.user
+            amount_paid=total_cost, user=request.user, delivery=delivery
             )
             
             order_id = order.pk

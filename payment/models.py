@@ -17,6 +17,11 @@ CHOICES = (
     
 )
 
+DELIVERY = (
+    ("INTERNATIONAL", "International"),
+    ("DOMESTIC", "Domestic")
+)
+
 class ShippingAddress(models.Model):
     full_name = models.CharField(max_length=300)
     email = models .EmailField(max_length=255)
@@ -28,6 +33,7 @@ class ShippingAddress(models.Model):
     state = models.CharField(max_length=255, null=True, blank=True)
     zipcode = models.CharField(max_length=255, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    delivery = models.CharField(max_length=50, choices=DELIVERY, default="International")
     
     
     class Meta:

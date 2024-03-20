@@ -1,5 +1,6 @@
 from decimal import Decimal
 from store.models import Product
+from payment.models import ShippingAddress
 
 class Cart():
     
@@ -72,6 +73,9 @@ class Cart():
     
     
     def get_all_total(self):
-        return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values()) + 30
+        if ShippingAddress.delivery == 'International':
+            return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values()) + 30
+        else:
+            return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values()) + 6
     
     
