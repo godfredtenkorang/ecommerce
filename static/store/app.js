@@ -37,3 +37,4 @@ const allStar = document.querySelectorAll('.rating .star')
                 }
             })
         })
+
