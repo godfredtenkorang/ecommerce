@@ -18,7 +18,7 @@ class ReviewAdmin(admin.ModelAdmin):
 
 # admin.site.register(Review)
 
-admin.site.register(WishList)
+# admin.site.register(WishList)
 
 
 @admin.register(Contact)
