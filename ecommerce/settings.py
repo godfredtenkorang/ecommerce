@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['.endlessessencials.com','167.99.54.186', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.endlessessencials.com', '167.99.54.186', 'localhost', '127.0.0.1']
 
 
 # Application definition
