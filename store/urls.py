@@ -32,6 +32,5 @@ urlpatterns = [
          views.add_to_wishlist, name='add-to-wishlist'),
     path('remove_from_wishlist/<slug:product_slug>/',
          views.remove_from_wishlist, name='remove-from-wishlist'),
-    path('wishlist/', views.wishlist, name='wishlist'),
-    
+
 ]

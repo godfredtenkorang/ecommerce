@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Category, Product, Contact, Review, WishList
+from . models import Category, Product, Contact, Review
 
 
 @admin.register(Category)
@@ -18,7 +18,6 @@ class ReviewAdmin(admin.ModelAdmin):
 
 # admin.site.register(Review)
 
-# admin.site.register(WishList)
 
 
 @admin.register(Contact)

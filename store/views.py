@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . models import Category, Product, Contact, Review, WishList
+from . models import Category, Product, Contact, Review
 from django.shortcuts import get_object_or_404
 from django.db.models import Q # New
 # from django.views.generic import DetailView
@@ -159,7 +159,3 @@ def remove_from_wishlist(request, product_slug):
     product = Product.objects.get(slug=product_slug)
     wishlist.products.remove(product)
     return redirect('wishlist')
-
-def wishlist(request):
-    wishlist = WishList.objects.get_or_create(user=request.user)
-    return render(request, 'store/wishlist.html', {'wishlist':wishlist})
