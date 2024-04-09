@@ -23,14 +23,4 @@ urlpatterns = [
     # FAQ
     path('faq/', views.faq, name='faq'),
     
-    # Wishlist
-    
-
-    # Added to wishlist
-    
-    path('add_to_wishlist/<int:product_id>/',
-         views.add_to_wishlist, name='add-to-wishlist'),
-    path('remove_from_wishlist/<slug:product_slug>/',
-         views.remove_from_wishlist, name='remove-from-wishlist'),
-
 ]

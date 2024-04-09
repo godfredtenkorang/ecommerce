@@ -145,17 +145,3 @@ def faq(request):
 
 def error_404(request, exception):
     return render(request, 'store/404.html')
-
-
-def add_to_wishlist(request, product_id):
-    wishlist, create = WishList.objects.get_or_create(user=request.user, id=product_id)
-    product = Product.objects.get(id=product_id)
-    wishlist.product.add(product)
-    return redirect('product-info', product_id=product_id)
-
-
-def remove_from_wishlist(request, product_slug):
-    wishlist = WishList.objects.get(user=request.user)
-    product = Product.objects.get(slug=product_slug)
-    wishlist.products.remove(product)
-    return redirect('wishlist')
