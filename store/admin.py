@@ -18,8 +18,7 @@ class ProductInLine(admin.TabularInline):
   
   
 class CategoryAdmin(admin.ModelAdmin):
-    fieldsets = [(None, {'fields': ['name', 'slug']}), ('Date Information', {
-        'fields': ['date_added'], 'classes': ['collapse']}), ]
+    fieldsets = [(None, {'fields': ['name', 'slug']})]
     inlines = [ProductInLine]
   
 admin.site.register(Category, CategoryAdmin)
