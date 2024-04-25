@@ -92,9 +92,9 @@
                         <img class="card-img-top" src="{{ product.image.url }}" height="300px" width="100%"
                             alt="Card image cap">
                         <div class="card-body text-center headings">
-                            <h3>
+                            <h4>
                                 <a class="text-info text-decoration-none" href="{% url 'product-info' product.slug %}">{{product.title | capfirst }}</a>
-                            </h3>
+                            </h4>
                             <div>
                                 <p class="card-text">${{ product.price }}</p>
                                 <!-- <p><button style="border: none; background:none;" class="add-to-wishlist"
