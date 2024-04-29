@@ -34,7 +34,7 @@ def complete_order(request):
     if request.POST.get('action') == 'post':
         name = request.POST.get('name')
         email = request.POST.get('email')
-        address = request.POST.get('address1')
+        address = request.POST.get('address')
         country = request.POST.get('country')
         phone_number = request.POST.get('phone_number')
         city = request.POST.get('city')
