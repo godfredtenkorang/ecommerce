@@ -69,4 +69,4 @@ class Cart():
         return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
 
     def get_all_total(self):
-        return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())
+        return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values()) + 6
