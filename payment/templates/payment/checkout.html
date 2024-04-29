@@ -111,17 +111,30 @@
 
                     </div>
 
+
                     <br>
+
+
                     <div class="form-field">
 
-                        <input class="form-control validate" id="address" type="text" placeholder="Address*"
-                            autocomplete="off" value="{{ shipping.address }}" required>
+                        <input class="form-control validate" id="address1" type="text" placeholder="Address 1*"
+                            autocomplete="off" value="{{ shipping.address1 }}" required>
 
                     </div>
 
 
                     <br>
 
+
+                    <div class="form-field">
+
+                        <input class="form-control validate" id="address2" type="text" placeholder="Address 2"
+                            autocomplete="off" value="{{ shipping.address2 }}">
+
+                    </div>
+
+
+                    <br>
                     <div class="form-field">
 
                         <input class="form-control validate" id="phone_number" type="text" placeholder="Phone*"
@@ -419,7 +432,8 @@
                     data: {
                         name: $('#name').val(),
                         email: $('#email').val(),
-                        address: $('#address').val(),
+                        address1: $('#address1').val(),
+                        address2: $('#address2').val(),
                         phone_number: $('#phone_number').val(),
                         country: $('#country').val(),
                         city: $('#city').val(),

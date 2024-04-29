@@ -22,9 +22,12 @@
                     {% csrf_token %}
                     {{ form.full_name|as_crispy_field }}
                     <br><br>
+                
                     {{ form.email|as_crispy_field }}
                     <br><br>
-                    {{ form.address|as_crispy_field }}
+                    {{ form.address1|as_crispy_field }}
+                    <br><br>
+                    {{ form.address2|as_crispy_field }}
                     <br><br>
                     {{ form.phone_number|as_crispy_field }}
                     <br><br>

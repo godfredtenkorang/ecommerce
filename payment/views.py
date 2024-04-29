@@ -34,7 +34,8 @@ def complete_order(request):
     if request.POST.get('action') == 'post':
         name = request.POST.get('name')
         email = request.POST.get('email')
-        address = request.POST.get('address')
+        address1 = request.POST.get('address1')
+        address2 = request.POST.get('address2')
         country = request.POST.get('country')
         phone_number = request.POST.get('phone_number')
         city = request.POST.get('city')
@@ -43,7 +44,7 @@ def complete_order(request):
         
         # All-in-one shipping address
         
-        shipping_address = (address + "\n" + phone_number + "\n" + country + "\n" + city + "\n" + state + "\n" + zipcode)
+        shipping_address = (address1 + "\n" + address2 + "\n" + phone_number + "\n" + country + "\n" + city + "\n" + state + "\n" + zipcode)
 
         # Shopping cart informantion
         
