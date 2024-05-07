@@ -8,7 +8,10 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 # from django.urls import reverse
 
-# Create your views here.
+def index(request):
+    return render(request, 'store/index.html')
+
+
 def store(request):
     search_item = request.GET.get('search')
     
