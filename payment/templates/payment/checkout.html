@@ -47,22 +47,23 @@
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Shipping</span>
-                    <span class="text-muted">International Shipping: $30.00</span>
+                    <span class="text-muted" id="shipping-display">$0</span>
                 </li>
             </ul>
 
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total</span>
-                    <strong>${{ cart.get_all_total }}</strong>
+                    <strong class="totals">${{ cart.get_all_total }}</strong>
                 </li>
             </ul>
             <form id="form">
                 <label>Shipping</label>
 
                 <select class="form-control validate" id="country" autocomplete="off" value="">
-                    <option>International ($30)</option>
-                    <option>Domestic ($6)</option>
+                    <option value="" selected disabled> Select Shipping</option>
+                    <option>International</option>
+                    <option>Domestic</option>
                 </select>
                 <br><br>
             </form>
@@ -295,6 +296,8 @@
 
 
 
+
+               
 <!-- Paypal -->
 <div id="paypal-button-container"></div>
 <script
@@ -315,7 +318,32 @@
 
 
 <!-- Ajax integration -->
+<script>
+        // Wait for the document to be ready
+        $(document).ready(function() {
+            // Add event listener for change on select element
+            $('#country').change(function() {
+                var shippingCost = 0;
+                var selectedOption = $(this).val();
+                var shippingDisplay = $('#shipping-display');
+                var totals = $('.totals');
 
+                if (selectedOption === 'International') {
+                    shippingCost = 30.00;
+                } else if (selectedOption === 'Domestic') {
+                    shippingCost = 6.00;
+                }
+
+                // Update the shipping display
+                shippingDisplay.text(selectedOption + ' Shipping: $' + shippingCost.toFixed(2));
+
+                // Update the total including shipping
+                var currentTotal = parseFloat('{{ cart.get_all_total }}');
+                var newTotal = currentTotal + shippingCost;
+                totals.text('$' + newTotal.toFixed(2));
+            });
+        });
+    </script>
 
 
 <script>
@@ -343,12 +371,12 @@
                 item.addEventListener('keyup', event => {
 
                     // The required fields are filled out
-
+                                                                                                  
                     var order_verified = 'Yes';
 
                     function checkInputs() {
                         $(':input[required]').each(function () {
-                            if ($(this).val() == '') {
+                            if ($(this).val()  == '') {
 
                                 // The required fields are empty
 

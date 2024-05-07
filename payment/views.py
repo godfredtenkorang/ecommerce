@@ -121,3 +121,5 @@ def payment_failed(request):
     return render(request, 'payment/payment-failed.html', {'title': "Payment failed"})
 
 
+
+

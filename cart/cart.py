@@ -73,9 +73,7 @@ class Cart():
     
     
     def get_all_total(self):
-        if ShippingAddress.delivery == 'International':
-            return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values()) + 30
-        else:
-            return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values()) + 6
-    
+      
+            return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values()) 
+        
     

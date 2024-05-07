@@ -60,3 +60,5 @@ def cart_update(request):
         
         response = JsonResponse({'qty': cart_quantity, 'total': cart_total})
         return response
+
+
