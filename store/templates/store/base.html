@@ -141,7 +141,8 @@
             ><i class="fas fa-user i"></i> Hello, Anonymous</a
           >
         </li>
-        {% endif %} {% if user.is_authenticated %}
+        {% endif %} 
+        {% if user.is_authenticated %}
         <li class="main__navigations__div__li">
           <a
             href="{% url 'dashboard' %}"
@@ -159,7 +160,8 @@
             >Register <i class="fas fa-register i"></i>
           </a>
         </li>
-        {% endif %} {% if user.is_authenticated %}
+        {% endif %} 
+        {% if user.is_authenticated %}
         <li class="main__navigations__div__li">
           <a
             href="{% url 'user-logout' %}"
