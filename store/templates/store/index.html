@@ -1,8 +1,395 @@
-{% extends "./base.html" %}
-{% load static %}
+{% extends "./base.html" %} {% load static %} {% block content %}
+<style>
+    .contacts{
+        background-repeat: no-repeat;
+        width: 100%;
+        min-height: 60vh;
+        background-position: center;
+        background-size: cover;
+        color: #fff;
+        padding: 3%;
+        background-attachment: fixed;
+        background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("{% static '/store/images/capture4.jpg' %}");
+    }
+</style>
+<main>
+    <!-- slide shoqw -->
+    <section class="slide-show">
+        <!-- Slide items with images and text -->
+        <div class="slide">
+            <!-- Image with alt text for SEO -->
+            <img alt="Responsive image" src="{% static 'store/images/capture4.jpg' %}" />
+            <div class="slid-show-text">
+                <!-- Title and description -->
+                <h1>Experience Superior Hold</h1>
+
+                <p>Get the perfect style that lasts all day.</p>
+                <!-- Links -->
+                <div class="links-on-slide-show">
+                    <a href="">Shop Now</a>
+                    <a href="">Contact Us</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <!-- Image with alt text for SEO -->
+            <img alt="Responsive image" src="{% static 'store/images/capture.jpg' %}" />
+            <div class="slid-show-text">
+                <!-- Title and description -->
+                <h1>Discover Our Premium Pomade</h1>
+
+            <p>Experience the ultimate styling solution.</p>
+                <!-- Links -->
+                <div class="links-on-slide-show">
+                    <a href="">Shop Now</a>
+                    <a href="">Contact Us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide show navigation buttons -->
+        <div class="slide-show-button">
+            <button class="prev"><i class="fa-solid fa-less-than"></i></button>
+            <button class="next"><i class="fa-solid fa-greater-than"></i></button>
+        </div>
+    </section>
+   
+    </div>
+
+    <!-- about us -->
+    <div class="about-us element">
+        <h2>WELCOME KINGS & QUEENS</h2>
+        <p>
+            HAMAMAT TAKES YOU ON A JOURNEY ON HOW OUR <br />
+            ANCESTORS WHO HAD A RICH DEEP CONNECTION WITH EARTH CARED FOR THEIR
+            BODIES.
+        </p>
+
+        <a href="">Read our mission</a>
+    </div>
+
+    <!-- put your skin first -->
+    <div class="product-container element">
+        <div class="heading">
+            <h3>PUT YOUR SKIN FIRST</h3>
+            <p>
+                Our nourishing shea butter is lovingly crafted to celebrate your natural
+                glow.
+            </p>
+        </div>
+
+        <div class="product-main-container">
+            <!-- the bigger picture on the left -->
+            <div class="product-img element">
+                <img alt="Responsive image" src="{% static 'store/images/capture4.jpg' %}" />
+                <div class="product-img-details">
+                    <p>ORGANIC & NATURAL</p>
+                    <h3>LOVE YOU SKIN FROM THE SPOT</h3>
+                    <a href="">Shop BUtter</a>
+
+                </div>
+            </div>
+
+            <!-- the small picture on the right -->
+            <div class="main-product-container">
+                <div class="main-item-container">
+
+                    <!-- first container -->
+                    <div class="product element">
+                        <img alt="Responsive image" src="{% static 'store/images/capture4.jpg' %}" />
+                        <div class="detail-first">
+                            <div class="add-to-cart">
+                                <button >Add to cart</button>
+
+                            </div>
+
+                        </div>
+                        <div class="detail">
+                            <p>Calabash Golden Shea Butter </p>
+                            <p>From $25.00 </p>
+                        </div>
+                    </div>
+                    <!-- end of first container -->
+
+                    <div class="product element">
+                        <img alt="Responsive image" src="{% static 'store/images/capture2.jpg' %}" />
+                        <div class="detail-first">
+                            <div class="add-to-cart">
+                                <button >Add to cart</button>
+
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <p>Calabash Golden Shea Butter </p>
+                            <p>From $25.00 </p>
+                        </div>
+                    </div>
+
+                    <div class="product element">
+                        <img alt="Responsive image" src="{% static 'store/images/capture.jpg' %}" />
+                        <div class="detail-first">
+                            <div class="add-to-cart">
+                                <button >Add to cart</button>
+
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <p>Calabash Golden Shea Butter </p>
+                            <p>From $25.00 </p>
+                        </div>
+                    </div>
+            
+               
+                    <div class="product element">
+                        <img alt="Responsive image" src="{% static 'store/images/capture4.jpg' %}" />
+                        <div class="detail-first">
+                            <div class="add-to-cart">
+                                <button >Add to cart</button>
+
+                            </div>
+
+                        </div>
+                        <div class="detail">
+                            <p>Calabash Golden Shea Butter </p>
+                            <p>From $25.00 </p>
+                        </div>
+                    </div>
+
+                    <div class="product element">
+                        <img alt="Responsive image" src="{% static 'store/images/capture5.jpg' %}" />
+                        <div class="detail-first">
+                            <div class="add-to-cart">
+                                <button >Add to cart</button>
+
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <p>Calabash Golden Shea Butter </p>
+                            <p>From $25.00 </p>
+                        </div>
+                    </div>
+
+                    <div class="product element">
+                        <img alt="Responsive image" src="{% static 'store/images/capture6.jpg' %}" />
+                        <div class="detail-first">
+                            <div class="add-to-cart">
+                                <button >Add to cart</button>
+
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <p>Calabash Golden Shea Butter </p>
+                            <p>From $25.00 </p>
+                        </div>
+                    </div>
+                  
+            </div>
+            </div>
+        </div>
+    </div>
+<!-- our-best-seller-container -->
+    <div class="our-best-seller-container element">
+        <div class="heading">
+            <h3>OUR BEST SELLERS
+            </h3>
+            <p>
+                Experience all-natural skin nourishment with our best-selling shea butter products
+
+            </p>
+        </div>
+
+        <div class="best-seller-container">
+            <div class="best-product">
+              <div class="img">
+                <img alt="Responsive image" src="{% static 'store/images/capture5.jpg' %}" />
+                <div class="add-to-cart">
+                    <button >Add to cart</button>
+
+                </div>
+              </div>
+               
+            </div>
+          
+            <div class="best-product">
+              <div class="img">
+                <img alt="Responsive image" src="{% static 'store/images/capture4.jpg' %}" />
+                <div class="add-to-cart">
+                    <button >Add to cart</button>
+
+                </div>
+              </div>
+               
+            </div>
+          
+            <div class="best-product">
+              <div class="img">
+                <img alt="Responsive image" src="{% static 'store/images/capture3.jpg' %}" />
+                <div class="add-to-cart">
+                    <button >Add to cart</button>
+
+                </div>
+              </div>
+               
+            </div>
+          
+            <div class="best-product">
+              <div class="img">
+                <img alt="Responsive image" src="{% static 'store/images/capture2.jpg' %}" />
+                <div class="add-to-cart">
+                    <button >Add to cart</button>
+
+                </div>
+              </div>
+               
+            </div>
+          
+            <div class="best-product">
+              <div class="img">
+                <img alt="Responsive image" src="{% static 'store/images/capture.jpg' %}" />
+                <div class="add-to-cart">
+                    <button >Add to cart</button>
+
+                </div>
+              </div>
+               
+            </div>
+          
+            <div class="best-product">
+              <div class="img">
+                <img alt="Responsive image" src="{% static 'store/images/capture5.jpg' %}" />
+                <div class="add-to-cart">
+                    <button >Add to cart</button>
+
+                </div>
+              </div>
+               
+            </div>
+          
+        </div>
+    </div>
 
 
-{% block content %}
 
+    <!-- contact us -->
+  <section class="contacts element">
+    
+       
+   
+    <div class="contact-us-container">
+        <div class="contact">
+            <div class="banner-content">
+                <div class="text-slide">
+                    <div class="text">
+                        <h5>WELCOME TO THE PREMIER  <br> ONLINE <span>POMADE SHOP</span></h5>
+                        <p>Welcome to our virtual pomade emporium! Our mission is to redefine your grooming experience by providing a curated selection of premium pomade products, ensuring your style always stands out.</p>
+                    </div>
+                    <div class="text">
+                        <h5>ENHANCE YOUR LOOK WITH <br> OUR EXCLUSIVE <span>POMADE COLLECTION</span></h5>
+                        <p>Discover the ultimate in hair styling with our handpicked <br> range of pomades. From classic to modern, our selection caters to every style and preference, guaranteeing a look that's uniquely yours.</p>
+                    </div>
+                    <div class="text">
+                        <h5>GET IN TOUCH FOR EXPERT POMADE ADVICE</h5>
+                        <p>Whether you're new to pomade or a seasoned enthusiast, <br> our team of experts is here to assist you. Contact us today for personalized recommendations and grooming tips to perfect your style.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-us-form">
+            <form action="">
+                <div class="input">
+                    <label for="">Name</label> <br>
+                    <input type="text" placeholder="Your Name">
+                </div>
+                <div class="input">
+                    <label for="">Eamil</label> <br>
+                    <input type="text" placeholder="Your Email">
+                </div>
+                <div class="input">
+                    <label for="">Message</label> <br>
+                    <textarea name="" id="" placeholder="Your Message To Us"></textarea>
+                </div>
+                <button>Submit</button>
+            </form>
+        </div>
+    </div>
 
+  </section>
+</main>
+<script>
+    
+    window.addEventListener("scroll",()=>{
+        const targetElement = document.querySelectorAll(".element")
+        targetElement.forEach(element=>{
+            const position = element.getBoundingClientRect()
+            const thresHold = window.innerHeight * 0.65
+
+            if(position.top <= thresHold){
+                element.classList.add("slides");
+            }
+        })
+    })
+
+    
+function handleImageSlider(){
+
+// This block of code manages the slide show functionality
+const slides = document.querySelectorAll('.slide-show .slide');
+let currentSlide = 0;
+
+// Function to show a specific slide
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        if (i === index) {
+            slide.style.display = "block";
+        } else {
+            slide.style.display = "none";
+        }
+    });
+}
+
+// Function to show the next slide
+function nextSlide() {
+    currentSlide++;
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
+    showSlide(currentSlide);
+}
+
+// Function to show the previous slide
+function prevSlide() {
+    currentSlide--;
+    if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+    }
+    showSlide(currentSlide);
+}
+
+// Show the first slide initially
+showSlide(currentSlide);
+
+// Event listeners for the navigation buttons
+document.querySelector(".prev").addEventListener("click", prevSlide);
+document.querySelector(".next").addEventListener("click", nextSlide);
+setInterval(nextSlide, 7000);
+
+}
+handleImageSlider()
+
+const textSlide = document.querySelector(".text-slide")
+  const textElement = document.querySelectorAll(".text")
+  let = currentSlide = 0
+  function showslideText (){
+    textElement.forEach((element)=>{
+      element.style.display="none"
+    })
+
+    textElement[currentSlide].style.display ='block'
+    currentSlide=(currentSlide + 1) % textElement.length
+    setTimeout(showslideText, 5000)
+  }
+
+  showslideText()
+</script>
 {% endblock %}
