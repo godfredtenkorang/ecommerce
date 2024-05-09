@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 # from django.urls import reverse
 
 def index(request):
-    home_products = Home_Product.objects.all()
+    # home_products = Home_Product.objects.all()
     slide_products = Slide_Product.objects.all()
     if request.method == 'POST':
         full_name = request.POST['full_name']
@@ -21,7 +21,7 @@ def index(request):
         messages.success(request, "Your form has been submitted")
         return render(request, 'store/index.html')
     context = {
-        'home_products': home_products,
+        # 'home_products': home_products,
         'slide_products': slide_products
     }
     return render(request, 'store/index.html', context)

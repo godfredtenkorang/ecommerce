@@ -94,10 +94,10 @@
 
             <!-- the small picture on the right -->
             <div class="main-product-container">
-                {% for homeproduct in home_products %}
                 <div class="main-item-container">
+                    <!-- {% for homeproduct in home_products %}
 
-                    <!-- first container -->
+                 
                     <div class="product element">
                         <img alt="Responsive image" src="{{ homeproduct.image.url }}" />
 
@@ -108,8 +108,8 @@
                             <p>${{ homeproduct.price }}</p>
                         </div>
                     </div>
+                    {% endfor %} -->
                 </div>
-                {% endfor %}
             </div>
         </div>
     </div>
