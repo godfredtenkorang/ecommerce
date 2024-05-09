@@ -105,6 +105,23 @@ def product_info(request, product_slug):
     }
     return render(request, 'store/product-info.html', context)
 
+def home_product_info(request, product_slug):
+    product = get_object_or_404(Home_Product, slug=product_slug)
+    product = get_object_or_404(Slide_Product, slug=product_slug)
+    try:
+        # product_review = Product.objects.get(slug=product_slug)
+        reviews = Review.objects.filter(product=product)
+        review_counts = Review.objects.all().filter(product=product).count()
+    except:
+        return redirect('home-product-info')
+    context = {
+        'product': product,
+        'reviews': reviews,
+        'review_counts': review_counts,
+        'title': 'product info'
+    }
+    return render(request, 'store/home-product-info.html', context)
+
 def contact(request):
     if request.method == 'POST':
         full_name = request.POST['full_name']
