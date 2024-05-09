@@ -21,16 +21,16 @@
 
                 <!-- Product image -->
                 <div class="card" style="height: 270px;">
-                    <img height="300px" alt="Responsive image" src="{{ homeproduct.image.url }}">
+                    <img height="300px" alt="Responsive image" src="{{ home_product.image.url }}">
 
                 </div>
             </div>
 
             <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5 pb-3">
 
-                <h1 class="headings mb-0 h3"> {{ homeproduct.title }} </h1>
+                <h1 class="headings mb-0 h3"> {{ home_product.title }} </h1>
 
-                <strong> {{ homeproduct.brand }} </strong>
+                <strong> {{ home_product.brand }} </strong>
 
 
                 <hr>
@@ -38,7 +38,7 @@
                 <br>
 
 
-                <p> {{ homeproduct.description }} </p>
+                <p> {{ home_product.description }} </p>
 
                 <div class="border">
 
@@ -48,7 +48,7 @@
 
                             <div class="col-6"> Price </div>
 
-                            <div class="col-6 text-end"><span class="h4 fw-bold">$ {{ homeproduct.price }} </span></div>
+                            <div class="col-6 text-end"><span class="h4 fw-bold">$ {{ home_product.price }} </span></div>
 
                         </div>
 
@@ -88,7 +88,7 @@
                             </div>
 
                             <div class="col-6 text-end">
-                                <button type="button" id="add-button" value="{{ homeproduct.id }}"
+                                <button type="button" id="add-button" value="{{ home_product.id }}"
                                     class="btn btn-primary btn-sm">
 
                                     Add to cart
@@ -118,7 +118,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 mx-auto pb-4 p-3">
-                <form method="POST" action="{% url 'review' homeproduct.id %}">
+                <form method="POST" action="{% url 'review' home_product.id %}">
                     {% csrf_token %}
 
                     <h3>Write your review</h3>
