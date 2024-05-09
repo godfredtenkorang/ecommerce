@@ -95,7 +95,7 @@
             <!-- the small picture on the right -->
             <div class="main-product-container">
                 <div class="main-item-container">
-                    <!-- {% for homeproduct in home_products %}
+                    {% for homeproduct in home_products %}
 
                  
                     <div class="product element">
@@ -108,7 +108,7 @@
                             <p>${{ homeproduct.price }}</p>
                         </div>
                     </div>
-                    {% endfor %} -->
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -125,19 +125,19 @@
         </div>
 
         <div class="best-seller-container">
-            <!-- {% for slide_product in slide_products %}
+            {% for slideproduct in slide_products %}
             <div class="best-product">
                 <div class="img">
-                    <img alt="Responsive image" src="{{ slide_product.image.url }}" />
+                    <img alt="Responsive image" src="{{ slideproduct.image.url }}" />
                     <div class="add-to-cart">
-                        <a class="btn slide-button" href="{% url 'product-info' slide_product.slug %}">{{
-                            slide_product.title }}</a>
+                        <a class="btn slide-button" href="{% url 'product-info' slideproduct.slug %}">{{
+                            slideproduct.title }}</a>
 
                     </div>
                 </div>
 
             </div>
-            {% endfor %} -->
+            {% endfor %}
         </div>
     </div>
 
