@@ -89,8 +89,6 @@ def list_category(request, category_slug=None):
     
 def product_info(request, product_slug):
     product = get_object_or_404(Product, slug=product_slug)
-    product = get_object_or_404(Home_Product, slug=product_slug)
-    product = get_object_or_404(Slide_Product, slug=product_slug)
     try:
         # product_review = Product.objects.get(slug=product_slug)
         reviews = Review.objects.filter(product=product)
