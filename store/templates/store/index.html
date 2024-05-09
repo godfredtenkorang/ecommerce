@@ -102,7 +102,7 @@
                         <img alt="Responsive image" src="{{ homeproduct.image.url }}" />
 
                         <div class="detail">
-                            <a href="{% url 'home-product-info' homeproduct.slug %}">
+                            <a href="{{get_absolute_url}}">
                                 <p>{{ homeproduct.title }}</p>
                             </a>
                             <p>${{ homeproduct.price }}</p>
