@@ -8,7 +8,7 @@ urlpatterns = [
     path('about/', views.about, name='about-page'),
     # path('product/<slug:slug>/', ProductDetailView.as_view(), name='product-info'),
     path('product/<slug:product_slug>/', views.product_info, name='product-info'),
-    path('product/<slug:product_slug>/', views.product_info, name='home-product-info'),
+    path('product/<slug:product_slug>/', views.home_product_info, name='home-product-info'),
     # Individual category
     path('search/<slug:category_slug>/', views.list_category, name='list-category'),
     
