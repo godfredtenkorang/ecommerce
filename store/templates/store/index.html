@@ -94,22 +94,22 @@
 
             <!-- the small picture on the right -->
             <div class="main-product-container">
+                {% for homeproduct in home_products %}
                 <div class="main-item-container">
 
                     <!-- first container -->
-                    {% for h in products %}
                     <div class="product element">
-                        <img alt="Responsive image" src="{{ h.image.url }}" />
+                        <img alt="Responsive image" src="{{ homeproduct.image.url }}" />
 
                         <div class="detail">
-                            <a href="{% url 'product-info' h.slug %}">
-                                <p>{{ h.title }}</p>
+                            <a href="{% url 'product-info' homeproduct.slug %}">
+                                <p>{{ homeproduct.title }}</p>
                             </a>
-                            <p>${{ h.price }}</p>
+                            <p>${{ homeproduct.price }}</p>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
