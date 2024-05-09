@@ -104,15 +104,15 @@ def product_info(request, product_slug):
     return render(request, 'store/product-info.html', context)
 
 def home_product_info(request, home_slug):
-    product = get_object_or_404(Home_Product, slug=home_slug)
+    homeproduct = get_object_or_404(Home_Product, slug=home_slug)
     try:
         # product_review = Product.objects.get(slug=product_slug)
-        reviews = Review.objects.filter(product=product)
-        review_counts = Review.objects.all().filter(product=product).count()
+        reviews = Review.objects.filter(product=homeproduct)
+        review_counts = Review.objects.all().filter(product=homeproduct).count()
     except:
         return redirect('home-product-info')
     context = {
-        'product': product,
+        'product': homeproduct,
         'reviews': reviews,
         'review_counts': review_counts,
         'title': 'product info'
