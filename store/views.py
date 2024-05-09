@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     # home_products = Home_Product.objects.all()
-    slide_products = Slide_Product.objects.all()
+    # slide_products = Slide_Product.objects.all()
     if request.method == 'POST':
         full_name = request.POST['full_name']
         email = request.POST['email']
@@ -22,7 +22,7 @@ def index(request):
         return render(request, 'store/index.html')
     context = {
         # 'home_products': home_products,
-        'slide_products': slide_products
+        # 'slide_products': slide_products
     }
     return render(request, 'store/index.html', context)
 
