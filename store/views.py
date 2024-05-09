@@ -21,7 +21,7 @@ def index(request):
         messages.success(request, "Your form has been submitted")
         return render(request, 'store/index.html')
     context = {
-        'home_products': home_products,
+        'homeproducts': home_products,
         'slide_products': slide_products
     }
     return render(request, 'store/index.html', context)
