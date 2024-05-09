@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'account',
     'payment',
     'crispy_forms',
+    'crispy_bootstrap4',
     'cities_light',
 ]
 
@@ -142,6 +143,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'my-login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

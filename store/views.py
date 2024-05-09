@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . models import Category, Product, Contact, Review
+from . models import Category, Product, Contact, Review, Home_Product, Slide_Product
 from django.shortcuts import get_object_or_404
 from django.db.models import Q # New
 # from django.views.generic import DetailView
@@ -9,7 +9,22 @@ from django.contrib.auth.decorators import login_required
 # from django.urls import reverse
 
 def index(request):
-    return render(request, 'store/index.html')
+    home_products = Home_Product.objects.all()
+    slide_products = Slide_Product.objects.all()
+    if request.method == 'POST':
+        full_name = request.POST['full_name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        message = request.POST['message']
+        contact = Contact(full_name=full_name, email=email, phone=phone, message=message)
+        contact.save()
+        messages.success(request, "Your form has been submitted")
+        return render(request, 'store/index.html')
+    context = {
+        'home_products': home_products,
+        'slide_products': slide_products
+    }
+    return render(request, 'store/index.html', context)
 
 
 def store(request):

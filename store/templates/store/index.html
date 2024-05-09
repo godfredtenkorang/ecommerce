@@ -9,7 +9,7 @@
         color: #fff;
         padding: 3%;
         background-attachment: fixed;
-        background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("{% static '/store/images/capture4.jpg' %}");
+        background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("{% static '/store/images/image1.jpeg' %}");
     }
 </style>
 <main>
@@ -18,28 +18,28 @@
         <!-- Slide items with images and text -->
         <div class="slide">
             <!-- Image with alt text for SEO -->
-            <img alt="Responsive image" src="{% static 'store/images/capture4.jpg' %}" />
+            <img alt="Responsive image" src="{% static 'store/images/image5.jpeg' %}" />
             <div class="slid-show-text">
                 <!-- Title and description -->
-                <h1>Experience Superior Hold</h1>
+                <h1>Get Better Hold Experience</h1>
 
-                <p>Get the perfect style that lasts all day.</p>
+                <p>Obtain the ideal look that is long-lasting.</p>
                 <!-- Links -->
                 <div class="links-on-slide-show">
-                    <a href="">Shop Now</a>
-                    <a href="">Contact Us</a>
+                    <a href="{% url 'store' %}">Shop Now</a>
+                    <a href="{% url 'contact' %}">Contact Us</a>
                 </div>
             </div>
         </div>
 
         <div class="slide">
             <!-- Image with alt text for SEO -->
-            <img alt="Responsive image" src="{% static 'store/images/capture.jpg' %}" />
+            <img alt="Responsive image" src="{% static 'store/images/image7.jpeg' %}" />
             <div class="slid-show-text">
                 <!-- Title and description -->
                 <h1>Discover Our Premium Pomade</h1>
 
-            <p>Experience the ultimate styling solution.</p>
+            <p>Discover the best styling option available.</p>
                 <!-- Links -->
                 <div class="links-on-slide-show">
                     <a href="">Shop Now</a>
@@ -59,34 +59,33 @@
 
     <!-- about us -->
     <div class="about-us element">
-        <h2>WELCOME KINGS & QUEENS</h2>
-        <p>
-            HAMAMAT TAKES YOU ON A JOURNEY ON HOW OUR <br />
-            ANCESTORS WHO HAD A RICH DEEP CONNECTION WITH EARTH CARED FOR THEIR
-            BODIES.
+        <h2>WELCOME LADIES & GENTLEMEN</h2>
+        <br>
+        <p style="text-transform: uppercase;">
+            Endless Essencials is an African-owned business that sells skincare, <br> haircare, and spices from the homeland. Our most
+            notable product is Shea butter. <br> We have premium Shea butter that is freshly handmade in Tamale, Ghana.
         </p>
 
-        <a href="">Read our mission</a>
+        <a href="{% url 'about-page' %}">Read our mission</a>
     </div>
 
     <!-- put your skin first -->
     <div class="product-container element">
         <div class="heading">
-            <h3>PUT YOUR SKIN FIRST</h3>
+            <h3>PRIORITISE YOUR SKIN</h3>
             <p>
-                Our nourishing shea butter is lovingly crafted to celebrate your natural
-                glow.
+                Our nutritious shea butter is made with love to highlight your inherent shine.
             </p>
         </div>
 
         <div class="product-main-container">
             <!-- the bigger picture on the left -->
             <div class="product-img element">
-                <img alt="Responsive image" src="{% static 'store/images/capture4.jpg' %}" />
+                <img alt="Responsive image" src="{% static 'store/images/image2.jpeg' %}" />
                 <div class="product-img-details">
-                    <p>ORGANIC & NATURAL</p>
-                    <h3>LOVE YOU SKIN FROM THE SPOT</h3>
-                    <a href="">Shop BUtter</a>
+                    <p>GET YOUR ORGANIC & NATURAL PRODUCTS</p>
+                    <h3>BUY NOW AND GET LOVED FOR YOUR SKIN</h3>
+                    <a href="{% url 'store' %}">Shop Now</a>
 
                 </div>
             </div>
@@ -96,176 +95,44 @@
                 <div class="main-item-container">
 
                     <!-- first container -->
+                    {% for home_product in home_products %}
                     <div class="product element">
-                        <img alt="Responsive image" src="{% static 'store/images/capture4.jpg' %}" />
-                        <div class="detail-first">
-                            <div class="add-to-cart">
-                                <button >Add to cart</button>
-
-                            </div>
-
-                        </div>
+                        <img alt="Responsive image" src="{{ home_product.image.url }}" />
+                        
                         <div class="detail">
-                            <p>Calabash Golden Shea Butter </p>
-                            <p>From $25.00 </p>
+                            <a href="{% url 'product-info' home_product.slug %}"><p>{{ home_product.title }}</p></a>
+                            <p>${{ home_product.price }}</p>
                         </div>
                     </div>
-                    <!-- end of first container -->
-
-                    <div class="product element">
-                        <img alt="Responsive image" src="{% static 'store/images/capture2.jpg' %}" />
-                        <div class="detail-first">
-                            <div class="add-to-cart">
-                                <button >Add to cart</button>
-
-                            </div>
-                        </div>
-                        <div class="detail">
-                            <p>Calabash Golden Shea Butter </p>
-                            <p>From $25.00 </p>
-                        </div>
-                    </div>
-
-                    <div class="product element">
-                        <img alt="Responsive image" src="{% static 'store/images/capture.jpg' %}" />
-                        <div class="detail-first">
-                            <div class="add-to-cart">
-                                <button >Add to cart</button>
-
-                            </div>
-                        </div>
-                        <div class="detail">
-                            <p>Calabash Golden Shea Butter </p>
-                            <p>From $25.00 </p>
-                        </div>
-                    </div>
-            
-               
-                    <div class="product element">
-                        <img alt="Responsive image" src="{% static 'store/images/capture4.jpg' %}" />
-                        <div class="detail-first">
-                            <div class="add-to-cart">
-                                <button >Add to cart</button>
-
-                            </div>
-
-                        </div>
-                        <div class="detail">
-                            <p>Calabash Golden Shea Butter </p>
-                            <p>From $25.00 </p>
-                        </div>
-                    </div>
-
-                    <div class="product element">
-                        <img alt="Responsive image" src="{% static 'store/images/capture5.jpg' %}" />
-                        <div class="detail-first">
-                            <div class="add-to-cart">
-                                <button >Add to cart</button>
-
-                            </div>
-                        </div>
-                        <div class="detail">
-                            <p>Calabash Golden Shea Butter </p>
-                            <p>From $25.00 </p>
-                        </div>
-                    </div>
-
-                    <div class="product element">
-                        <img alt="Responsive image" src="{% static 'store/images/capture6.jpg' %}" />
-                        <div class="detail-first">
-                            <div class="add-to-cart">
-                                <button >Add to cart</button>
-
-                            </div>
-                        </div>
-                        <div class="detail">
-                            <p>Calabash Golden Shea Butter </p>
-                            <p>From $25.00 </p>
-                        </div>
-                    </div>
-                  
-            </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
 <!-- our-best-seller-container -->
     <div class="our-best-seller-container element">
         <div class="heading">
-            <h3>OUR BEST SELLERS
+            <h3>OUR TOP SELLERS
             </h3>
             <p>
-                Experience all-natural skin nourishment with our best-selling shea butter products
+                Discover how to feed your skin naturally with our top-selling shea butter products.
 
             </p>
         </div>
 
         <div class="best-seller-container">
+            {% for slide_product in slide_products %}
             <div class="best-product">
               <div class="img">
-                <img alt="Responsive image" src="{% static 'store/images/capture5.jpg' %}" />
+                <img alt="Responsive image" src="{{ slide_product.image.url }}" />
                 <div class="add-to-cart">
-                    <button >Add to cart</button>
+                    <a class="btn slide-button" href="{% url 'product-info' slide_product.slug %}">{{ slide_product.title }}</a>
 
                 </div>
               </div>
                
             </div>
-          
-            <div class="best-product">
-              <div class="img">
-                <img alt="Responsive image" src="{% static 'store/images/capture4.jpg' %}" />
-                <div class="add-to-cart">
-                    <button >Add to cart</button>
-
-                </div>
-              </div>
-               
-            </div>
-          
-            <div class="best-product">
-              <div class="img">
-                <img alt="Responsive image" src="{% static 'store/images/capture3.jpg' %}" />
-                <div class="add-to-cart">
-                    <button >Add to cart</button>
-
-                </div>
-              </div>
-               
-            </div>
-          
-            <div class="best-product">
-              <div class="img">
-                <img alt="Responsive image" src="{% static 'store/images/capture2.jpg' %}" />
-                <div class="add-to-cart">
-                    <button >Add to cart</button>
-
-                </div>
-              </div>
-               
-            </div>
-          
-            <div class="best-product">
-              <div class="img">
-                <img alt="Responsive image" src="{% static 'store/images/capture.jpg' %}" />
-                <div class="add-to-cart">
-                    <button >Add to cart</button>
-
-                </div>
-              </div>
-               
-            </div>
-          
-            <div class="best-product">
-              <div class="img">
-                <img alt="Responsive image" src="{% static 'store/images/capture5.jpg' %}" />
-                <div class="add-to-cart">
-                    <button >Add to cart</button>
-
-                </div>
-              </div>
-               
-            </div>
-          
+            {% endfor %}
         </div>
     </div>
 
@@ -296,20 +163,25 @@
             </div>
         </div>
         <div class="contact-us-form">
-            <form action="">
+            <form method="POST">
+                {% csrf_token %}
                 <div class="input">
                     <label for="">Name</label> <br>
-                    <input type="text" placeholder="Your Name">
+                    <input type="text" name="full_name" placeholder="Your Name">
                 </div>
                 <div class="input">
                     <label for="">Eamil</label> <br>
-                    <input type="text" placeholder="Your Email">
+                    <input type="text" name="email" placeholder="Your Email">
+                </div>
+                <div class="input">
+                    <label for="">Phone</label> <br>
+                    <input type="number" name="phone" placeholder="Your Phone">
                 </div>
                 <div class="input">
                     <label for="">Message</label> <br>
-                    <textarea name="" id="" placeholder="Your Message To Us"></textarea>
+                    <textarea name="message" placeholder="Your Message To Us"></textarea>
                 </div>
-                <button>Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     </div>

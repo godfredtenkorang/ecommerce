@@ -1,6 +1,7 @@
 asgiref==3.8.1
 certifi==2024.2.2
 charset-normalizer==3.3.2
+crispy-bootstrap4==2024.1
 Django==5.0.5
 django-autoslug==1.9.9
 django-cities-light==3.10.1

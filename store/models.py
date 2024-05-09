@@ -34,6 +34,44 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('product-info', args=[self.slug])
     
+class Home_Product(models.Model):
+    category = models.ForeignKey(Category, related_name='home_product', on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=250)
+    brand = models.CharField(max_length=250, default="un-branded")
+    description = models.TextField(blank=True)
+    slug = models.SlugField(max_length=50)
+    price = models.DecimalField(max_digits=4, decimal_places=2)
+    image = models.ImageField(upload_to="images/home/")
+    date_added = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name_plural = "home products"
+        
+    def __str__(self):
+        return self.title
+    
+    def get_absolute_url(self):
+        return reverse('product-info', args=[self.slug])
+    
+class Slide_Product(models.Model):
+    category = models.ForeignKey(Category, related_name='slide_product', on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=250)
+    brand = models.CharField(max_length=250, default="un-branded")
+    description = models.TextField(blank=True)
+    slug = models.SlugField(max_length=50)
+    price = models.DecimalField(max_digits=4, decimal_places=2)
+    image = models.ImageField(upload_to="images/home/")
+    date_added = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name_plural = "Slide products"
+        
+    def __str__(self):
+        return self.title
+    
+    def get_absolute_url(self):
+        return reverse('product-info', args=[self.slug])
+    
 class Contact(models.Model):
     full_name = models.CharField(max_length=200)
     email = models.EmailField(max_length=250)
