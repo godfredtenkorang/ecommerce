@@ -51,7 +51,7 @@ class Home_Product(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('product-info', args=[self.slug])
+        return reverse('home-product-info', args=[self.slug])
     
 class Slide_Product(models.Model):
     category = models.ForeignKey(Category, related_name='slideproduct', on_delete=models.CASCADE, null=True)
