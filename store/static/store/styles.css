@@ -1076,7 +1076,7 @@ grid-template-columns: 1fr 1fr 1fr;
 
 .slide img {
   width: 100%;
-  height: 70vh;
+  height: 80vh;
   object-fit: cover;
   animation: smoothScale 7s linear forwards;
 }
@@ -1099,7 +1099,7 @@ grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 70vh;
+  height: 80vh;
   padding: 0 5%;
   color: var(--white);
   text-align: center;
@@ -1172,6 +1172,9 @@ grid-template-columns: 1fr 1fr 1fr;
   color: var(--whiteColor);
 }
 
+.slide-show-button i{
+  color: #fff;
+}
 .slide.active {
   display: block;
 }
@@ -1190,60 +1193,27 @@ grid-template-columns: 1fr 1fr 1fr;
 
 
 
-/* contact-us-container" */
-.contact-us-container{
+
+.counter-container{
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
-  
+}
 
-  
-}
-.contact-us-form{
-  width: 100%;
-  max-width: 700px;
- 
-}
-.contact-us-container form input{
-  width: 100%;
-  height: 7vh;
 
-  border: solid 2px #994D1C;
-  padding: 10px;
-  margin: 2% 0;
-}
-.contact-us-container button{
-  width: 100%;
-  height: 7vh;
-  
-  border: solid 2px #994D1C;
-  padding: 5px;
-  margin: 2% 0;
-}
-.contact-us-form textarea{
-  width: 100%;
-  height: 20vh;
-  resize: none;
 
-  border: solid 2px #994D1C;
-  padding: 10px;
-  margin: 2% 0;
-}
-.contact{
+.counter{
   display: flex;
   flex-direction: column;
-  float: var(--mainColor);
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 600px;
-  min-height: 45vh;
-  background-color: #6B240C;
-  text-align: center;
-  padding: 10px;
+  max-width: 250px;
+  height: 20vh;
+  border: solid 3px;
+  border-radius: 25px;
 }
-
-
 
 .text-slide .text h5 {
  font-size: 1.5rem;
@@ -1272,8 +1242,6 @@ grid-template-columns: 1fr 1fr 1fr;
       opacity: 0;
   }
 }
-
-
 
 
 
