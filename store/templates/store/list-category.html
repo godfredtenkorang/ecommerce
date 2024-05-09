@@ -23,12 +23,13 @@
         <!-- for product in products -->
         {% for product in products %}
         <div class="col-lg-3 col-md-4 col-sm-12 pb-3 d-flex justify-content-center">
-          <div class="card" style="width: 17rem; height: 23rem">
-            <img class="card-img-top" src="{{ product.image.url }}" height="200px" width="100%" alt="Card image cap">
-            <div class="card-body">
-              <a class="text-info text-decoration-none h3" href="{% url 'product-info' product.slug %}">{{product.title | capfirst}}</a>
-              <br>
-              <div class="d-flex">
+          <div class="card" style="width: 17rem; height: 28rem">
+            <img class="card-img-top" src="{{ product.image.url }}" height="300px" width="100%" alt="Card image cap">
+            <div class="card-body text-center headings">
+              <h4>
+                <a class="text-info text-decoration-none h3" href="{% url 'product-info' product.slug %}">{{product.title | capfirst}}</a>
+              </h4>
+              <div>
                 
                 <p class="card-text">${{ product.price }}</p>
                 <!-- <p><button style="border: none; background:none;" class="add-to-wishlist" data-product-item="product.id">
