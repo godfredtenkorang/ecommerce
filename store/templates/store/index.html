@@ -1,13 +1,13 @@
 {% extends "./base.html" %} {% load static %} {% block content %}
 <style>
-    .contacts {
+    .counter-container{
         background-repeat: no-repeat;
         width: 100%;
-        min-height: 60vh;
+        min-height: 40vh;
         background-position: center;
         background-size: cover;
         color: #fff;
-        padding: 3%;
+   
         background-attachment: fixed;
         background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
         url("{% static '/store/images/image1.jpeg' %}");
@@ -19,7 +19,7 @@
         <!-- Slide items with images and text -->
         <div class="slide">
             <!-- Image with alt text for SEO -->
-            <img alt="Responsive image" src="{% static 'store/images/image5.jpeg' %}" />
+            <img alt="Responsive image" src="{% static 'store/images/banner.jpg' %}" />
             <div class="slid-show-text">
                 <!-- Title and description -->
                 <h1>Get Better Hold Experience</h1>
@@ -144,36 +144,32 @@
 
 
     <!-- contact us -->
-    <section class="contacts element">
+    
 
 
 
-        <div class="contact-us-container">
-            <div class="contact">
-                <div class="banner-content">
-                    <div class="text-slide">
-                        <div class="text">
-                            <h5>WELCOME TO THE PREMIER <br> ONLINE <span>POMADE SHOP</span></h5>
-                            <p>Welcome to our virtual pomade emporium! Our mission is to redefine your grooming
-                                experience by providing a curated selection of premium pomade products, ensuring your
-                                style always stands out.</p>
-                        </div>
-                        <div class="text">
-                            <h5>ENHANCE YOUR LOOK WITH <br> OUR EXCLUSIVE <span>POMADE COLLECTION</span></h5>
-                            <p>Discover the ultimate in hair styling with our handpicked <br> range of pomades. From
-                                classic to modern, our selection caters to every style and preference, guaranteeing a
-                                look that's uniquely yours.</p>
-                        </div>
-                        <div class="text">
-                            <h5>GET IN TOUCH FOR EXPERT POMADE ADVICE</h5>
-                            <p>Whether you're new to pomade or a seasoned enthusiast, <br> our team of experts is here
-                                to assist you. Contact us today for personalized recommendations and grooming tips to
-                                perfect your style.</p>
-                        </div>
-                    </div>
+    
+            <!-- counter -->
+            <div class="counter-container">
+                <div class="counter">
+                    <p >50 +</p>
+                    <p>Happy Clients</p>
                 </div>
+                <div class="counter">
+                    <p >300 +</p>
+                    <p>Products Sold</p>
+                </div>
+                <div class="counter">
+                    <p >20 +</p>
+                    <p>Five-Star Reviews</p>
+                </div>
+                <div class="counter">
+                    <p >50 +</p>
+                    <p>Satisfied Customers</p>
+                </div>
+                
             </div>
-            <div class="contact-us-form">
+            <!-- <div class="contact-us-form">
                 <form method="POST">
                     {% csrf_token %}
                     <div class="input">
@@ -194,10 +190,8 @@
                     </div>
                     <button type="submit">Submit</button>
                 </form>
-            </div>
-        </div>
-
-    </section>
+            </div> -->
+    
 </main>
 <script>
 
@@ -274,5 +268,7 @@
     }
 
     showslideText()
+
+
 </script>
 {% endblock %}
