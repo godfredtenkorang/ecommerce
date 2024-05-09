@@ -112,7 +112,7 @@ def home_product_info(request, home_slug):
     except:
         return redirect('home-product-info')
     context = {
-        'product': homeproduct,
+        'homeproduct': homeproduct,
         'reviews': reviews,
         'review_counts': review_counts,
         'title': 'product info'
