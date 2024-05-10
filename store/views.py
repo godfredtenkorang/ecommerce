@@ -104,7 +104,7 @@ def product_info(request, product_slug):
     return render(request, 'store/product-info.html', context)
 
 def home_product_info(request, homeproduct_slug):
-    homeproduct = get_object_or_404(HomeProduct, slug=homeproduct_slug)
+    homeproduct = HomeProduct.objects.get(slug=homeproduct_slug)
     try:
         # product_review = Product.objects.get(slug=product_slug)
         reviews = Review.objects.filter(product=homeproduct)
