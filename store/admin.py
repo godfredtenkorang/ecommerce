@@ -23,9 +23,17 @@ class CategoryAdmin(admin.ModelAdmin):
   
 admin.site.register(Category, CategoryAdmin)
 
-
-admin.site.register(HomeProduct)
-admin.site.register(SlideProduct)
+@admin.register(HomeProduct)
+class HomeProductAdmin(admin.ModelAdmin):
+    list_display = ['id', 'category', 'title', 'brand', 'description', 'price', 'image']
+    readonly_fields = ['date_added', ]
+    
+@admin.register(SlideProduct)
+class SlideProductAdmin(admin.ModelAdmin):
+    list_display = ['id', 'category', 'title', 'brand', 'description', 'price', 'image']
+    readonly_fields = ['date_added', ]
+# admin.site.register(HomeProduct)
+# admin.site.register(SlideProduct)
     
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
