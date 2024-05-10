@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . models import Category, Product, Contact, Review, Home_Product, Slide_Product
+from . models import Category, Product, Contact, Review, HomeProduct, SlideProduct
 from django.shortcuts import get_object_or_404
 from django.db.models import Q # New
 # from django.views.generic import DetailView
@@ -9,8 +9,8 @@ from django.contrib.auth.decorators import login_required
 # from django.urls import reverse
 
 def index(request):
-    home_products = Home_Product.objects.all()
-    slide_products = Slide_Product.objects.all()
+    home_products = HomeProduct.objects.all()
+    slide_products = SlideProduct.objects.all()
     if request.method == 'POST':
         full_name = request.POST['full_name']
         email = request.POST['email']
@@ -104,15 +104,15 @@ def product_info(request, product_slug):
     return render(request, 'store/product-info.html', context)
 
 def home_product_info(request, homeproduct_slug):
-    home_product = get_object_or_404(Home_Product, slug=homeproduct_slug)
+    homeproduct = get_object_or_404(HomeProduct, slug=homeproduct_slug)
     try:
         # product_review = Product.objects.get(slug=product_slug)
-        reviews = Review.objects.filter(home_product=home_product)
-        review_counts = Review.objects.all().filter(home_product=home_product).count()
+        reviews = Review.objects.filter(product=homeproduct)
+        review_counts = Review.objects.all().filter(product=homeproduct).count()
     except:
         return redirect('home-product-info')
     context = {
-        'home_product': home_product,
+        'homeproduct': homeproduct,
         'reviews': reviews,
         'review_counts': review_counts,
         'title': 'product info'

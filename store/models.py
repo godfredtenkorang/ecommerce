@@ -34,8 +34,8 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('product-info', args=[self.slug])
     
-class Home_Product(models.Model):
-    category = models.ForeignKey(Category, related_name='home_product', on_delete=models.CASCADE, null=True)
+class HomeProduct(models.Model):
+    category = models.ForeignKey(Category, related_name='homeproduct', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=250)
     brand = models.CharField(max_length=250, default="un-branded")
     description = models.TextField(blank=True)
@@ -53,7 +53,7 @@ class Home_Product(models.Model):
     def get_absolute_url(self):
         return reverse('home-product-info', args=[self.slug])
     
-class Slide_Product(models.Model):
+class SlideProduct(models.Model):
     category = models.ForeignKey(Category, related_name='slideproduct', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=250)
     brand = models.CharField(max_length=250, default="un-branded")
