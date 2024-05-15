@@ -26,4 +26,8 @@ urlpatterns = [
     # FAQ
     path('faq/', views.faq, name='faq'),
     
+    path('our-story/', views.our_story, name='our-story'),
+    
+    path('our-News/', views.our_news, name='our-news'),
+    
 ]

@@ -195,3 +195,17 @@ def faq(request):
 
 def error_404(request, exception):
     return render(request, 'store/404.html')
+
+
+def our_story(request):
+    context = {
+        'title': 'Our Story'
+    }
+    return render(request, 'store/our-story.html', context)
+
+
+def our_news(request):
+    context = {
+        'title': 'Our News'
+    }
+    return render(request, 'store/our-news.html', context)
