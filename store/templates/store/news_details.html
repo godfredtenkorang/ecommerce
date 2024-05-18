@@ -94,7 +94,7 @@
                             {% endfor %}
                         </div>
         
-                        <form class="pb-4" method="POST" action="{% url 'our-news-detail' new.id %}">
+                        <form class="pb-4" method="POST" action="{% url 'our-news-detail' pk=blog.id %}">
                             {% csrf_token %}
                             <div class="form-group pt-4">
                                 {{ form }}

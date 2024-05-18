@@ -13,15 +13,15 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12 pb-3 d-flex justify-content-center">
-                {% for new in news %}
+                {% for blog in news %}
                 <div class="card" style="width: 17rem; height: 30rem; border:none;">
-                    <img class="card-img-top" src="{{ new.image1.url }}" height="300px" alt="Card image cap">
+                    <img class="card-img-top" src="{{ blog.image1.url }}" height="300px" alt="Card image cap">
                     <div class="card-body headings">
                         <h4>
-                            <a class="text-info text-decoration-none" href="{% url 'our-news-detail' new.id %}">{{ new.title1 }}</a>
+                            <a class="text-info text-decoration-none" href="{% url 'our-news-detail' blog.id %}">{{ new.title1 }}</a>
                         </h4>
-                        <a href="{% url 'our-news-detail' new.id %}">Read more</a>
-                        <p class="card-text"><small class="text-muted">Last updated {{ new.date_posted|date:"j M, o" }}</small></p>
+                        <a href="{% url 'our-news-detail' blog.id %}">Read more</a>
+                        <p class="card-text"><small class="text-muted">Last updated {{ blog.date_posted|date:"j M, o" }}</small></p>
                     </div>
                 </div>
                 {% endfor %}

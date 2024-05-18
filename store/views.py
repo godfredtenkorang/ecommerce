@@ -226,7 +226,7 @@ class NewsDetailView(DetailView):
             form.save()
             
             return redirect(reverse("our-news-detail", kwargs={
-                'pk': post.id
+                'pk': post.pk
             }))
     
     def get_context_data(self, **kwargs):
