@@ -205,14 +205,6 @@ def our_story(request):
     return render(request, 'store/our-story.html', context)
 
 
-# def our_news(request):
-#     news = News.objects.all()
-#     context = {
-#         'news': news,
-#         'title': 'Our News'
-#     }
-#     return render(request, 'store/our-news.html', context)
-
 class NewsListView(ListView):
     model = News
     template_name = 'store/our-news.html'
@@ -246,13 +238,3 @@ class NewsDetailView(DetailView):
             'post_comments_count': post_comments_count
         })
         return context
-
-# def our_news_detail(request):
-    
-
-    
-#     context = {
-
-#         'title': 'Our News'
-#     }
-#     return render(request, 'store/news-details.html', context)

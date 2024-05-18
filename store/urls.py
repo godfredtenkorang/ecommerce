@@ -32,6 +32,5 @@ urlpatterns = [
 
     path('our-news/', NewsListView.as_view(), name='our-news'),
     path('our-news/<int:pk>/', NewsDetailView.as_view(), name='our-news-detail'),
-    # path('our-news-details/', views.our_news_detail, name='our-news-detail'),
     
 ]
