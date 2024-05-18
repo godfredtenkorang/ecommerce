@@ -18,9 +18,9 @@
                     <img class="card-img-top" src="{{ new.image1.url }}" height="300px" alt="Card image cap">
                     <div class="card-body headings">
                         <h4>
-                            <a class="text-info text-decoration-none" href="{% url 'our-news-detail' new.slug %}">{{ new.title1 }}</a>
+                            <a class="text-info text-decoration-none" href="{% url 'our-news-detail' new.pk %}">{{ new.title1 }}</a>
                         </h4>
-                        <a href="{% url 'our-news-detail' new.slug %}">Read more</a>
+                        <a href="{% url 'our-news-detail' new.pk %}">Read more</a>
                         <p class="card-text"><small class="text-muted">Last updated {{ new.date_posted|date:"j M, o" }}</small></p>
                     </div>
                 </div>
