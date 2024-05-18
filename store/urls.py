@@ -30,7 +30,7 @@ urlpatterns = [
     path('our-story/', views.our_story, name='our-story'),
     
 
-    path('our-news/', NewsListView.as_view(), name='our-news'),
-    path('our-news/<int:pk>/', NewsDetailView.as_view(), name='our-news-detail'),
+    path('news/', NewsListView.as_view(), name='our-news'),
+    path('news/<int:pk>/', NewsDetailView.as_view(), name='our-news-detail'),
     
 ]
