@@ -237,8 +237,8 @@ class NewsDetailView(DetailView):
             }))
     
     def get_context_data(self, **kwargs):
-        post_comments_count = Comment.objects.all().filter(post=self.object.slug).count()
-        post_comments = Comment.objects.all().filter(post=self.object.slug)
+        post_comments_count = Comment.objects.all().filter(post=self.object.id).count()
+        post_comments = Comment.objects.all().filter(post=self.object.id)
         context = super().get_context_data(**kwargs)
         context.update({
             'form': self.form,

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Category, Product, Contact, Review, HomeProduct, SlideProduct, News
+from . models import Category, Product, Contact, Review, HomeProduct, SlideProduct, News, Comment
 
 
 # @admin.register(Category)
@@ -43,10 +43,11 @@ class ReviewAdmin(admin.ModelAdmin):
 # admin.site.register(Review)
 
 admin.site.register(News)
+prepopulated_fields = {"slug": ("title1",)}
 
-# @admin.register(Comment)
-# class ContactAdmin(admin.ModelAdmin):
-#     list_display = ['id', 'userbane', 'email', 'phone', 'message']
+@admin.register(Comment)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'date', 'content', 'post']
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
