@@ -213,6 +213,7 @@ class NewsListView(ListView):
 
 class NewsDetailView(DetailView):
     model = News
+    template_name = 'store/news_details.html'
     
     form = CommentForm
     
