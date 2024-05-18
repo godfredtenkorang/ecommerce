@@ -226,12 +226,12 @@ class NewsDetailView(DetailView):
             form.save()
             
             return redirect(reverse("our-news-detail", kwargs={
-                'pk': post.pk
+                'slug': post.slug
             }))
     
     def get_context_data(self, **kwargs):
-        post_comments_count = Comment.objects.all().filter(post=self.object.id).count()
-        post_comments = Comment.objects.all().filter(post=self.object.id)
+        post_comments_count = Comment.objects.all().filter(post=self.object.slug).count()
+        post_comments = Comment.objects.all().filter(post=self.object.slug)
         context = super().get_context_data(**kwargs)
         context.update({
             'form': self.form,
