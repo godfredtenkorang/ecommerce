@@ -12,6 +12,18 @@
         background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
         url("{% static '/store/images/image1.jpeg' %}");
     }
+
+    .counter-container1{
+        background-repeat: no-repeat;
+        width: 100%;
+        min-height: 40vh;
+        background-position: center;
+        background-size: cover;
+        color: #fff;
+        background-attachment: fixed;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url("{% static '/store/images/image6.jpeg' %}");
+    }
 </style>
 <main>
     <!-- slide shoqw -->
@@ -38,9 +50,9 @@
             <img alt="Responsive image" src="{% static 'store/images/image7.jpeg' %}" />
             <div class="slid-show-text">
                 <!-- Title and description -->
-                <h1>Discover Our Premium Pomade</h1>
+                <h1>SHEA BUTTER IS GOOD FROM HEAD TO TOE</h1>
 
-                <p>Discover the best styling option available.</p>
+                <p>Freshly handmade in different products that you’ll love.</p>
                 <!-- Links -->
                 <div class="links-on-slide-show">
                     <a href="">Shop Now</a>
@@ -114,8 +126,9 @@
             </div>
         </div>
     </div>
+    <br><br><br><br>
     <!-- our-best-seller-container -->
-    <div class="our-best-seller-container element">
+    <!-- <div class="our-best-seller-container element">
         <div class="heading">
             <h3>OUR TOP SELLERS
             </h3>
@@ -139,15 +152,7 @@
             </div>
             {% endfor %}
         </div>
-    </div>
-
-
-
-    <!-- contact us -->
-    
-
-
-
+    </div> -->
     
             <!-- counter -->
             <div class="counter-container element">
@@ -169,6 +174,54 @@
                 </div>
                 
             </div>
+            <br><br>
+
+            <div class="heading">
+                <h3>LOVE YOUR SKIN & HAIR FROM THE ROOTS</h3>
+                <p>
+                    Cleanse Detox Moisturize
+                </p>
+                <br><br>
+                <div class="counter-container1 element">
+                    <div class="container">
+                        <h3 class="text-center p-5">Black Soaps and black soaps shampoos</h3>
+                        <h4>
+                            Start your routine with clean, scalp healthy, healthy skin, color safe shampoos. Our liquid shampoos enriched in coconut
+                            oils, palm kernel oils Shea butter, Cocoa Pods and honey helps with eczema, dandruffs and scalp dermatitis, and cleanse
+                            without stripping off your hair.
+                        </h4>
+                        
+                    </div>
+                </div>
+            </div>
+            
+
+            
+
+            <!-- <div class="our-best-seller-container element">
+                <div class="heading">
+                    <h3>SHEA BUTTER IS GOOD FROM HEAD TO TOE</h3>
+                    <p>
+                        Freshly handmade in different products that you’ll love.
+                    </p>
+                </div>
+            
+                <div class="best-seller-container">
+                    {% for slideproduct in slide_products %}
+                    <div class="best-product">
+                        <div class="img">
+                            <img alt="Responsive image" src="{{ slideproduct.image.url }}" />
+                            <div class="add-to-cart">
+                                <a class="btn slide-button"
+                                    href="{% url 'slide-product-info' slideproduct.slug %}">{{slideproduct.title }}</a>
+            
+                            </div>
+                        </div>
+            
+                    </div>
+                    {% endfor %}
+                </div>
+            </div> -->
             <!-- <div class="contact-us-form">
                 <form method="POST">
                     {% csrf_token %}
