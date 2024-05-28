@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . models import Category, Product, Contact, Review, HomeProduct, SlideProduct, News, Comment
+from . models import Category, Product, Contact, Review, HomeProduct, SlideProduct, News, Comment, ReviewComment
 from django.shortcuts import get_object_or_404
 from django.db.models import Q # New
 from django.views.generic import ListView, DetailView
@@ -7,7 +7,7 @@ from .forms import ReviewForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .forms import CommentForm
+from .forms import CommentForm, ReplyForm
 
 def index(request):
     home_products = HomeProduct.objects.all()
@@ -93,12 +93,14 @@ def product_info(request, product_slug):
     try:
         # product_review = Product.objects.get(slug=product_slug)
         reviews = Review.objects.filter(product=product)
+        review_reply = ReviewComment.objects.filter(reviews=reviews)
         review_counts = Review.objects.all().filter(product=product).count()
     except:
         return redirect('product-info')
     context = {
         'product': product,
         'reviews': reviews,
+        'review_reply':review_reply,
         'review_counts': review_counts,
         'title': 'product info'
     }
@@ -179,6 +181,28 @@ def review_rate(request, product_id):
         # review = Review(user=user, product=myproduct, comment=comment, rate=rate)
         # review.save()
         # return redirect('product-info', slug=prod_slug)
+        
+def review_replies(request, review_id):
+    if request.method == "POST":
+        url = request.META.get('HTTP_REFERER')
+        try:
+            replies = ReviewComment.objects.get(user__id=request.user.id, review__id=review_id)
+            form = ReplyForm(request.POST, instance=replies)
+            form.save()
+            messages.success(request, "Thank you! Your review has been updated")
+            return redirect(url)
+        except ReviewComment.DoesNotExist:
+            form = ReplyForm(request.POST)
+            if form.is_valid():
+                data = ReviewComment()
+                data.comment = form.cleaned_data['comment']
+                data.review_id = review_id
+                data.user_id = request.user.id
+                data.save()
+                messages.success(
+                    request, "Thank you! Your review has been submitted")
+                return redirect(url)
+    
         
 
 def our_policy(request):

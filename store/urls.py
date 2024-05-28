@@ -16,6 +16,7 @@ urlpatterns = [
     
     # Review
     path('review/<int:product_id>/', views.review_rate, name='review'),
+    path('review/<int:review_id>/', views.review_replies, name='review-reply'),
     
     # Contact
     

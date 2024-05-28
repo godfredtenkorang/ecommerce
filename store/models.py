@@ -116,6 +116,15 @@ class Review(models.Model):
     def __str__(self):
         return self.user.username
     
+class ReviewComment(models.Model):
+    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='replies')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    
+    
+    
     
 class News(models.Model):
     title1 = models.CharField(max_length=200)
