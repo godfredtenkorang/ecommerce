@@ -122,7 +122,8 @@ class ReviewComment(models.Model):
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     
-    
+    def __str__(self):
+        return f"Reply to {self.user}"
     
     
     
