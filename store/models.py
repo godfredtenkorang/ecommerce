@@ -114,7 +114,7 @@ class Review(models.Model):
         verbose_name_plural = "reviews"
     
     def __str__(self):
-        return self.user.username
+        return self.product.title
     
 class ReviewComment(models.Model):
     review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='replies')
