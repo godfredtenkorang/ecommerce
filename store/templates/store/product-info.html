@@ -173,7 +173,7 @@
                     <form id="reply-{{ review.id }}" style="display: none;" method="POST" action="{% url 'review' review.id %}">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <input type="hidden" name="parent_id" value="{{ review.id }}">
+                        <input type="hidden" name="comment" value="{{ review.id }}">
                         <button type="submit">Submit</button>
                     </form>
                     {% for reply in replies.replies.all %}
