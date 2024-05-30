@@ -190,7 +190,7 @@ def review_replies(request, review_id):
             form = ReplyForm(request.POST, instance=replies)
             form.save()
             messages.success(request, "Thank you! Your review has been updated")
-            return redirect(url)
+            return redirect('review')
         except ReviewComment.DoesNotExist:
             form = ReplyForm(request.POST)
             if form.is_valid():
@@ -201,7 +201,7 @@ def review_replies(request, review_id):
                 data.save()
                 messages.success(
                     request, "Thank you! Your review has been submitted")
-                return redirect(url)
+                return redirect('review')
     
         
 
