@@ -174,7 +174,7 @@
                         {% csrf_token %}
                         {{ form.as_p }}
                         <!-- <textarea value="{{ review.id }}" placeholder="Write your reply here..." class="form-control" name="parent_id" id="" rows="2"></textarea> -->
-                        <input type="hidden" name="parent_id" value="{{ review.id }}">
+                        <input type="" name="parent_id" value="{{ review.id }}">
                         <button type="submit">Submit</button>
                     </form>
                     {% for reply in replies.replies.all %}
