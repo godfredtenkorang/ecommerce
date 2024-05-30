@@ -93,14 +93,14 @@ def product_info(request, product_slug):
     try:
         # product_review = Product.objects.get(slug=product_slug)
         reviews = Review.objects.filter(product=product)
-        # review_reply = ReviewComment.objects.filter(reviews=reviews)
+        replies = ReviewComment.objects.filter(reviews=reviews)
         review_counts = Review.objects.all().filter(product=product).count()
     except:
         return redirect('product-info')
     context = {
         'product': product,
         'reviews': reviews,
-        # 'review_reply':review_reply,
+        'replies':replies,
         'review_counts': review_counts,
         'title': 'product info'
     }

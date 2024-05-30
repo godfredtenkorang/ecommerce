@@ -169,6 +169,20 @@
                     <i class="fa fa-star {% if review.rate > 0 %} checked {% endif %}" style="float: right;"></i>
                     </div>
                     <br>
+                    <a href="" onclick="document.getElementById('reply-{{ review.id }}').style.display='block'">Reply</a>
+                    <form id="reply-{{ review.id }}" style="display: none;" method="POST" action="{% url 'review' review.id %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="hidden" name="parent_id" value="{{ review.id }}">
+                        <button type="submit">Submit</button>
+                    </form>
+                    {% for reply in replies.replies.all %}
+                        <div style="margin-left: 2em;">
+                            <h6 class="subheading" itemprop="itemReviewed">{{ review.comment }}</h6>
+                            <p class="author" itemprop="author"><small>by:</small> {{ review.user }}</p>
+
+                        </div>
+                    {% endfor %}
                     <br>
                     {% endfor %}
 

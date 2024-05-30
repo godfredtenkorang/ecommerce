@@ -121,9 +121,10 @@ class ReviewComment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    parent = models.ForeignKey('self', null=True, blank=True, related_name='replies', on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"Reply to {self.user}"
+        return f"Comment by {self.user.username} on {self.review.product}"
     
     
     
