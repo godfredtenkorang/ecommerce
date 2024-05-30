@@ -169,11 +169,11 @@
                     <i class="fa fa-star {% if review.rate > 0 %} checked {% endif %}" style="float: right;"></i>
                     </div>
                     <br>
-                    <a href="" onclick="document.getElementById('reply-{{ review.id }}').style.display='block'">Reply</a>
-                    <form id="reply-{{ review.id }}" style="display: none;" method="POST" action="{% url 'review' review.id %}">
+                    <a href="#" onclick="document.getElementById('reply-{{ review.id }}').style.display='block'">Reply</a>
+                    <form id="reply-{{ review.id }}" style="display: none;" method="post" action="{% url 'review' review.id %}">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <textarea value="{{ review.id }}" placeholder="Write your reply here..." class="form-control" name="comment" id="" rows="2"></textarea>
+                        <textarea value="{{ review.id }}" placeholder="Write your reply here..." class="form-control" name="parent_id" id="" rows="2"></textarea>
                         <!-- <input type="hidden" name="comment" value="{{ review.id }}"> -->
                         <button type="submit">Submit</button>
                     </form>
