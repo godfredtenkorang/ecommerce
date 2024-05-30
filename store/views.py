@@ -183,25 +183,36 @@ def review_rate(request, product_id):
         # return redirect('product-info', slug=prod_slug)
         
 def review_replies(request, review_id):
-    if request.method == "POST":
-        url = request.META.get('HTTP_REFERER')
-        try:
-            replies = ReviewComment.objects.get(user__id=request.user.id, review__id=review_id)
-            form = ReplyForm(request.POST, instance=replies)
+    comment = ReviewComment.objects.get(user__id=request.user.id, review__id=review_id)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=comment)
+        if form.is_valid():
             form.save()
             messages.success(request, "Thank you! Your review has been updated")
-            return redirect('review')
-        except ReviewComment.DoesNotExist:
-            form = ReplyForm(request.POST)
-            if form.is_valid():
-                data = ReviewComment()
-                data.comment = form.cleaned_data['comment']
-                data.review_id = review_id
-                data.user_id = request.user.id
-                data.save()
-                messages.success(
-                    request, "Thank you! Your review has been submitted")
-                return redirect('review')
+            return redirect('review', review_id=comment.review.id)
+    else:
+        form = ReviewForm(initial=comment)
+        
+    return render(request, 'store/product-info.html', {'form': form})
+    # if request.method == "POST":
+    #     url = request.META.get('HTTP_REFERER')
+    #     try:
+    #         replies = ReviewComment.objects.get(user__id=request.user.id, review__id=review_id)
+    #         form = ReplyForm(request.POST, instance=replies)
+    #         form.save()
+    #         messages.success(request, "Thank you! Your review has been updated")
+    #         return redirect('review')
+    #     except ReviewComment.DoesNotExist:
+    #         form = ReplyForm(request.POST)
+    #         if form.is_valid():
+    #             data = ReviewComment()
+    #             data.comment = form.cleaned_data['comment']
+    #             data.review_id = review_id
+    #             data.user_id = request.user.id
+    #             data.save()
+    #             messages.success(
+    #                 request, "Thank you! Your review has been submitted")
+    #             return redirect('review')
     
         
 
