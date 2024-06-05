@@ -158,9 +158,14 @@ def review_rate(request, product_id):
         try:
             reviews = Review.objects.get(user__id=request.user.id, product__id=product_id)
             form = ReviewForm(request.POST, instance=reviews)
-            form.save()
-            messages.success(request, "Thank you! Your review has been updated")
-            return redirect(url)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Thank you! Your review has been updated")
+                return redirect(url)
+            else:
+                messages.error(request, 'Please send your review again.')
+                return render(request, 'store/product-info.html', {'form':form})
+        
         except Review.DoesNotExist:
             form = ReviewForm(request.POST)
             if form.is_valid():
@@ -173,6 +178,12 @@ def review_rate(request, product_id):
                 messages.success(
                     request, "Thank you! Your review has been submitted")
                 return redirect(url)
+            else:
+                messages.error(request, 'Please send your review again.')
+                return render(request, 'store/product-info.html', {'form':form})
+    else:
+        form = ReviewForm()
+    return render(request, 'store/product-info.html', {'form': form})
         # prod_slug = request.GET.get('prod_slug')
         # myproduct = Product.objects.get(slug=prod_slug)
         # comment = request.POST('comment')
