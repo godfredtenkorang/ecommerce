@@ -1323,10 +1323,10 @@ flex-wrap: wrap;
     background: #f0f0f0;
 }
 
-.product-tumb img {
+/* .product-tumb img {
     max-width: 100%;
     max-height: 100%;
-}
+} */
 
 .product-details {
     padding: 30px;
@@ -1352,7 +1352,7 @@ flex-wrap: wrap;
 }
 
 .product-details h4 a:hover {
-    color: #fbb72c;
+    color: #6B240C;
 }
 
 .product-details p {
@@ -1375,7 +1375,7 @@ flex-wrap: wrap;
 
 .product-price {
     font-size: 18px;
-    color: #fbb72c;
+    color: #6B240C;
     font-weight: 600;
 }
 
@@ -1400,5 +1400,5 @@ flex-wrap: wrap;
 }
 
 .product-links a:hover {
-    color: #fbb72c;
+    color: #6B240C;
 }
