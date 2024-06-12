@@ -70,6 +70,25 @@
 
             <div class="row">
                 {% for product in all_products %}
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 pb-3 d-flex justify-content-center"></div>
+                <div class="product-card" data-aos="fade-up">
+                    <div class="badge">Hot</div>
+                    <div class="product-tumb">
+                        <img src="{{ product.image.url }}" alt="alima">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-catagory">{{ product.brand }}</span>
+                        <h4><a href="{% url 'product-info' product.slug %}">{{product.title | capfirst }}</a></h4>
+                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p> -->
+                        <div class="product-bottom-details">
+                            <div class="product-price">${{ product.price }}</div>
+                            
+                        </div>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+                <!-- {% for product in all_products %}
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 pb-3 d-flex justify-content-center">
                     <div class="card" style="width: 17rem; height: 28rem" data-aos="fade-up">
                         <img class="card-img-top" src="{{ product.image.url }}" height="300px" width="100%"
@@ -79,14 +98,14 @@
                                 <a class="text-info text-decoration-none" href="{% url 'product-info' product.slug %}">{{product.title | capfirst }}</a>
                             </h4>
                             <div>
-                                <p class="card-text">${{ product.price }}</p>
+                                <p class="card-text">${{ product.price }}</p> -->
                                 <!-- <p><button style="border: none; background:none;" class="add-to-wishlist"
                                         data-product-item="product.id"> &nbsp;<i class="fa fa-heart"
                                             style="fill: aqua;"></i></button></p> -->
-                            </div>
+                            <!-- </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="col">
         <div class="card">
             <img class="img-fluid" alt="Responsive image" src="{{ product.image.
@@ -100,7 +119,7 @@
             </div>
         </div>
     </div> -->
-                {% endfor %}
+                <!-- {% endfor %} -->
 
             </div>
         </div>
