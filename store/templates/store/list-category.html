@@ -22,18 +22,19 @@
 
         <!-- for product in products -->
         {% for product in products %}
-        <div class="col-lg-3 col-md-4 col-sm-12 pb-3 d-flex justify-content-center">
-          <div class="card" style="width: 17rem; height: 28rem">
-            <img class="card-img-top" src="{{ product.image.url }}" height="300px" width="100%" alt="Card image cap">
-            <div class="card-body text-center headings">
-              <h4>
-                <a class="text-info text-decoration-none" href="{% url 'product-info' product.slug %}">{{product.title | capfirst}}</a>
-              </h4>
-              <div>
-                
-                <p class="card-text">${{ product.price }}</p>
-                <!-- <p><button style="border: none; background:none;" class="add-to-wishlist" data-product-item="product.id">
-                    &nbsp;<i class="fa fa-heart" style="fill: aqua;"></i></button></p> -->
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 pb-3 d-flex justify-content-center">
+          <div class="product-card" data-aos="fade-up">
+            <div class="badge">Hot</div>
+            <div class="product-tumb">
+              <img src="{{ product.image.url }}" height="300px" width="100%" alt="alima">
+            </div>
+            <div class="product-details">
+              <span class="product-catagory">{{ product.brand }}</span>
+              <h4><a href="{% url 'product-info' product.slug %}">{{product.title | capfirst }}</a></h4>
+              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p> -->
+              <div class="product-bottom-details">
+                <div class="product-price">${{ product.price }}</div>
+        
               </div>
             </div>
           </div>
