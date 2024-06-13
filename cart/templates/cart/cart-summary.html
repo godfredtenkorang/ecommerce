@@ -6,142 +6,143 @@
 {% block content %}
 
 <main class="pt-5" data-aos="fade-down">
-    
-    <div class="container">
-      
-      <h1 class="h5"> Shopping cart </h1>
 
-	<hr>
-  {% for item in cart %}
-  {% with product=item.product %}
-      
-      <br>
+  <div class="container">
 
-      <div class="row mb-4 border product-item">
-        
-        <!-- <div class="col-md-3 col-lg-2 order-md-first bg-light">
+    <h1 class="h5"> Shopping cart </h1>
+
+    <hr>
+    {% for item in cart %}
+    {% with product=item.product %}
+
+    <br>
+
+    <div class="row mb-4 border product-item">
+
+      <!-- <div class="col-md-3 col-lg-2 order-md-first bg-light">
         
             <img class="img-fluid mx-auto d-block" width="200px" alt="Responsive image" src="{{ product.image.url }}">
         
         </div> -->
-        <div class="col-md-4 col-lg-2">
-        
-        
-          <!-- Product image -->
-          <div class="card">
-            <img height="350px" alt="Responsive image" src="{{ product.image.url }}">
+      <div class="col-md-4 col-lg-2">
+
+
+        <!-- Product image -->
+        <div class="card" data-aos="fade-up">
+          <img height="350px" alt="Responsive image" src="{{ product.image.url }}">
+        </div>
+      </div>
+
+
+      <div class="col-md-8 col-lg-10 ps-md-3 ps-lg-10" data-aos="fade-up">
+
+        <a href="{{product.get_absolute_url}}" class="text-info text-reset"> <!-- Product get absolute url -->
+
+          <h1 class="h3 pt-2 text-info">{{ product.title }} <!-- Product title --> </h1>
+
+        </a>
+
+        <div class="border">
+
+          <div class="col border-bottom">
+
+            <div class="row p-3">
+
+              <div class="col-6"> Price: </div>
+
+              <div class="col-6 text-end"><span class="h6 fw-bold">$ {{ product.price|mul:item.qty }}</span></div>
+
+            </div>
+
           </div>
-        </div>
 
-        
-        <div class="col-md-8 col-lg-10 ps-md-3 ps-lg-10">
-          
-          <a href="{{product.get_absolute_url}}" class="text-info text-reset"> <!-- Product get absolute url -->
-          
-            <h1 class="h3 pt-2 text-info">{{ product.title }} <!-- Product title --> </h1>
-          
-          </a>
-          
-          <div class="border">
-            
-            <div class="col border-bottom">
-              
-                <div class="row p-3">
-              
-                <div class="col-6"> Price: </div>
-              
-                <div class="col-6 text-end"><span class="h6 fw-bold">$ {{ product.price|mul:item.qty }}</span></div>
-            
+          <div class="col">
+
+            <div class="row p-3">
+
+              <div class="col-12">
+
+                <label for="select">Quantity:</label>
+
+                &nbsp;
+
+                <select id="select{{product.id}}">
+
+                  <option selected>
+
+                    {{item.qty}}
+
+                  </option>
+
+                  <option value="">1</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                  <option value="">4</option>
+                  <option value="">5</option>
+                  <option value="">6</option>
+                  <option value="">7</option>
+                  <option value="">8</option>
+                  <option value="">9</option>
+                  <option value="">10</option>
+                  <option value="">11</option>
+                  <option value="">12</option>
+                  <option value="">13</option>
+                  <option value="">14</option>
+                  <option value="">15</option>
+
+                </select>
+
+                <br> <br>
+
+                <button type="button" data-index="{{ product.id }}" class="btn btn-primary btn-sm update-button">
+                  Update
+
+                </button>
+
+                &nbsp;
+
+                <button type="button" data-index="{{ product.id }}" class="btn btn-danger btn-sm delete-button">
+                  Delete
+
+                </button>
+
+
               </div>
-            
-            </div>
-            
-            <div class="col">
-              
-              <div class="row p-3">
-                
-                <div class="col-12">
-                  
-                  <label for="select">Quantity:</label>
 
-                  &nbsp; 
-                  
-                  <select id="select{{product.id}}">
-                  
-                    <option selected>
-                  
-                        {{item.qty}}
-                  
-                    </option>
-                  
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                    <option value="">5</option>
-                    <option value="">6</option>
-                    <option value="">7</option>
-                    <option value="">8</option>
-                    <option value="">9</option>
-                    <option value="">10</option>
-                    <option value="">11</option>
-                    <option value="">12</option>
-                    <option value="">13</option>
-                    <option value="">14</option>
-                    <option value="">15</option>
-                  
-                  </select>
-                  
-                  <br> <br>
-
-                  <button type="button" data-index="{{ product.id }}"
-                    class="btn btn-primary btn-sm update-button">
-                    Update
-                  
-                  </button>
-                  
-                  &nbsp;
-
-                  <button type="button"  data-index="{{ product.id }}"
-                    class="btn btn-danger btn-sm delete-button">
-                    Delete
-        
-                  </button>
-        
-
-                </div>
-        
             </div>
-        
-            </div>
-    
-            </div>
-    
+
+          </div>
+
         </div>
-      
+
+      </div>
+
     </div>
-      {% endwith %}
-      {% endfor %}
+    {% endwith %}
+    {% endfor %}
 
 
-      <div class="col-12 text-end">
- 
-        <div class="h6 fw-bold"> Sub total: $ <div id="total" class="d-inline-flex">{{cart.get_total}} <!-- cart.get_total --> </div></div>
- 
+    <div class="col-12 text-end" data-aos="fade-up">
+
+      <div class="h6 fw-bold"> Sub total: $ <div id="total" class="d-inline-flex">{{cart.get_total}}
+          <!-- cart.get_total --> </div>
+      </div>
+
       <br>
- 
-      <a href="{% url 'checkout' %}" class="btn btn-primary my-2"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp;Proceed to Checkout</a>
-        </div>
+
+      <a href="{% url 'checkout' %}" class="btn btn-primary my-2"><i class="fa fa-chevron-circle-right"
+          aria-hidden="true"></i> &nbsp;Proceed to Checkout</a>
     </div>
-
-  
-
- </main>
+  </div>
 
 
- <script>
 
-// Delete button
+</main>
+
+
+<script>
+
+  // Delete button
 
   $(document).on('click', '.delete-button', function (e) {
     e.preventDefault();
@@ -171,38 +172,37 @@
 
   // update button
 
-  $(document).on('click', '.update-button', function(e) {
-      e.preventDefault();
-      
-      var theproductid = $(this).data('index');
+  $(document).on('click', '.update-button', function (e) {
+    e.preventDefault();
 
-      $.ajax({
-        type: 'POST',
-        url: '{% url "cart-update" %}',
-        data: {
-          product_id: $(this).data('index'),
-          product_quantity:  $('#select' + theproductid + ' option:selected').text(),
-          csrfmiddlewaretoken: "{{csrf_token}}",
-          action: 'post'
-        },
-        success: function (json) {
-          //console.log(json)
-          location.reload(true)
+    var theproductid = $(this).data('index');
 
-          document.getElementById("cart-qty").textContent = json.qty
+    $.ajax({
+      type: 'POST',
+      url: '{% url "cart-update" %}',
+      data: {
+        product_id: $(this).data('index'),
+        product_quantity: $('#select' + theproductid + ' option:selected').text(),
+        csrfmiddlewaretoken: "{{csrf_token}}",
+        action: 'post'
+      },
+      success: function (json) {
+        //console.log(json)
+        location.reload(true)
 
-          document.getElementById("total").textContent = json.total
-        },
-        error: function (xhr, errmsg, err) {
+        document.getElementById("cart-qty").textContent = json.qty
 
-        }
+        document.getElementById("total").textContent = json.total
+      },
+      error: function (xhr, errmsg, err) {
 
-      });
+      }
+
     });
+  });
 
- </script>
+</script>
 
 
 
 {% endblock %}
-

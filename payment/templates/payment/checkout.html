@@ -92,94 +92,79 @@
                     <hr>
 
                     <br>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="pb-2">Full name</label>
+                            <input class="form-control validate p-3" id="name" placeholder="Godfred Tenkorang" type="text" autocomplete="off"
+                                value="{{ shipping.full_name }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="pb-2">Email</label>
+                            <input class="form-control validate p-3" id="email" placeholder="@example.com" type="email" autocomplete="off"
+                                value="{{ shipping.email }}" required>
 
-                    <div class="form-field">
-
-                        <input class="form-control validate" id="name" type="text" placeholder="Full name*"
-                            autocomplete="off" value="{{ shipping.full_name }}" required>
-
+                        </div>
                     </div>
 
+                    <div class="form-field">
+                        <label for="address1" class="pb-2">Address 1</label>
+                        <input class="form-control validate p-3" id="address1" type="text" placeholder="1234 Main St" autocomplete="off"
+                            value="{{ shipping.address1 }}" required>
+                    
+                    </div>
+                    
+                    
+                    <br>
+                    
+                    
+                    <div class="form-field">
+                        <label for="address2" class="pb-2">Address 2 (Optional)</label>
+                        <input class="form-control p-3" id="address2" type="text" placeholder="Apartment or suite" autocomplete="off"
+                            value="{{ shipping.address2 }}">
+                    
+                    </div>
 
                     <br>
 
-
                     <div class="form-field">
-
-                        <input class="form-control validate" id="email" type="email" placeholder="Email address*"
-                            autocomplete="off" value="{{ shipping.email }}" required>
-
+                        <label for="phone_number" class="pb-2">Phone</label>
+                        <input class="form-control validate p-3" id="phone_number" type="text" autocomplete="off"
+                            value="{{ shipping.phone_number }}" required>
+                    
                     </div>
 
-
                     <br>
-
-
-                    <div class="form-field">
-
-                        <input class="form-control validate" id="address1" type="text" placeholder="Address 1*"
-                            autocomplete="off" value="{{ shipping.address1 }}" required>
-
-                    </div>
-
-
-                    <br>
-
-
-                    <div class="form-field">
-
-                        <input class="form-control validate" id="address2" type="text" placeholder="Address 2"
-                            autocomplete="off" value="{{ shipping.address2 }}">
-
-                    </div>
-
-
-                    <br>
-                    <div class="form-field">
-
-                        <input class="form-control validate" id="phone_number" type="text" placeholder="Phone*"
-                            autocomplete="off" value="{{ shipping.phone_number }}" required>
-
-                    </div>
-                    <br>
+                   
                     <!-- <select class="form-control validate" id="country" autocomplete="off" value="{{ shipping.country }}">
                         <option>Country</option>
                         <option>{{ shipping.country }}</option>
                     </select> -->
                     <div class="form-field">
-
-                        <input class="form-control validate" id="country" type="text" placeholder="Country*"
+                        <label for="country" class="pb-2">Country</label>
+                        <input class="form-control validate p-3" id="country" type="text"
                             autocomplete="off" value="{{ shipping.country }}" required>
 
                     </div>
                     <br>
-                    <div class="form-field">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="city" class="pb-2">City</label>
+                            <input class="form-control validate p-3" id="city" type="text" autocomplete="off"
+                                value="{{ shipping.city }}" required>
 
-                        <input class="form-control validate" id="city" type="text" placeholder="City*"
-                            autocomplete="off" value="{{ shipping.city }}" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="state" class="pb-2">State (Optional)</label>
+                            <input class="form-control p-3" id="state" type="text" autocomplete="off"
+                                value="{{ shipping.state }}">
 
-                    </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="zipcode" class="pb-2">Zip (Optional)</label>
+                            <input class="form-control p-3" id="zipcode" type="text" autocomplete="off"
+                                value="{{ shipping.zipcode }}">
 
-
-                    <br>
-
-
-                    <div class="form-field">
-
-                        <input class="form-control" id="state" type="text" placeholder="State (Optional)"
-                            autocomplete="off" value="{{ shipping.state }}">
-
-                    </div>
-
-
-                    <br>
-
-
-                    <div class="form-field">
-
-                        <input class="form-control" id="zipcode" type="text" placeholder="Zip code (Optional)"
-                            autocomplete="off" value="{{ shipping.zipcode }}">
-
+                        </div>
                     </div>
 
                 </div>
