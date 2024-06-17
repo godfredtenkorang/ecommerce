@@ -195,20 +195,51 @@ def review_rate(request, product_id):
         # return redirect('product-info', slug=prod_slug)
         
 def review_replies(request, review_id):
-    comment = get_object_or_404(ReviewComment, user=request.user, review_id=review_id)
-    if request.method == 'POST':
-        form = ReplyForm(request.POST, instance=comment)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Thank you! Your reply has been updated")
-            return redirect('review', review_id=comment.review.id)
-        else:
-            messages.error(request, "Please type something!")
-            return render(request, 'store/product-info.html', {'form': form, 'comment':comment})
-    else:
-        form = ReplyForm(instance=comment)
+    comment = get_object_or_404(Review, id=review_id)
+    url = request.META.get('HTTP_REFERER')
+    if request.method == "POST":
+        try:
+            reviews = ReviewComment.objects.get(user=request.user.id, review=review_id)
+            form = ReplyForm(request.POST, instance=reviews)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Thank you! Your review has been updated")
+            else:
+                messages.error(request, 'Please send your review again.')
+                return render(request, 'store/product-info.html', {'form':form})
         
+        except ReviewComment.DoesNotExist:
+            form = ReplyForm(request.POST)
+            if form.is_valid():
+                data = ReviewComment()
+                data.comment = form.cleaned_data['comment']
+                data.review_id = review_id
+                data.user_id = request.user.id
+                data.save()
+                messages.success(
+                    request, "Thank you! Your review has been submitted")
+                
+            else:
+                messages.error(request, 'Please send your review again.')
+                return render(request, 'store/product-info.html', {'form':form, 'comment':comment})
+        return redirect(url)
+    else:
+        form = ReplyForm()
     return render(request, 'store/product-info.html', {'form': form, 'comment':comment})
+    # comment = get_object_or_404(ReviewComment, user=request.user, review_id=review_id)
+    # if request.method == 'POST':
+    #     form = ReplyForm(request.POST, instance=comment)
+    #     if form.is_valid():
+    #         form.save()
+    #         messages.success(request, "Thank you! Your reply has been updated")
+    #         return redirect('review', review_id=comment.review.id)
+    #     else:
+    #         messages.error(request, "Please type something!")
+    #         return render(request, 'store/product-info.html', {'form': form, 'comment':comment})
+    # else:
+    #     form = ReplyForm(instance=comment)
+        
+    # return render(request, 'store/product-info.html', {'form': form, 'comment':comment})
     # if request.method == "POST":
     #     url = request.META.get('HTTP_REFERER')
     #     try:
