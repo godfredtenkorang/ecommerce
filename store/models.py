@@ -59,6 +59,7 @@ class SlideProduct(models.Model):
     brand = models.CharField(max_length=250, default="un-branded")
     description = models.TextField(blank=True)
     slug = models.SlugField(max_length=50)
+    previous_price = models.DecimalField(max_digits=4, decimal_places=2, default=0, null=True)
     price = models.DecimalField(max_digits=4, decimal_places=2)
     image = models.ImageField(upload_to="images/home/")
     date_added = models.DateTimeField(auto_now=True)
