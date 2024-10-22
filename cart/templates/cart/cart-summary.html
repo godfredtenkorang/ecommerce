@@ -2,8 +2,18 @@
 {% load static %}
 {% load mathfilters %}
 
-
 {% block content %}
+
+
+<div class="row">
+  <div class="col-md-12 text-center" data-aos="fade-up">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
 
 <main class="pt-5" data-aos="fade-down">
 
@@ -105,8 +115,25 @@
                   Delete
 
                 </button>
+                <br><br>
 
-
+                <form method="post">
+                  {% csrf_token %}
+                  <div class="form-group col-md-2">
+                    
+                    <input type="text" name="coupon_code" placeholder="Enter coupon code" class="form-control" required>
+                  </div>
+                  <div class="pt-2">
+                    <button type="submit" id="apply-coupon" name="apply_coupon" class="btn btn-primary btn-sm">Apply Coupon</button>
+                    
+                  </div>
+                </form>
+                
+                <form method="post" class="pt-2">
+                  {% csrf_token %}
+                    <button type="submit" name="remove_coupon" class="btn btn-danger btn-sm">Remove Coupon</button>
+                </form>
+                
               </div>
 
             </div>
@@ -124,8 +151,7 @@
 
     <div class="col-12 text-end" data-aos="fade-up">
 
-      <div class="h6 fw-bold"> Sub total: $ <div id="total" class="d-inline-flex">{{cart.get_total}}
-          <!-- cart.get_total --> </div>
+      <div class="h6 fw-bold"> Sub total: $ <div id="total" class="d-inline-flex">{{cart.get_total}}<!-- cart.get_total --> </div>
       </div>
 
       <br>

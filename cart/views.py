@@ -1,13 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .cart import Cart
 from store.models import Product
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from django.contrib import messages
+
 
 
 def cart_summary(request):
     cart = Cart(request)
-    
+    if request.method == 'POST':
+        if 'apply_coupon' in request.POST:
+            coupon_code = request.POST.get('coupon_code')
+            if cart.apply_coupon(coupon_code):
+                messages.success(request, f'Coupon "{coupon_code}" applied succussfully!')
+            else:
+                messages.warning(request, f'Coupon "{coupon_code}" is not valid.')
+            return redirect('cart-summary')
+            
+        elif 'remove_coupon' in request.POST:
+            cart.remove_coupon()
+        
     context = {
         'cart': cart,
         'title': 'Cart'

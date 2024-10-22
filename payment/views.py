@@ -97,7 +97,13 @@ def complete_order(request):
             send_mail('Order received', 'Hi! ' + '\n\n' + 'Thank you for picking your order' + '\n\n' +
                       'Please see your order below:' + '\n\n' + str(all_products) + '\n\n' + 'Total paid: $' + 
                       str(cart.get_all_total()), settings.EMAIL_HOST_USER, [email], fail_silently=False,)
-                
+            send_mail(
+            f"New Order from {name}",
+            f'Message:{all_products} \n {total_cost} \n {email} \n end',
+                email,  # From email
+                [settings.EMAIL_HOST_USER],  # To email
+                fail_silently=False,
+        ),
         order_success = True
         response = JsonResponse({'success':order_success})
         return response
@@ -106,16 +112,16 @@ def complete_order(request):
 
 def payment_success(request):
     
-    return render(request, 'payment/payment-success.html', {'title':"Payment successful"})
-
-
-def payment_failed(request):
-    
     # Clear shopping cart
     
     for key in list(request.session.keys()):
         if key == 'session_key':
             del request.session[key]
+    
+    return render(request, 'payment/payment-success.html', {'title':"Payment successful"})
+
+
+def payment_failed(request):
 
     return render(request, 'payment/payment-failed.html', {'title': "Payment failed"})
 
