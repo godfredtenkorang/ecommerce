@@ -1,6 +1,6 @@
 from decimal import Decimal, ROUND_DOWN
 from store.models import Product
-from .models import Coupon
+from .models import Coupon, ShippingFee
 
 
 
@@ -20,6 +20,7 @@ class Cart():
         self.cart = cart
         self.coupon_code = self.session.get('coupon_code', None)
         self.discount_percentage = self.session.get('discount_percentage', 0)
+        self.shipping_fee = Decimal(0.00)
 
     def add(self, product, product_qty):
         product_id = str(product.id)
@@ -69,6 +70,18 @@ class Cart():
         if 'discount_percentage' in self.session:
             del self.session['discount_percentage']
         self.session.modified = True
+        
+    def set_shipping_fee(self, country):
+        try:
+            shipping_fee = ShippingFee.objects.get(country=country)
+            self.shipping_fee = shipping_fee.fee
+            self.session['shipping_fee'] = str(shipping_fee.fee)
+            self.session.modified = True
+        except ShippingFee.DoesNotExist:
+            self.shipping_fee = Decimal(0.00)
+            
+    def get_shipping_fee(self):
+        return self.shipping_fee.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
 
     def __len__(self):
         return sum(item['qty'] for item in self.cart.values())
@@ -99,5 +112,5 @@ class Cart():
         return total.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
 
     def get_all_total(self):
-        total = self.get_total() + Decimal(6)
+        total = self.get_total() + self.get_shipping_fee()
         return total.quantize(Decimal('0.01'), rounding=ROUND_DOWN)

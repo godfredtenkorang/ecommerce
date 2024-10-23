@@ -4,29 +4,46 @@ from cart.cart import Cart
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
+from cart.models import ShippingFee
 
 # Create your views here.
 
 def checkout(request):
     cart = Cart(request)
+    
+    
     # Users with addounts -- Pro-fill the form
     if request.user.is_authenticated:
         try:
             # Authenticated users With shipping information
+            if request.method == 'POST':
+                if 'country' in request.POST:
+                    country = request.POST.get('country')
+                    cart.set_shipping_fee(country)
             shipping_address = ShippingAddress.objects.get(user=request.user.id)
             context = {'shipping': shipping_address,
-                       'cart': cart, 'title': 'Cart'}
+                       'cart': cart, 'title': 'Cart', 'shipping_fees': ShippingFee.objects.all()}
             return render(request, 'payment/checkout.html', context=context)
             
             
         except:
+            if request.method == 'POST':
+                if 'country' in request.POST:
+                    country = request.POST.get('country')
+                    cart.set_shipping_fee(country)
             # Authebticated users with no shipping information
-            return render(request, 'payment/checkout.html')
+            return render(request, 'payment/checkout.html', {'shipping_fees': ShippingFee.objects.all()})
         
     else:
+        if request.method == 'POST':
+            if 'country' in request.POST:
+                country = request.POST.get('country')
+                cart.set_shipping_fee(country)
         # Guest users
         context = {
-            'title': 'Checkout'
+            'title': 'Checkout',
+            'cart': cart,
+            'shipping_fees': ShippingFee.objects.all()
         }
         return render(request, 'payment/checkout.html', context)
     

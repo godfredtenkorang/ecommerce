@@ -4,6 +4,7 @@ from store.models import Product
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.contrib import messages
+from .models import ShippingFee
 
 
 
@@ -20,10 +21,10 @@ def cart_summary(request):
             
         elif 'remove_coupon' in request.POST:
             cart.remove_coupon()
-        
+            
     context = {
         'cart': cart,
-        'title': 'Cart'
+        'title': 'Cart',
     }
     
     return render(request, 'cart/cart-summary.html', context)

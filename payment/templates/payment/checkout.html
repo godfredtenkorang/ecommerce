@@ -40,12 +40,29 @@
                     <span class="text-muted">${{ cart.get_total }}</span>
                 </li>
             </ul>
-            <ul class="list-group mb-3">
+            <form method="post">
+                {% csrf_token %}
+                <ul class="list-group mb-3">
+                        <div class="list-group-item  d-flex justify-content-between" >
+                            
+                            <select class="my-0" name="country" id="country" onchange="this.form.submit()">
+                                <option value="{{shipping.country}}">Shipping Fee</option>
+                                {% for shipping in shipping_fees %}
+                                <option value="{{shipping.country}}">{{ shipping.country }}</option>
+                                {% endfor %}
+                            </select>
+                            <span>${{cart.get_shipping_fee}}</span>
+                        </div>
+                   
+                </ul>
+                
+            </form>
+            <!-- <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Shipping Fee</span>
                     <span class="text-muted">$6.00</span>
                 </li>
-            </ul>
+            </ul> -->
 
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between">
