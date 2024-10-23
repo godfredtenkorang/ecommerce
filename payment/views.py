@@ -32,7 +32,7 @@ def checkout(request):
                     country = request.POST.get('country')
                     cart.set_shipping_fee(country)
             # Authebticated users with no shipping information
-            return render(request, 'payment/checkout.html', {'shipping_fees': ShippingFee.objects.all()})
+            return render(request, 'payment/checkout.html', {'cart':cart, 'shipping_fees': ShippingFee.objects.all()})
         
     else:
         if request.method == 'POST':
