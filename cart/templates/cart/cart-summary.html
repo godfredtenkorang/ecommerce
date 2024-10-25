@@ -132,6 +132,13 @@
     </div>
     {% endwith %}
     {% endfor %}
+
+    <h3>Promos</h3>
+    <h6 style="font-weight: 600;">Promo Code</h6>
+    {% for coupon in coupons %}
+      <p>Get a discount of <strong>{{coupon.discount_percentage}}%</strong> by using <br> this code <strong>"{{coupon.code}}"</strong></p>
+    {% endfor %}
+    
     <form method="post">
       {% csrf_token %}
       <div class="form-group col-md-2">

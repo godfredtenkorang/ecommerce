@@ -4,11 +4,12 @@ from store.models import Product
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.contrib import messages
-from .models import ShippingFee
+from .models import Coupon
 
 
 
 def cart_summary(request):
+    coupons = Coupon.objects.all()
     cart = Cart(request)
     if request.method == 'POST':
         if 'apply_coupon' in request.POST:
@@ -25,6 +26,7 @@ def cart_summary(request):
     context = {
         'cart': cart,
         'title': 'Cart',
+        'coupons': coupons
     }
     
     return render(request, 'cart/cart-summary.html', context)
