@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .forms import CommentForm, ReplyForm
+from cart.models import Coupon
 
 def index(request):
     home_products = HomeProduct.objects.all()
@@ -53,6 +54,10 @@ def categories(request):
     all_categories = Category.objects.all()
     
     return {'all_categories': all_categories}
+
+def get_coupon(self):
+    all_coupons = Coupon.objects.all()
+    return {'all_coupons': all_coupons}
 
 def list_category(request, category_slug=None):
     category = get_object_or_404(Category, slug=category_slug)

@@ -286,8 +286,86 @@
         padding: 8px 10px;
     }
 }
+
+.ticker-wrapper-h{
+	display: flex;	
+	position: relative;
+	overflow: hidden;
+	border: 1px solid #994D1C;
+}
+
+.ticker-wrapper-h .heading{
+	background-color: #994D1C;
+	color: #fff;
+	padding: 5px 10px;
+	flex: 0 0 auto;
+	z-index: 1000;
+}
+.ticker-wrapper-h .heading:after{
+	content: "";
+	position: absolute;
+	top: 0;
+	border-left: 20px solid #994D1C;
+	border-top: 17px solid transparent;
+	border-bottom: 15px solid transparent;
+}
+
+
+.news-ticker-h{
+	display: flex;
+	margin:0;
+	padding: 0;
+	padding-left: 90%;
+	z-index: 999;
+	
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-name: tic-h;
+	animation-duration: 30s;
+	
+}
+.news-ticker-h:hover { 
+	animation-play-state: paused; 
+}
+
+.news-ticker-h li{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	white-space: nowrap;
+	padding-left: 20px;
+}
+
+.news-ticker-h li a{
+	color: #212529;
+	font-weight: bold;
+}
+
+@keyframes tic-h {
+	0% {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		visibility: visible;
+	}
+	100% {
+		-webkit-transform: translate3d(-100%, 0, 0);
+		transform: translate3d(-100%, 0, 0);
+	}
+}
   </style>
   <body>
+    <div class="ticker-wrapper-h">
+      <div class="heading">News</div>
+      {% for coupon in all_coupons %}
+      <ul class="news-ticker-h">
+        <li><a href="">Promo!</a></li>
+        <li><a href="">Promo!!</a></li>
+        <li><a href="">Promo!!! At Endless Essentials, we believe in making everyday essentials affordable and accessible, and we’re thrilled to welcome
+        you with a special {{coupon.discount_percentage}}% discount on your first purchase!</a></li>
+        <li><a href="">🎉 Get <strong>{{coupon.discount_percentage}}%</strong> OFF Your Purchase at Endless Essencials! Use Code <strong>"{{coupon.code}}" 🎉</a></li>
+      </ul>
+      {% endfor %}
+    </div>
         <div class="main-navbar shadow-sm sticky-top">
           <div class="top-navbar">
             <div class="container-fluid">
