@@ -4,7 +4,7 @@ from .views import NewsListView, NewsDetailView
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('index/', views.index, name='index'),
     path('store/', views.store, name='store'),
     path('about/', views.about, name='about-page'),
     # path('product/<slug:slug>/', ProductDetailView.as_view(), name='product-info'),
@@ -33,5 +33,7 @@ urlpatterns = [
 
     path('news/', NewsListView.as_view(), name='our-news'),
     path('news/<int:pk>/', NewsDetailView.as_view(), name='our-news-detail'),
+    
+    path('', views.under_construction, name='under-construction'),
     
 ]

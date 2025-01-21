@@ -325,3 +325,8 @@ class NewsDetailView(DetailView):
             'post_comments_count': post_comments_count
         })
         return context
+
+
+
+def under_construction(request):
+    return render(request, 'store/under_construction.html')

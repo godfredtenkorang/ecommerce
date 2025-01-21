@@ -45,7 +45,7 @@
                 <ul class="list-group mb-3">
                         <div class="list-group-item  d-flex justify-content-between" >
                             
-                            <select class="my-0" name="country" id="country" onchange="this.form.submit()">
+                            <select class="my-0" name="country" id="country" onchange="this.form.submit()" required>
                                 <option value="{{shipping.country}}">Shipping Fee</option>
                                 {% for shipping in shipping_fees %}
                                 <option value="{{shipping.country}}">{{ shipping.country }}</option>
