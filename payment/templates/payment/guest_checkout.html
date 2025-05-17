@@ -1,0 +1,386 @@
+{% extends "store/base.html" %}
+
+
+{% load static %}
+{% load mathfilters %}
+
+{% block content %}
+
+<br>
+<div class="container" data-aos="fade-up">
+    <div class="py-5 text-center">
+
+        <h2> <i class="fa fa-chevron-circle-right i" aria-hidden="true"></i> &nbsp; Complete your order </h2>
+
+        <p> Please enter in the relevant information below. </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+                <span class="badge badge-secondary badge-pill"></span>
+            </h4>
+            {% for item in cart %}
+            {% with product=item.product %}
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">{{ product.title }}</h6>
+                        <!-- <small class="text-muted">{{ product.description }}</small> -->
+                    </div>
+                    <span class="text-muted">GH¢{{ product.price|mul:item.qty }}</span>
+                </li>
+            </ul>
+            {% endwith %}
+            {% endfor %}
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Subtotal</span>
+                    <span class="text-muted">GH¢{{ cart.get_total }}</span>
+                </li>
+            </ul>
+            <form method="post" id="shipping-form">
+                {% csrf_token %}
+                <ul class="list-group mb-3">
+                    <div class="list-group-item  d-flex justify-content-between">
+                        <input type="hidden" name="set_shipping" value="true">
+                        <select class="my-0" name="country_id" id="country_id" required>
+                            <option value="{{shipping.country}}">Shipping Fee</option>
+                            {% for shipping in shipping_fees %}
+                                <option value="{{ shipping.id }}" {% if shipping.id == selected_country_id %}selected{% endif %}>
+                                    {{ shipping.country }} - GH¢{{ shipping.fee }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">Update Shipping</button>
+                        <!-- <span>GH¢{{cart.get_shipping_fee}}</span> -->
+                    </div>
+
+                </ul>
+
+            </form>
+            <!-- <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Shipping Fee</span>
+                    <span class="text-muted">$6.00</span>
+                </li>
+            </ul> -->
+
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total</span>
+                    <strong>GH¢{{ cart.get_all_total }}</strong>
+                </li>
+            </ul>
+
+            <!-- <form id="form">
+                <label>Shipping</label>
+
+                <select class="form-control validate" id="delivery" autocomplete="off">
+                    <option value="">International</option>
+                    <option value="">Domestic</option>
+                </select>
+                <br><br>
+            </form> -->
+            <!-- <form class="card p-2">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Promo code">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary">Redeem</button>
+                    </div>
+                </div>
+            </form> -->
+            <br>
+            <!-- <button  type="submit">Pay Now</button> -->
+
+
+            <!-- Paypal -->
+            <!-- <div id="paypal-button-container"></div>
+            <script
+                src="https://www.paypal.com/sdk/js?client-id=AW78iTuym9PGE9GjJwLt41Xx5MiI5I9hbWSz57T-hNpeSReLeYcfqA1aYDd1MyeKuam62JzQtrvE4biJ&currency=USD&intent=capture&enable-funding=venmo"
+                data-sdk-integration-source="integrationbuilder"></script> -->
+        </div>
+
+        <!-- Billing Address -->
+
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Delivery</h4>
+            <form id="form" method="POST">
+                {% csrf_token %}
+                <div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="pb-2">Full name</label>
+                            <input class="form-control validate p-3" id="name" name="full_name"
+                                placeholder="Godfred Tenkorang" type="text" autocomplete="off"
+                                value="{{ shipping.full_name }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="pb-2">Email</label>
+                            <input class="form-control validate p-3" id="email" name="email" placeholder="@example.com"
+                                type="email" autocomplete="off" value="{{ shipping.email }}" required>
+
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="address1" class="pb-2">Address 1</label>
+                        <input class="form-control validate p-3" id="address1" name="address1" type="text"
+                            placeholder="1234 Main St" autocomplete="off" value="{{ shipping.address1 }}" required>
+
+                    </div>
+
+
+                    <br>
+
+
+                    <div class="form-field">
+                        <label for="address2" class="pb-2">Address 2 (Optional)</label>
+                        <input class="form-control p-3" id="address2" name="address2" type="text"
+                            placeholder="Apartment or suite" autocomplete="off" value="{{ shipping.address2 }}">
+
+                    </div>
+
+                    <br>
+
+                    <div class="form-field">
+                        <label for="phone_number" class="pb-2">Phone</label>
+                        <input class="form-control validate p-3" id="phone_number" name="phone_number" type="text"
+                            autocomplete="off" value="{{ shipping.phone_number }}" required>
+
+                    </div>
+
+                    <br>
+
+                    <!-- <select class="form-control validate" id="country" autocomplete="off" value="{{ shipping.country }}">
+                        <option>Country</option>
+                        <option>{{ shipping.country }}</option>
+                    </select> -->
+                    <div class="form-field">
+                        <label for="country" class="pb-2">Country</label>
+                        <input class="form-control validate p-3" id="country" name="country" type="text"
+                            autocomplete="off" value="{{ shipping.country }}" required>
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="city" class="pb-2">City</label>
+                            <input class="form-control validate p-3" id="city" name="city" type="text"
+                                autocomplete="off" value="{{ shipping.city }}" required>
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="state" class="pb-2">State (Optional)</label>
+                            <input class="form-control p-3" id="state" name="state" type="text" autocomplete="off"
+                                value="{{ shipping.state }}">
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="zipcode" class="pb-2">Zip (Optional)</label>
+                            <input class="form-control p-3" id="zipcode" name="zipcode" type="text" autocomplete="off"
+                                value="{{ shipping.zipcode }}">
+
+                        </div>
+                        {% if form.errors %}
+                        <div class="alert alert-danger">
+                            {% for field, errors in form.errors.items %}
+                            {% for error in errors %}
+                            <p>{{ field }}: {{ error }}</p>
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+                <br>
+
+
+
+                <button type="submit" class="btn btn-primary navbar-btn text-white"> &nbsp; Complete order </button>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 
+    <body>
+
+        <br>
+
+        <div class="container bg-white shadow-md p-5" style="width:500px; border-radius:20px;">
+            
+
+            <form id="form" onsubmit="event.preventDefault();">
+
+                <div>
+
+                    <h3> <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> &nbsp; Complete your order </h3>
+
+                    <p> Please enter in the relevant information below. </p>
+ 
+
+
+                    <hr>
+
+                    <br>
+
+                    <div class="form-field">
+                    
+                        <input class="form-control validate" id="name" type="text" placeholder="Full name*" autocomplete="off" value="{{ shipping.full_name }}" required>
+
+                    </div>
+
+
+                    <br>
+
+
+                    <div class="form-field">
+
+                        <input class="form-control validate" id="email" type="email" placeholder="Email address*" autocomplete="off" value="{{ shipping.email }}" required>
+
+                    </div>
+
+                    
+                    <br>
+
+                    
+                    <div class="form-field">
+
+                        <input class="form-control validate" id="address1" type="text" placeholder="Address 1*" autocomplete="off" value="{{ shipping.address1 }}" required>
+
+                    </div>
+
+
+                    <br>
+
+
+                    <div class="form-field">
+
+                        <input class="form-control validate" id="address2" type="text" placeholder="Address 2*" autocomplete="off" value="{{ shipping.address2 }}" required>
+
+                    </div>
+
+
+                    <br>
+
+
+                    <div class="form-field">
+
+                        <input class="form-control validate" id="city" type="text" placeholder="City*" autocomplete="off" value="{{ shipping.city }}" required>
+
+                    </div>
+
+
+                    <br>
+
+
+                    <div class="form-field">
+
+                        <input class="form-control" id="state" type="text" placeholder="State (Optional)" autocomplete="off" value="{{ shipping.state }}">
+
+                    </div>
+
+
+                    <br>
+
+
+                    <div class="form-field">
+
+                        <input class="form-control" id="zipcode" type="text" placeholder="Zip code (Optional)" autocomplete="off" value="{{ shipping.zipcode }}">
+
+                    </div>
+            
+                </div>
+
+                <br>
+
+
+
+               <button id="complete-order" type="submit" class="btn btn-primary navbar-btn text-white"> &nbsp; Complete order </button> -->
+
+
+
+<!-- Paypal -->
+<!-- <div id="paypal-button-container"></div>
+<script
+    src="https://www.paypal.com/sdk/js?client-id=AW78iTuym9PGE9GjJwLt41Xx5MiI5I9hbWSz57T-hNpeSReLeYcfqA1aYDd1MyeKuam62JzQtrvE4biJ&currency=USD&intent=capture&enable-funding=venmo"
+    data-sdk-integration-source="integrationbuilder"></script> -->
+
+</form>
+
+
+</div>
+
+
+
+<br>
+
+
+</body>
+
+
+<!-- Ajax integration -->
+
+
+
+<script>
+
+    // Total price
+
+    var total_price = '{{cart.get_all_total}}';
+
+
+    $.ajax({
+        type: 'POST',
+        url: '{% url "complete-order" %}',
+        data: {
+            name: $('#name').val(),
+            email: $('#email').val(),
+            address1: $('#address1').val(),
+            address2: $('#address2').val(),
+            phone_number: $('#phone_number').val(),
+            country: $('#country').val(),
+            city: $('#city').val(),
+            state: $('#state').val(),
+            zipcode: $('#zipcode').val(),
+            delivery: $('#delivery').val(),
+            csrfmiddlewaretoken: "{{csrf_token}}",
+            action: 'post'
+        },
+
+
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Handle shipping form submission via AJAX
+        $('#shipping-form').submit(function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: window.location.href,
+                data: $(this).serialize(),
+                success: function () {
+                    // Reload to update all values
+                    location.reload();
+                },
+                error: function (xhr) {
+                    alert('Error updating shipping: ' + xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+
+{% endblock %}

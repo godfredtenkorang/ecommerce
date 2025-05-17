@@ -10,7 +10,7 @@
    
         background-attachment: fixed;
         background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-        url("{% static '/store/images/image1.jpeg' %}");
+        url("{% static '/store/images/image_10.jpeg' %}");
     }
 
     .counter-container1{
@@ -22,7 +22,7 @@
         color: #fff;
         background-attachment: fixed;
         background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-        url("{% static '/store/images/image6.jpeg' %}");
+        url("{% static '/store/images/image_11.jpeg' %}");
     }
 </style>
 <main>
@@ -31,12 +31,12 @@
         <!-- Slide items with images and text -->
         <div class="slide">
             <!-- Image with alt text for SEO -->
-            <img alt="Responsive image" src="{% static 'store/images/banner.jpg' %}" />
+            <img alt="Responsive image" src="{% static 'store/images/image_1.jpeg' %}" />
             <div class="slid-show-text">
                 <!-- Title and description -->
-                <h1>Nature at its finest</h1>
+                <h1>WELCOME TO GOLDENTOUCH BODY ORGANICS</h1>
 
-                <p>Obtain the ideal look that is long-lasting.</p>
+                <p>Nourish your skin the natural way.</p>
                 <!-- Links -->
                 <div class="links-on-slide-show">
                     <a href="{% url 'store' %}">Shop Now</a>
@@ -47,12 +47,12 @@
 
         <div class="slide">
             <!-- Image with alt text for SEO -->
-            <img alt="Responsive image" src="{% static 'store/images/image7.jpeg' %}" />
+            <img alt="Responsive image" src="{% static 'store/images/image_10.jpeg' %}" />
             <div class="slid-show-text">
                 <!-- Title and description -->
-                <h1>SHEA BUTTER IS GOOD FROM HEAD TO TOE</h1>
+                <h1>PERSONAL WELLNESS CONSULTATIONS</h1>
 
-                <p>Freshly handmade in different products that you’ll love.</p>
+                <p>Tailored Herbal Solutions for Men, Women & Children</p>
                 <!-- Links -->
                 <div class="links-on-slide-show">
                     <a href="">Shop Now</a>
@@ -68,22 +68,26 @@
         </div>
     </section>
 
-    </div>
+    
+
+
 
     <!-- about us -->
     <div class="about-us element">
-        <h2>WELCOME KINGS QUEENS PRINCES & PRINCESSES</h2>
+        <h2>WELCOME GOLDENTOUCH BODY ORGANICS</h2>
         <br>
         <p style="text-transform: uppercase;">
-            Endless Essencials takes you on a tour on how people from the <br> homeland had a rich deep connection with Nature cares for
-            their bodies
+            Body Organics is your trusted partner in natural wellness and herbal health. <br> We specialize in the sale of high-quality
+            herbal supplements that support your body’s healing processes, <br> boost your immune system, and promote a healthy, balanced
+            lifestyle
         </p>
 
-        <a href="{% url 'about-page' %}">Read our mission</a>
+        <a style="color: #FFCF50;" href="{% url 'about-page' %}">Read our mission</a>
     </div>
 
+
     <!-- put your skin first -->
-    <div class="product-container element">
+    <!-- <div class="product-container element">
         <div class="heading">
             <h3>PUT YOUR SKIN FIRST</h3>
             <p>
@@ -94,9 +98,9 @@
         </div>
 
         <div class="product-main-container">
-            <!-- the bigger picture on the left -->
+           
             <div class="product-img element">
-                <img alt="Responsive image" src="{% static 'store/images/image2.jpeg' %}" />
+                <img alt="Responsive image" src="{% static 'store/images/image_3.jpeg' %}" />
                 <div class="product-img-details">
                     <p>GET YOUR ORGANIC & NATURAL PRODUCTS</p>
                     <h3>BUY NOW AND GET LOVED FOR YOUR SKIN</h3>
@@ -105,7 +109,7 @@
                 </div>
             </div>
 
-            <!-- the small picture on the right -->
+            
             <div class="main-product-container">
                 <div class="main-item-container">
                     {% for homeproduct in home_products %}
@@ -125,15 +129,15 @@
                 </div>
             </div>
         </div>
-    </div>
-    <br>
+    </div> -->
+    <!-- <br> -->
     <!-- our-best-seller-container -->
     <div class="our-best-seller-container element">
         <div class="heading">
             <h3>OUR TOP SELLERS
             </h3>
             <p>
-                Experience the magic of Shea Butter <br>
+                Nourish your skin the natural way <br>
                 All our products are carefully handmade and packaged with love.
             </p>
         </div>
@@ -177,18 +181,17 @@
             <br><br>
 
             <div class="heading">
-                <h3>LOVE YOUR SKIN & HAIR FROM THE ROOTS</h3>
+                <!-- <h3>LOVE YOUR SKIN & HAIR FROM THE ROOTS</h3>
                 <p>
                     Cleanse Detox Moisturize
-                </p>
+                </p> -->
                 <br><br>
-                <div class="counter-container1 element">
+                <div class="counter-container1 element pb-4">
                     <div class="container">
-                        <h3 class="text-center p-5">Black Soaps and black soaps shampoos</h3>
+                        <h3 class="text-center p-5">Nourish your skin the natural way.</h3>
                         <h4>
-                            Start your routine with clean, scalp healthy, healthy skin, color safe shampoos. Our liquid shampoos enriched in coconut
-                            oils, palm kernel oils Shea butter, Cocoa Pods and honey helps with eczema, dandruffs and scalp dermatitis, and cleanse
-                            without stripping off your hair.
+                            Discover a range of handcrafted, organic skincare products made with love and nature’s finest ingredients. Free from
+                            harsh chemicals, our formulas restore, protect, and enhance your skin's natural glow.
                         </h4>
                         
                     </div>

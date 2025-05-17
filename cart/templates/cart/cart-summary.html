@@ -60,7 +60,7 @@
 
               <div class="col-6"> Price: </div>
 
-              <div class="col-6 text-end"><span class="h6 fw-bold">$ {{ product.price|mul:item.qty }}</span></div>
+              <div class="col-6 text-end"><span class="h6 fw-bold">GH¢ {{ product.price|mul:item.qty }}</span></div>
 
             </div>
 
@@ -159,13 +159,21 @@
 
     <div class="col-12 text-end" data-aos="fade-up">
 
-      <div class="h6 fw-bold"> Sub total: $ <div id="total" class="d-inline-flex">{{cart.get_total}}<!-- cart.get_total --> </div>
+      <div class="h6 fw-bold"> Sub total: GH¢ <div id="total" class="d-inline-flex">{{cart.get_total}}<!-- cart.get_total --> </div>
       </div>
 
       <br>
-
+      {% if user.is_authenticated %}
       <a href="{% url 'checkout' %}" class="btn btn-primary my-2"><i class="fa fa-chevron-circle-right"
           aria-hidden="true"></i> &nbsp;Proceed to Checkout</a>
+        {% else %}
+
+        <a href="{% url 'my-login' %}?next={% url 'checkout' %}" class="btn btn-primary my-2"><i class="fa fa-chevron-circle-right"
+            aria-hidden="true"></i> &nbsp;Login to Checkout</a>
+          <!-- <span class="mx-2">or</span> -->
+          <!-- <a href="{% url 'guest-checkout' %}" class="btn btn-primary my-2"><i class="fa fa-chevron-circle-right"
+              aria-hidden="true"></i> &nbsp;Checkout as Guest</a> -->
+        {% endif %}
     </div>
   </div>
 

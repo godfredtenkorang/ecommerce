@@ -29,7 +29,7 @@
                         <h6 class="my-0">{{ product.title }}</h6>
                         <!-- <small class="text-muted">{{ product.description }}</small> -->
                     </div>
-                    <span class="text-muted">${{ product.price|mul:item.qty }}</span>
+                    <span class="text-muted">GH¢{{ product.price|mul:item.qty }}</span>
                 </li>
             </ul>
             {% endwith %}
@@ -37,21 +37,24 @@
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Subtotal</span>
-                    <span class="text-muted">${{ cart.get_total }}</span>
+                    <span class="text-muted">GH¢{{ cart.get_total }}</span>
                 </li>
             </ul>
-            <form method="post">
+            <form method="post" id="shipping-form">
                 {% csrf_token %}
                 <ul class="list-group mb-3">
                         <div class="list-group-item  d-flex justify-content-between" >
-                            
-                            <select class="my-0" name="country" id="country" onchange="this.form.submit()" required>
+                            <input type="hidden" name="set_shipping" value="true">
+                            <select class="my-0" name="country_id" id="country_id" required>
                                 <option value="{{shipping.country}}">Shipping Fee</option>
                                 {% for shipping in shipping_fees %}
-                                <option value="{{shipping.country}}">{{ shipping.country }}</option>
+                                <option value="{{ shipping.id }}" {% if shipping.id == selected_country_id %}selected{% endif %}>
+                                    {{ shipping.country }} - GH¢{{ shipping.fee }}
+                                </option>
                                 {% endfor %}
                             </select>
-                            <span>${{cart.get_shipping_fee}}</span>
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">Update Shipping</button>
+                            <!-- <span>GH¢{{cart.get_shipping_fee}}</span> -->
                         </div>
                    
                 </ul>
@@ -67,9 +70,10 @@
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total</span>
-                    <strong>${{ cart.get_all_total }}</strong>
+                    <strong>GH¢{{ cart.get_all_total }}</strong>
                 </li>
             </ul>
+            
             <!-- <form id="form">
                 <label>Shipping</label>
 
@@ -88,30 +92,33 @@
                 </div>
             </form> -->
             <br>
+            <!-- <button  type="submit">Pay Now</button> -->
+
+            
             <!-- Paypal -->
-            <div id="paypal-button-container"></div>
+            <!-- <div id="paypal-button-container"></div>
             <script
                 src="https://www.paypal.com/sdk/js?client-id=AW78iTuym9PGE9GjJwLt41Xx5MiI5I9hbWSz57T-hNpeSReLeYcfqA1aYDd1MyeKuam62JzQtrvE4biJ&currency=USD&intent=capture&enable-funding=venmo"
-                data-sdk-integration-source="integrationbuilder"></script>
+                data-sdk-integration-source="integrationbuilder"></script> -->
         </div>
 
         <!-- Billing Address -->
 
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Delivery</h4>
-            <form id="form" onsubmit="event.preventDefault();">
-
+            <form id="form" method="POST">
+                {% csrf_token %}
                 <div>
                     <hr>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="name" class="pb-2">Full name</label>
-                            <input class="form-control validate p-3" id="name" placeholder="Godfred Tenkorang" type="text" autocomplete="off"
+                            <input class="form-control validate p-3" id="name" name="full_name" placeholder="Godfred Tenkorang" type="text" autocomplete="off"
                                 value="{{ shipping.full_name }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="email" class="pb-2">Email</label>
-                            <input class="form-control validate p-3" id="email" placeholder="@example.com" type="email" autocomplete="off"
+                            <input class="form-control validate p-3" id="email" name="email" placeholder="@example.com" type="email" autocomplete="off"
                                 value="{{ shipping.email }}" required>
 
                         </div>
@@ -119,7 +126,7 @@
 
                     <div class="form-field">
                         <label for="address1" class="pb-2">Address 1</label>
-                        <input class="form-control validate p-3" id="address1" type="text" placeholder="1234 Main St" autocomplete="off"
+                        <input class="form-control validate p-3" id="address1" name="address1" type="text" placeholder="1234 Main St" autocomplete="off"
                             value="{{ shipping.address1 }}" required>
                     
                     </div>
@@ -130,7 +137,7 @@
                     
                     <div class="form-field">
                         <label for="address2" class="pb-2">Address 2 (Optional)</label>
-                        <input class="form-control p-3" id="address2" type="text" placeholder="Apartment or suite" autocomplete="off"
+                        <input class="form-control p-3" id="address2" name="address2" type="text" placeholder="Apartment or suite" autocomplete="off"
                             value="{{ shipping.address2 }}">
                     
                     </div>
@@ -139,7 +146,7 @@
 
                     <div class="form-field">
                         <label for="phone_number" class="pb-2">Phone</label>
-                        <input class="form-control validate p-3" id="phone_number" type="text" autocomplete="off"
+                        <input class="form-control validate p-3" id="phone_number" name="phone_number" type="text" autocomplete="off"
                             value="{{ shipping.phone_number }}" required>
                     
                     </div>
@@ -152,7 +159,7 @@
                     </select> -->
                     <div class="form-field">
                         <label for="country" class="pb-2">Country</label>
-                        <input class="form-control validate p-3" id="country" type="text"
+                        <input class="form-control validate p-3" id="country" name="country" type="text"
                             autocomplete="off" value="{{ shipping.country }}" required>
 
                     </div>
@@ -160,22 +167,31 @@
                     <div class="row">
                         <div class="col-md-4 mb-3">
                             <label for="city" class="pb-2">City</label>
-                            <input class="form-control validate p-3" id="city" type="text" autocomplete="off"
+                            <input class="form-control validate p-3" id="city" name="city" type="text" autocomplete="off"
                                 value="{{ shipping.city }}" required>
 
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="state" class="pb-2">State (Optional)</label>
-                            <input class="form-control p-3" id="state" type="text" autocomplete="off"
+                            <input class="form-control p-3" id="state" name="state" type="text" autocomplete="off"
                                 value="{{ shipping.state }}">
 
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="zipcode" class="pb-2">Zip (Optional)</label>
-                            <input class="form-control p-3" id="zipcode" type="text" autocomplete="off"
+                            <input class="form-control p-3" id="zipcode" name="zipcode" type="text" autocomplete="off"
                                 value="{{ shipping.zipcode }}">
 
                         </div>
+                        {% if form.errors %}
+                        <div class="alert alert-danger">
+                            {% for field, errors in form.errors.items %}
+                            {% for error in errors %}
+                            <p>{{ field }}: {{ error }}</p>
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                     </div>
 
                 </div>
@@ -184,8 +200,7 @@
 
 
 
-                <!-- <button id="complete-order" type="submit" class="btn btn-primary navbar-btn text-white"> &nbsp; Complete order </button> -->
-
+                <button  type="submit" class="btn btn-primary navbar-btn text-white"> &nbsp; Complete order </button>
 
 
             </form>
@@ -292,10 +307,10 @@
 
 
 <!-- Paypal -->
-<div id="paypal-button-container"></div>
+<!-- <div id="paypal-button-container"></div>
 <script
     src="https://www.paypal.com/sdk/js?client-id=AW78iTuym9PGE9GjJwLt41Xx5MiI5I9hbWSz57T-hNpeSReLeYcfqA1aYDd1MyeKuam62JzQtrvE4biJ&currency=USD&intent=capture&enable-funding=venmo"
-    data-sdk-integration-source="integrationbuilder"></script>
+    data-sdk-integration-source="integrationbuilder"></script> -->
 
 </form>
 
@@ -320,201 +335,51 @@
 
     var total_price = '{{cart.get_all_total}}';
 
-    // Paypal script
-    const paypalButtonsComponent = paypal.Buttons({
-        // optional styling for buttons
-        // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
-        style: {
-            color: "blue",
-            shape: "pill",
-            layout: "vertical"
-        },
 
-        onInit: function (data, actions) {
-            actions.disable();
-
-            // Complete order - No shipping
-
-            document.querySelectorAll('.validate').forEach(item => {
-                item.addEventListener('keyup', event => {
-
-                    // The required fields are filled out
-
-                    var order_verified = 'Yes';
-
-                    function checkInputs() {
-                        $(':input[required]').each(function () {
-                            if ($(this).val() == '') {
-
-                                // The required fields are empty
-
-                                return order_verified = 'No';
-                            }
-                        });
-                        return order_verified;
-                    }
-
-                    var isOrderVerified = checkInputs()
-
-                    if (isOrderVerified === 'Yes') {
-                        actions.enable();
-                    }
-                    else {
-                        actions.disabled();
-                    }
-
-                });
-            });
-
-            // Complete order - with shipping
-
-            // The required fields are filled out
-
-            var order_verified = 'Yes';
-
-            function checkInputs() {
-                $(':input[required]').each(function () {
-                    if ($(this).val() == '') {
-
-                        // The required fields are empty
-
-                        return order_verified = 'No';
-                    }
-                });
-                return order_verified;
-            }
-
-            var isOrderVerified = checkInputs()
-
-            if (isOrderVerified === 'Yes') {
-                actions.enable();
-            }
-            else {
-                actions.disabled();
-            }
-
-        },
+    $.ajax({
+            type: 'POST',
+            url: '{% url "complete-order" %}',
+            data: {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                address1: $('#address1').val(),
+                address2: $('#address2').val(),
+                phone_number: $('#phone_number').val(),
+                country: $('#country').val(),
+                city: $('#city').val(),
+                state: $('#state').val(),
+                zipcode: $('#zipcode').val(),
+                delivery: $('#delivery').val(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: 'post'
+            },
 
 
-        // set up the transaction
-        createOrder: (data, actions) => {
-            // pass in any options from the v2 orders create call:
-            // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
-            const createOrderPayload = {
-                purchase_units: [
-                    {
-                        amount: {
-                            value: total_price
-                        }
-                    }
-                ]
-            };
-
-            return actions.order.create(createOrderPayload);
-        },
-
-        // finalize the transaction
-        onApprove: (data, actions) => {
-            const captureOrderHandler = (details) => {
-                const payerName = details.payer.name.given_name;
-                console.log('Transaction completed');
-
-
-                // Ajex functionality
-
-                $.ajax({
-                    type: 'POST',
-                    url: '{% url "complete-order" %}',
-                    data: {
-                        name: $('#name').val(),
-                        email: $('#email').val(),
-                        address1: $('#address1').val(),
-                        address2: $('#address2').val(),
-                        phone_number: $('#phone_number').val(),
-                        country: $('#country').val(),
-                        city: $('#city').val(),
-                        state: $('#state').val(),
-                        zipcode: $('#zipcode').val(),
-                        delivery: $('#delivery').val(),
-                        csrfmiddlewaretoken: "{{csrf_token}}",
-                        action: 'post'
-                    },
-                    success: function (json) {
-
-                        window.location.replace("{% url 'payment-success' %}");
-
-                    },
-                    error: function (xhr, errmsg, err) {
-
-                        window.location.replace("{% url 'payment-failed' %}");
-
-                    }
-
-                });
-
-
-            };
-
-            return actions.order.capture().then(captureOrderHandler);
-        },
-
-        // handle unrecoverable errors
-        onError: (err) => {
-            console.error('An error prevented the buyer from checking out with PayPal');
-
-
-
-        }
-    });
-
-    paypalButtonsComponent
-        .render("#paypal-button-container")
-        .catch((err) => {
-            console.error('PayPal Buttons failed to render');
         });
-
-
-
-
-    // Complete checkout
-    /*
-         $(document).on('submit', function(e) {
-                e.preventDefault();
-    
-                $.ajax({
-                    type: 'POST',
-                    url: '{% url "complete-order" %}',
-                    data: {
-                        name: $('#name').val(),
-                        email: $('#email').val(),
-                        address1: $('#address1').val(),
-                        address2: $('#address2').val(),
-                        city: $('#city').val(),
-                        state: $('#state').val(),
-                        zipcode: $('#zipcode').val(),
-                        csrfmiddlewaretoken: "{{csrf_token}}",
-                        action: 'post'
-                    },
-                    success: function (json) {
-    
-                        window.location.replace("{% url 'payment-success' %}");
-                       
-                    },
-                    error: function (xhr, errmsg, err) {
-    
-                        window.location.replace("{% url 'payment-failed' %}");
-    
-                    }
-    
-                });
-            });
-            */
-
 
 </script>
 
+<script>
+    $(document).ready(function () {
+            // Handle shipping form submission via AJAX
+            $('#shipping-form').submit(function (e) {
+                e.preventDefault();
 
-
+                $.ajax({
+                    type: 'POST',
+                    url: window.location.href,
+                    data: $(this).serialize(),
+                    success: function () {
+                        // Reload to update all values
+                        location.reload();
+                    },
+                    error: function (xhr) {
+                        alert('Error updating shipping: ' + xhr.responseText);
+                    }
+                });
+            });
+     });
+</script>
 
 
 {% endblock %}

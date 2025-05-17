@@ -71,17 +71,24 @@ class Cart():
             del self.session['discount_percentage']
         self.session.modified = True
         
-    def set_shipping_fee(self, country):
+    def set_shipping_fee(self, country_id):
         try:
-            shipping_fee = ShippingFee.objects.get(country=country)
+            shipping_fee = ShippingFee.objects.get(id=country_id)
             self.shipping_fee = shipping_fee.fee
             self.session['shipping_fee'] = str(shipping_fee.fee)
+            self.session['shipping_country_id'] = country_id  # Store country ID
             self.session.modified = True
         except ShippingFee.DoesNotExist:
             self.shipping_fee = Decimal(0.00)
+            return False
             
     def get_shipping_fee(self):
-        return self.shipping_fee.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
+        if 'shipping_fee' in self.session:
+            return Decimal(self.session['shipping_fee']).quantize(Decimal('0.01'), rounding=ROUND_DOWN)
+        return Decimal(0.00)
+    
+    def get_shipping_country_id(self):
+        return self.session.get('shipping_country_id', None)
 
     def __len__(self):
         return sum(item['qty'] for item in self.cart.values())

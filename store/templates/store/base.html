@@ -67,175 +67,7 @@
 
   <script src="https://kit.fontawesome.com/3b1ca000cb.js"></script>
 
-  <!-- <header data-aos="fade-down"> -->
-    <!-- <nav>
-      <div class="logo pt-3"> -->
-        <!-- <a href="{% url 'store' %}"><img src="{% static 'store/images/alima-logo.jpeg' %}" height="50px" width="50%"
-                    class="rounded-circle" alt=""></a> -->
-        <!-- <h4 class="">Endless Essensials</h4> -->
-      <!-- </div>
-      <div class="text-center pt-2">
-        <a href="{% url 'index' %}">
-          <h2
-            style="color: #994d1c; font-weight: 800; font-family: Merriweather"
-          >
-            ENDLESS ESSENCIALS
-          </h2>
-        </a>
-      </div>
-
-      <a
-        class="pt-3 p-2"
-        type="button"
-        role="button"
-        href="{% url 'cart-summary' %}"
-      >
-        <i class="fa fa-shopping-cart i" aria-hidden="true"></i>
-        <div id="cart-qty" class="cart__header__desktop d-inline-flex">
-          {% with qty_amount=cart|length %} {% if qty_amount > 0 %}
-
-          <span>{{ qty_amount }}</span>
-
-          {% else %}
-
-          <span>0</span>
-
-          {% endif %} {% endwith %}
-
-        </div>
-      </a>
-    </nav>
-  </header> -->
-
-  <!-- <div class="main__navigations" data-aos="fade-down">
-    <div class="main__navigations__div">
-      <ul class="main__navigations__div__ul">
-        <li
-          class="main__navigations__div__li on__mobile_d_none"
-          style="font-weight: bold"
-        >
-          <a href="{% url 'index' %}">Home</a>
-        </li>
-        <li class="main__navigations__div__li on__mobile_d_none">
-          <a class="categ" style="font-weight: bold"
-            >Categories <i class="fas fa-caret-down"></i
-          ></a>
-          <div class="div__categories__items">
-            <p><a href="{% url 'store' %}"> All </a></p>
-            {% for category in all_categories %}
-            <p>
-              <a href="{{ category.get_absolute_url }}">
-                {{ category.name | capfirst }}</a
-              >
-            </p>
-            {% endfor %}
-          </div>
-        </li>
-        {% if user.is_authenticated %}
-        <li class="main__navigations__div__li save__from__left">
-          <a href="" class="anchor__remains__same" style="font-weight: bold"
-            ><i class="fas fa-user i"></i> Hello, {{user}}
-          </a>
-        </li>
-
-        {% else %}
-        <li class="main__navigations__div__li save__from__left">
-          <a href="" class="anchor__remains__same" style="font-weight: bold"
-            ><i class="fas fa-user i"></i> Hello, Anonymous</a
-          >
-        </li>
-        {% endif %} 
-        {% if user.is_authenticated %}
-        <li class="main__navigations__div__li">
-          <a
-            href="{% url 'dashboard' %}"
-            class="anchor__remains__same"
-            style="padding-bottom: 0; font-weight: bold"
-            >Dashboard <i class="fas fa-home i"></i>
-          </a>
-        </li>
-        {% else %}
-        <li class="main__navigations__div__li">
-          <a
-            href="{% url 'register' %}"
-            class="anchor__remains__same"
-            style="padding-bottom: 0; font-weight: bold"
-            >Register <i class="fas fa-register i"></i>
-          </a>
-        </li>
-        {% endif %} 
-        {% if user.is_authenticated %}
-        <li class="main__navigations__div__li">
-          <a
-            href="{% url 'user-logout' %}"
-            class="anchor__remains__same"
-            style="padding-bottom: 0; font-weight: bold"
-            >Logout <i class="fas fa-sign-out-alt i"></i>
-          </a>
-        </li>
-        {% else %}
-        <li class="main__navigations__div__li">
-          <a
-            href="{% url 'my-login' %}"
-            class="anchor__remains__same"
-            style="padding-bottom: 0; font-weight: bold"
-            >Login <i class="fas fa-sign-in-alt i"></i>
-          </a>
-        </li>
-        {% endif %}
-
-        <div class="bars save__from__right">
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="line3"></div>
-        </div>
-      </ul>
-    </div>
-  </div> -->
-
-  <!-- <div class="mobile__nav__fade__and__show">
-    <div class="mobile__nav__fade__and__show__text">
-      <li><a href="{% url 'store' %}">Home</a></li>
-      <li>
-        <a href="">Categories</a>
-        <p><a href="{% url 'store' %}"> All </a></p>
-        {% for category in all_categories %}
-        <p>
-          <a href="{{ category.get_absolute_url }}">
-            {{ category.name | capfirst }}</a
-          >
-        </p>
-        {% endfor %}
-      </li>
-    </div>
-  </div>
-  <div class="mobile__nav__fade__and__show__circle"></div>
-  <br /><br /><br /><br /><br />
-  <div class="row">
-    <div class="col">
-      {% for message in messages %} 
-      {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-      <h5 id="message-timer" class="alert alert-success text-center">
-        <i class="fa fa-sign-out i" aria-hidden="true"></i> &nbsp; {{message}}
-      </h5>
-      {% endif %}
-     {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-      <h5 id="message-timer" class="alert alert-danger text-center">
-        <i class="fa fa-exclamation-triangle i" aria-hidden="true"></i>
-        &nbsp;{{message}}
-      </h5>
-      {% endif %} 
-      
-      {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
-      <h5 id="message-timer" class="alert alert-info text-center">
-        <i class="fa fa-check-circle i" aria-hidden="true"></i>
-        &nbsp;{{message}}
-      </h5>
-      {% endif %}
-      
-      {% endfor %}
-    </div>
-  </div> -->
+  
 <style>
 .main-navbar{
     border-bottom: 1px solid #f5cca0;
@@ -354,138 +186,172 @@
 }
   </style>
   <body>
-    <div class="ticker-wrapper-h">
-      <div class="heading">News</div>
-      {% for coupon in all_coupons %}
-      <ul class="news-ticker-h">
-        <li><a>Promo!</a></li>
-        <li><a>Promo!!</a></li>
-        <li><a>Promo!!! At Endless Essentials, we believe in making everyday essentials affordable and accessible, and we’re thrilled to welcome
-        you with a special {{coupon.discount_percentage}}% discount on your first purchase!</a></li>
-        <li><a>🎉 Get <strong>{{coupon.discount_percentage}}%</strong> OFF Your Purchase at Endless Essencials! Use Code <strong>"{{coupon.code}}" 🎉</a></li>
-      </ul>
-      {% endfor %}
-    </div>
-        <div class="main-navbar shadow-sm sticky-top">
-          <div class="top-navbar">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-4 my-auto d-none d-sm-none d-md-block d-lg-block">
-                  <h4 class="brand-name">ENDLESS ESSENCIALS</h4>
-                </div>
-                <div class="col-md-3 ml-auto">
-                  <form action="{% url 'store' %}" role="search">
-                    <div class="input-group">
-                      <input type="text" placeholder="Search your product" name="search" class="form-control" />
-                      <button class="btn bg-white" type="submit">
-                        <i class="fa fa-search"></i>
-                      </button>
-                    </div>
-                  </form>
-                 
-                </div>
-                <div class="col-md-5 my-auto">
-                  <ul class="nav justify-content-end">
-        
-                    <li class="nav-item">
-                      <a class="nav-link" class="pt-3 p-2" type="button" role="button" href="{% url 'cart-summary' %}">
-                        <i class="fa fa-shopping-cart"></i> Cart
-                        <div id="cart-qty" class="cart__header__desktop d-inline-flex">
-                          {% with qty_amount=cart|length %} {% if qty_amount > 0 %}
-                        
-                          <span>{{ qty_amount }}</span>
-                        
-                          {% else %}
-                        
-                          <span>0</span>
-                        
-                          {% endif %} {% endwith %}
-                        
-                        </div>
-                      </a>
-                    </li>
-                    <!-- <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <i class="fa fa-heart"></i> Wishlist (0)
-                      </a>
-                    </li> -->
-                    <li class="nav-item dropdown">
-                      {% if user.is_authenticated %}
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                          <i class="fa fa-user"></i> {{ user.username }}
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="{% url 'track-orders' %}"><i class="fa fa-list"></i> My Orders</a></li>
-                          <li><a class="dropdown-item" href="{% url 'cart-summary' %}"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
-                          <li><a class="dropdown-item" href="{% url 'user-logout' %}"><i class="fa fa-sign-out"></i> Logout</a></li>
-                        </ul>
-                      {% else %}
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                          <i class="fa fa-user"></i> Username
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="{% url 'register' %}"><i class="fa fa-user"></i> Register</a></li>
-                          <li><a class="dropdown-item" href="{% url 'my-login' %}"><i class="fa fa-list"></i> Login</a></li>
-                        </ul>
-                      {% endif %}
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-              <a class="navbar-brand d-block d-sm-block d-md-none d-lg-none" href="{% url 'index' %}" style="color: #994d1c; font-weight: 900;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                ENDLESS ESSENCIALS
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">Home</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
-                      Categories
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      {% for category in all_categories %}
-                      <a class="dropdown-item" href="{{ category.get_absolute_url }}">{{ category.name | capfirst }}</a>
-                      {% endfor %}
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'our-story' %}">Our Story</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'our-news' %}">News</a>
-                  </li>
-                  {% if user.is_authenticated %}
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
-                    </li>
-                  {% else %}
+    
 
-                  {% endif %}
-                </ul>
-              </div>
-            </div>
-          </nav>
+    <header data-aos="fade-down">
+      
+      <nav>
+        
+        <div class="logo ">
+          
+          <a href="{% url 'store' %}"><img src="{% static 'store/images/goldentouch.png' %}" 
+               alt=""></a>
+          <!-- <h4 class="">Endless Essensials</h4> -->
         </div>
+        <div class="text-center d-flex justify-content-center pt-3">
+          <a href="{% url 'index' %}">
+            <h2 style="color: #fff; font-weight: 800; font-size:28px; font-family: Merriweather">
+              GOLDENTOUCH BODY ORGANICS
+            </h2>
+          </a>
+        </div>
+    
+        <a class="pt-4 p-2" type="button" role="button" href="{% url 'cart-summary' %}">
+          <i class="fa fa-shopping-cart i" aria-hidden="true"></i>
+          <div id="cart-qty" class="cart__header__desktop d-inline-flex">
+            {% with qty_amount=cart|length %} {% if qty_amount > 0 %}
+    
+            <span style="color: #fff;">{{ qty_amount }}</span>
+    
+            {% else %}
+    
+            <span style="color: #fff;">0</span>
+    
+            {% endif %} {% endwith %}
+    
+          </div>
+        </a>
+      </nav>
+    </header>
+    
+    <div class="main__navigations" data-aos="fade-down">
+      <div class="main__navigations__div">
+        <ul class="main__navigations__div__ul">
+          <li class="main__navigations__div__li on__mobile_d_none" style="font-weight: bold">
+            <a href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="main__navigations__div__li on__mobile_d_none">
+            <a class="categ" style="font-weight: bold">Categories <i class="fas fa-caret-down"></i></a>
+            <div class="div__categories__items">
+              <p><a href="{% url 'store' %}"> All </a></p>
+              {% for category in all_categories %}
+              <p>
+                <a href="{{ category.get_absolute_url }}">
+                  {{ category.name | capfirst }}</a>
+              </p>
+              {% endfor %}
+            </div>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="main__navigations__div__li save__from__left">
+            <a href="" class="anchor__remains__same" style="font-weight: bold"><i class="fas fa-user i"></i> Hello, {{user}}
+            </a>
+          </li>
+    
+          {% else %}
+          <li class="main__navigations__div__li save__from__left">
+            <a href="" class="anchor__remains__same" style="font-weight: bold"><i class="fas fa-user i"></i> Hello,
+              Anonymous</a>
+          </li>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <li class="main__navigations__div__li">
+            <a href="{% url 'dashboard' %}" class="anchor__remains__same"
+              style="padding-bottom: 0; font-weight: bold">Dashboard <i class="fas fa-home i"></i>
+            </a>
+          </li>
+          {% else %}
+          <li class="main__navigations__div__li">
+            <a href="{% url 'register' %}" class="anchor__remains__same"
+              style="padding-bottom: 0; font-weight: bold">Register <i class="fas fa-register i"></i>
+            </a>
+          </li>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <li class="main__navigations__div__li">
+            <a href="{% url 'user-logout' %}" class="anchor__remains__same"
+              style="padding-bottom: 0; font-weight: bold">Logout <i class="fas fa-sign-out-alt i"></i>
+            </a>
+          </li>
+          {% else %}
+          <li class="main__navigations__div__li">
+            <a href="{% url 'my-login' %}" class="anchor__remains__same" style="padding-bottom: 0; font-weight: bold">Login
+              <i class="fas fa-sign-in-alt i"></i>
+            </a>
+          </li>
+          {% endif %}
+    
+          <div class="bars save__from__right">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          </div>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="mobile__nav__fade__and__show">
+      <div class="mobile__nav__fade__and__show__text">
+        <li><a href="{% url 'store' %}">Home</a></li>
+        <li>
+          <a href="">Categories</a>
+          <p><a href="{% url 'store' %}"> All </a></p>
+          {% for category in all_categories %}
+          <p>
+            <a href="{{ category.get_absolute_url }}">
+              {{ category.name | capfirst }}</a>
+          </p>
+          {% endfor %}
+        </li>
+      </div>
+    </div>
+    <div class="mobile__nav__fade__and__show__circle"></div>
+    <br /><br /><br /><br /><br />
+    <div class="row">
+      <div class="col">
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <h5 id="message-timer" class="alert alert-success text-center">
+          <i class="fa fa-sign-out i" aria-hidden="true"></i> &nbsp; {{message}}
+        </h5>
+        {% endif %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <h5 id="message-timer" class="alert alert-danger text-center">
+          <i class="fa fa-exclamation-triangle i" aria-hidden="true"></i>
+          &nbsp;{{message}}
+        </h5>
+        {% endif %}
+    
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+        <h5 id="message-timer" class="alert alert-info text-center">
+          <i class="fa fa-check-circle i" aria-hidden="true"></i>
+          &nbsp;{{message}}
+        </h5>
+        {% endif %}
+    
+        {% endfor %}
+      </div>
+    </div>
+        <!-- <div class="ticker-wrapper-h">
+          <div class="heading">News</div>
+          {% for coupon in all_coupons %}
+          <ul class="news-ticker-h">
+            <li><a>Promo!</a></li>
+            <li><a>Promo!!</a></li>
+            <li><a>Promo!!! At Endless Essentials, we believe in making everyday essentials affordable and accessible, and we’re
+                thrilled to welcome
+                you with a special {{coupon.discount_percentage}}% discount on your first purchase!</a></li>
+            <li><a>🎉 Get <strong>{{coupon.discount_percentage}}%</strong> OFF Your Purchase at Endless Essencials! Use Code
+                <strong>"{{coupon.code}}" 🎉</a></li>
+          </ul>
+          {% endfor %}
+        </div> -->
     {% block content %} {% endblock %}
 
     <!-- Remove the container if you want to extend the Footer to full width. -->
     <div data-aos="fade-down">
       <!-- Footer -->
-      <footer class="text-center text-white" style="background-color: #f5cca0">
+      <footer class="text-center text-white" style="background-color: #A4B465">
         <!-- Grid container -->
         <div class="container">
           <!-- Section: Links -->
@@ -493,7 +359,7 @@
             <!-- Grid row-->
             <div
               class="row text-center d-flex justify-content-center pt-5"
-              style="color: #994d1c"
+              style="color: #FFE8B6"
             >
               <!-- Grid column -->
               <div class="col-md-2">
@@ -541,11 +407,11 @@
           <section class="mb-5">
             <div class="row d-flex justify-content-center">
               <div class="col-lg-8">
-                <p style="color: #994d1c">
-                  We sell natural products made directly in West Africa. Whether
-                  it's the African black soap made from Nigeria or the Shea
-                  Butter from Ghana, we hope you can experience the magic of
-                  West Africa through us!
+                <p style="color: #FFE8B6">
+                  Goldentouch Body Organics was born out of a passion for natural healing and holistic well-being. With years of
+                  experience in herbal practices and wellness consultation, we have curated a wide range of organic products carefully
+                  selected for their purity, effectiveness, and proven benefits.
+
                 </p>
               </div>
             </div>
@@ -555,19 +421,19 @@
           <!-- Section: Social -->
           <section class="text-center mb-5">
             <a
-              href="https://www.facebook.com/alima.dadzie.9?mibextid=LQQJ4d"
+              href=""
               class="text-white me-4"
             >
               <i class="fa fa-facebook-f i"></i>
             </a>
             <a
-              href="https://x.com/_timelesse/status/1732935934692266332?s=46&t=05Eb6Il3UJqhyXNHPUHFWg"
+              href=""
               class="text-white me-4"
             >
               <i class="fa fa-twitter i"></i>
             </a>
             <a
-              href="https://www.instagram.com/endless_essencials?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr"
+              href=""
               class="text-white me-4"
             >
               <i class="fa fa-instagram i"></i>
@@ -585,12 +451,12 @@
 
         <!-- Copyright -->
         <div
-          style="color: #994d1c"
+          style="color: #FFE8B6"
           class="text-center p-3"
           style="background-color: rgba(0, 0, 0, 0.2)"
         >
-          © 2024 Copyright:
-          <a style="color: #994d1c">Endless Essencials. All Rights Reserved.</a>
+          © 2025 Copyright:
+          <a style="color: #FFE8B6">GOLDENTOUCH BODY ORGANICS. All Rights Reserved.</a>
         </div>
         <!-- Copyright -->
       </footer>

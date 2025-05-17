@@ -12,7 +12,7 @@
         <div class="container">
 
             <div class="pb-3">
-                <span style="color: #994D1C;"><a href="{% url 'store' %}">Home </a>/ Wishlist</span>
+                <span style="color: #626F47;"><a style="color: #626F47;" href="{% url 'store' %}">Home </a>/ Wishlist</span>
             </div>
 
 
@@ -33,7 +33,7 @@
                                     href="{% url 'product-info' w.product.slug %}">{{w.product.title | capfirst }}</a>
                             </h3>
                             <div>
-                                <p class="card-text">${{ w.product.price }}</p>
+                                <p class="card-text">GH¢{{ w.product.price }}</p>
                             </div>
                         </div>
                     </div>

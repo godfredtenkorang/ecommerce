@@ -6,7 +6,7 @@
 
 <style>
     body {
-        background-color: #c0af9d;
+        background-color: #eee;
     }
 .login {
   width: 350px;
@@ -27,11 +27,11 @@
   margin-right: auto;
   margin-left: auto;
   border: 12px solid transparent;
-  border-bottom-color: #994D1C;
+  border-bottom-color: #626F47;
 }
 
 .login-header {
-  background: #994D1C;
+  background: #626F47;
   padding: 20px;
   font-size: 1.4em;
   font-weight: normal;
@@ -76,19 +76,19 @@
 }
 
 .login input[type="submit"] {
-  background: #994D1C;
+  background: #626F47;
   border-color: transparent;
   color: #fff;
   cursor: pointer;
 }
 
 .login input[type="submit"]:hover {
-  background: #6B240C;
+  background: #626F47;
 }
 
 /* Buttons' focus effect */
 .login input[type="submit"]:focus {
-  border-color: #6B240C;
+  border-color: #626F47;
 }
 </style>
 
@@ -112,7 +112,7 @@
                 <p><input type="password" placeholder="Password"></p> -->
             <p><input type="submit" value="Create account"></p>
             <div class="text-center">
-                <a href="{% url 'my-login' %}">Already have an account?</a>
+                <a style="color: #555;" href="{% url 'my-login' %}">Already have an account?</a>
             </div>
         </form>
     </div>

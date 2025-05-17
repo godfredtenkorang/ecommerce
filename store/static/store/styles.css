@@ -5,12 +5,12 @@
     vertical-align: middle;
 }
  :root{
-  --mainColor: #F5CCA0;
+  --mainColor: #626F47;
   --light:#e7d4c5;
   --white:#fff;
  }
  body{
-  background-color: var(--light);
+  background-color: var(--white);
  }
     .bg-steel {
         background-color: transparent !important;
@@ -106,12 +106,12 @@
  /*------------Navbar dropdown end------------*/
 
 .btn {
-    background-color: #994D1C;
+    background-color: #626F47;
     border: none;
 }
 
 .btn:hover {
-    background-color: #6B240C;
+    background-color: #202a0b;
 }
 
 
@@ -122,20 +122,20 @@ li {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: #994D1C;
+  color: #fff;
   transition: 0.4s;
 }
 
 a:hover {
-  color: #E48F45;
+  color: #fff;
 }
 
 a:hover .i {
-  color: #E48F45;
+  color: #fff;
 }
 
 .i {
-  color: #994D1C;
+  color: #FFCF50;
   transition: 0.4s;
 }
 
@@ -147,7 +147,7 @@ header {
   height: 60px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #6B240C;
+  border-bottom: 1px solid #626F47;
   position: fixed;
   right: 0;
   left: 0;
@@ -281,9 +281,9 @@ header nav .cart__header__desktop span {
   position: fixed;
   left: 0;
   right: 0;
-  top: 59px;
+  top: 60px;
   z-index: 447;
-  padding: 8px 0 30px;
+  padding: 9px 0 31px;
   background-color:var(--mainColor);
 }
 
@@ -380,7 +380,7 @@ header nav .cart__header__desktop span {
 }
 
 .main__navigations__div ul.main__navigations__div__ul li.main__navigations__div__li .div__categories__items p a:hover {
-  color: #f79831;
+  color: #c9d6b0;
 }
 
 .bars {
@@ -390,7 +390,7 @@ header nav .cart__header__desktop span {
 .bars div {
   width: 22px;
   height: 2px;
-  background-color: #994D1C;
+  background-color: #fff;
   margin: 4px 0;
   transition: .4s;
 }
@@ -434,7 +434,7 @@ header nav .cart__header__desktop span {
 
 .mobile__nav__fade__and__show li > a {
   font-weight: bold;
-  color: #f79831;
+  color: #626F47;
   color: #fff;
 }
 
@@ -466,7 +466,7 @@ header nav .cart__header__desktop span {
 .mobile__nav__fade__and__show__circle {
   width: 120%;
   height: 735px;
-  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  background-image: linear-gradient(120deg, #b3c393 0%, #626F47 100%);
   box-shadow: 0px 10px 10px #333;
   position: fixed;
   top: 0;
@@ -515,14 +515,14 @@ header nav .cart__header__desktop span {
 }
 
 .section-header h2 {
-  color: #FFF;
+  color: #000;
   font-weight: bold;
   font-size: 3em;
   margin-bottom: 20px;
 }
 
 .section-header p {
-  color: #FFF;
+  color: #000;
 }
 
 .contact-row  {
@@ -544,7 +544,7 @@ header nav .cart__header__desktop span {
 .contact-info-icon {
   height: 70px;
   width: 70px;
-  background-color: #fff;
+  background-color: #626F47;
   text-align: center;
   border-radius: 50%;
 }
@@ -559,13 +559,13 @@ header nav .cart__header__desktop span {
 }
 
 .contact-info-content h4 {
-  color: #6B240C;
+  color: #626F47;
   font-size: 1.4em;
   margin-bottom: 5px;
 }
 
 .contact-info-content p {
-  color: #FFF;
+  color: #000;
   font-size: 1em;
 }
 
@@ -683,18 +683,18 @@ header nav .cart__header__desktop span {
     content: '★ ';
 }
 .rate > input:checked ~ label {
-    color: #994D1C;    
+    color: #626F47;    
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-    color: #994D1C;  
+    color: #626F47;  
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-    color: #994D1C;
+    color: #626F47;
 }
 
 
@@ -1070,15 +1070,21 @@ grid-template-columns: 1fr 1fr 1fr;
   
 /* Slide show */
 .slide-show {
+  height: 80vh;
   position: relative;
   overflow: hidden;
+  background: #000;
 }
+
+
 
 .slide img {
   width: 100%;
   height: 80vh;
-  object-fit: cover;
+  object-fit: fill;
   animation: smoothScale 7s linear forwards;
+  opacity: 0.5;
+  
 }
 
 @keyframes smoothScale {
@@ -1139,13 +1145,13 @@ grid-template-columns: 1fr 1fr 1fr;
 
 .links-on-slide-show a {
   padding: 15px 70px;
-  background-color: #6B240C;
+  background-color: #626F47;
   color: var(--whiteColor);
   border-radius: 25px;
 }
 
 .links-on-slide-show a:nth-child(2) {
-  background-color: #994D1C;
+  background-color: #859762;
 }
 
 @keyframes slideFromBottom {
@@ -1351,7 +1357,7 @@ flex-wrap: wrap;
 }
 
 .product-details h4 a:hover {
-    color: #994D1C;
+    color: #A4B465;
 }
 
 .product-details p {
@@ -1374,7 +1380,7 @@ flex-wrap: wrap;
 
 .product-price {
     font-size: 18px;
-    color: #994D1C;
+    color: #626F47;
     font-weight: 600;
 }
 

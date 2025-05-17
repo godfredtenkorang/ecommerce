@@ -59,7 +59,7 @@
         <div class="container">
 
             <div class="pb-3">
-                <span style="color: #994D1C;"><a href="{% url 'store' %}">Home </a>/ Store</span>
+                <span style="color: #626F47;"><a style="color: #626F47;" href="{% url 'store' %}">Home </a>/ Store</span>
             </div>
 
 
@@ -81,7 +81,7 @@
                             <h4><a href="{% url 'product-info' product.slug %}">{{product.title | capfirst }}</a></h4>
                             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p> -->
                             <div class="product-bottom-details">
-                                <div class="product-price"><small>${{ product.previous_price }}</small>${{ product.price }}</div>
+                                <div class="product-price"><small>GH¢{{ product.previous_price }}</small>GH¢{{ product.price }}</div>
 
                             </div>
                         </div>
