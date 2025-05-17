@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['.endlessessencials.com','157.245.223.195', 'localhost','127.0.0.1']
+ALLOWED_HOSTS = ['.godfred10.pythonanywhere.com', 'localhost','127.0.0.1']
 
 
 # Application definition
